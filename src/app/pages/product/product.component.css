@@ -1,0 +1,236 @@
+
+.product_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.product_image_div{
+    width: 50%;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.product_img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.product_img_min{
+    height: 50px;
+    width: 20%;
+    padding-left: 10px;
+}
+
+
+.product_info_div{
+    width: 50%;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.product_name{
+    margin: 20px;
+}
+
+.product_description_title{
+    font-weight: bolder;
+    margin: 10px 20px;
+}
+
+.product_description{
+    word-wrap: break-word;
+    margin: 20px;
+    width: 80%;
+}
+
+.product_catagory{
+    margin: 20px;
+}
+
+.span_product_catagory{
+    font-weight: bolder;
+}
+
+.span_product_date{
+    font-weight: bolder;
+}
+
+.product_seller{
+    font-weight: bolder;
+    margin: 10px 20px;
+}
+
+.span_product_seller{
+    
+}
+
+.product_date{
+    margin: 10px 20px;
+}
+
+img{
+    width: 100%;
+    object-fit: contain;
+    height: fit-content;
+}
+
+.base_price{
+    font-weight: bold;
+}
+
+.upcoming_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+.upcoming_sub_div{
+    padding: 10px 10px;
+}
+
+.upcoming_status{
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: orange;
+    color: white;
+}
+
+.span_price{
+    font-weight: bold;
+    color: green;
+}
+
+/* .span_upcoming{
+
+} */
+
+.btn_addToLike{
+    padding: 10px 10px;
+    background-color: #F24951;
+    border-radius: 25px;
+    outline: none;
+    border: 1px solid #F24951;
+    color: white;
+    font-weight: bolder;
+    margin: 20px;
+}
+
+small{
+    margin: 10px 0px;
+}
+
+.live_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: start;
+}
+
+.live_sub_div{
+    padding: 10px 10px;
+    margin-right: 50px;
+    border-right:1px solid #DDDDDD;
+}
+
+.live_status{
+    width: fit-content;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+}
+
+.current_bid_amount{
+    font-size: large;
+    font-weight: bolder;
+}
+
+.live_bidding_div{
+    margin: 70px 10px;
+}
+
+.live_bidding_title{
+    color: white;
+    background-color: #F24951;
+    border: 1px solid #F24951;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.live_bidding_history{
+}
+
+.live_bidding_input{
+    border: 1px solid white;
+    outline: none;
+    border-radius: 25px;
+    background-color: #DDDDDD;
+    padding: 10px 20px;
+    width: 50%;
+}
+
+.live_bidding_btn{
+    padding: 10px 20px;
+    width: 50%;
+    background-color: #F24951;
+    border-radius: 25px;
+    border: 1px solid #F24951;
+    color: white;
+    font-weight: bolder;
+}
+
+.completed_status{
+    width: fit-content;
+    padding: 10px;
+    background-color:red;
+    border-radius: 25px;
+    color: white;
+}
+
+
+.product_comments{
+    background-color: white;
+    border-radius: 25px;
+}
+
+.product_comments_div {
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+.product_comments_sub_div{
+    padding: 10px 10px;   
+}
+
+
+
+.comment_input{
+    border-radius:  25px 0px 0px 25px;
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+    width: 20%;
+    outline: none;
+}
+
+.user_comments{
+    margin: 10px;
+}
+
+.span_comment_username{
+    font-weight: bold;
+}
+
+.post_comment_btn{
+    padding: 10px 20px;
+    background-color: #F24951;
+    border: 1px 0px  solid #F24951;
+    border-radius: 0px 25px 25px 0px;
+    outline: #F24951;
+    color: white;
+    font-weight: bolder;
+}
