@@ -12,10 +12,12 @@ const routes: Routes =[
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  },{
-    path:'product',
-    component:ProductComponent
-  }, {
+  }
+  // {
+  //   path:'product',
+  //   component:ProductComponent
+  // }
+  , {
     path: '',
     component: AdminLayoutComponent,
     children: [
