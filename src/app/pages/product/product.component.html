@@ -1,6 +1,6 @@
-
 <div class="product_div">   
     <div class="product_image_div">
+        
         <img class="product_img" src="../../assets/images/mobile.jpeg" alt="car_image">
         <div class="product_images_div">
             <img class="product_img_min" src="../../assets/images/mobile.jpeg" alt="car_image">
@@ -10,13 +10,15 @@
         </div>
     </div>
     <div class="product_info_div">
-        <h2 class="product_name">Vintage Car</h2>
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <h2 class="product_name display-3">Vintage Car</h2>
+            <i class="ni ni-favourite-28" style="margin-right: 70px;height: 20px;"></i>
+        </div>
         <p class="product_description_title">Description : </p>
         <p class="product_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatem qui at optio rerum fuga ut dolor sint distinctio, deserunt repellendus sit provident ullam. Molestias assumenda deserunt molestiae odio ad!</p>
         <p class="product_catagory"><span class="span_product_catagory">Catagory :</span> Automibiles</p>
         <p class="product_seller"><span class="span_product_seller">Seller : </span>Yash Maheshwari</p>
         <p class="product_date"><span class="span_product_date">Date :</span>  03/12/22</p>
-        <button class="btn_addToLike">Add to Liked</button>
     </div>
         
 </div>
@@ -59,8 +61,14 @@
         </div>
         <hr>
 
+        <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $50</button>
+        <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $100</button>
+        <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $200</button>
+        <br>
+        <br>
 
         <input class="live_bidding_input" type="text" placeholder="enter $100">
+        <br>
         <br>
         <button class="live_bidding_btn">Make Bid</button>
     </div>
@@ -73,6 +81,20 @@
         <p class="current_bid_amount">Sold For : <span class="span_price">$1000</span></p>
         <p class="base_price">Base Price : <span class="span_price">$500</span></p>
         <p>Completed On : 10/12/22</p>
+    </div>
+
+    <div class="live_bidding_div">
+        <h3 class="live_bidding_title">Bidding Details :</h3>
+        <hr>
+        <div class="live_bidding_history">
+            <p> <span class="span_comment_username">Jinang Shah :</span> $1100</p>
+            <p> <span class="span_comment_username">Deep Patel :</span>$900</p>
+            <p> <span class="span_comment_username">Jinang Shah :</span> $800</p>
+            <p> <span class="span_comment_username">Deep Patel :</span>$600</p>
+            <p> <span class="span_comment_username">Jinang Shah :</span> $500</p>
+            <p> <span class="span_comment_username">Deep Patel :</span>$300</p>
+        </div>
+        
     </div>
 
 </div>
