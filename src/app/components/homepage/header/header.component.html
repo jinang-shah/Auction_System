@@ -29,6 +29,38 @@
           </div>
         </div>
       </form>
+      <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <i class="notiicon ni ni-bell-55"> </i>
+              <span class="badge badge-dot">
+                <i class="bg-info"></i>
+              </span>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0">4 new notifications</h6>
+            </div>
+            <p class="lead">
+              Auction of ItemName Started
+              <span class="badge badge-primary">5m ago</span>
+            </p>
+            <p class="lead">
+              Auction ended for ItemName
+              <span class="badge badge-primary">1h ago</span>
+            </p>
+            <p class="lead">
+              Auction of Item2Name Started
+              <span class="badge badge-primary">3d ago</span>
+            </p>
+            <p class="lead last">
+              <a href="/notifications">View More</a>
+            </p>
+          </div>
+        </li>
+      </ul>
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
         <li class="nav-item" ngbDropdown placement="bottom-right">

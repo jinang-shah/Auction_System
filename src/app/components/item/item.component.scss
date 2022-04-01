@@ -17,3 +17,23 @@
   width: 100%;
   height: 20rem;
 }
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.4rem;
+}
+.card:hover > .favIcon {
+  display: inline-block;
+}
+
+.favIcon {
+  display: none;
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
+}
+.favIcon i {
+  transform: scale(1.5);
+}
