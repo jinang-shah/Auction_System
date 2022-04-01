@@ -9,9 +9,20 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
+import { SellerDetailsComponent } from './pages/seller-details/seller-details.component';
+
 const routes: Routes =[
 
+  
+
   { path: 'reset-password', component: ResetPasswordComponent },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  
+  { path: 'seller-details', component: SellerDetailsComponent },
   {
     path: '',
     redirectTo: 'dashboard',

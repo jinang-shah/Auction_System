@@ -16,6 +16,8 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
+import { SellerDetailsComponent } from './pages/seller-details/seller-details.component';
+
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     AuthLayoutComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+  
+    SellerDetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
