@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { ManageusersComponent } from './pages/manageusers/manageusers.component';
+import { ComplainComponent } from './pages/complain/complain.component';
+import { FavouritelistComponent } from './pages/favouritelist/favouritelist.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ManageusersComponent,
+    ComplainComponent,
+    FavouritelistComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

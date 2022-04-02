@@ -5,12 +5,26 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ManageusersComponent } from './pages/manageusers/manageusers.component';
+import { ComplainComponent } from './pages/complain/complain.component';
+import { FavouritelistComponent } from './pages/favouritelist/favouritelist.component';
 
 const routes: Routes =[
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
+  },
+  {
+    path:'admin_users',
+    component:ManageusersComponent
+  },{
+      path:'admin_complain',
+      component: ComplainComponent
+  },
+  {
+      path:'admin_favouritelist',
+      component: FavouritelistComponent
   }, {
     path: '',
     component: AdminLayoutComponent,
