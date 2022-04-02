@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
+import { UserHistoryComponent } from './pages/user-history/user-history.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SellerVerificationComponent } from './pages/seller-verification/seller-
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    SellerVerificationComponent
+    SellerVerificationComponent,
+    UserHistoryComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
