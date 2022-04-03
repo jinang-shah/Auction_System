@@ -1,0 +1,94 @@
+<div class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+        <div class="header-body text-center mb-7">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+            xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container mt--9 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card bg-secondary shadow border-0">
+                <div class="card-header bg-transparent pb-5">
+
+                    <div class="card-body px-lg-5 py-lg-5">
+                        <form [formGroup]="additemform" (ngSubmit)="additem(additemform)">
+                            <div class="form-group mb-2">
+                                Item Name:
+                                <div class="input-group input-group-alternative">
+                                    <input class="form-control" formControlName='i_name' placeholder="Enter item name" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                Item Category:<br>
+                                <button type="button" class="btn btn-primary dropdown-toggle"  data-bs-toggle="dropdown">
+                                    Choose Item Category
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Electric</a></li>
+                                    <li><a class="dropdown-item" href="#">Footware</a></li>
+                                    <li><a class="dropdown-item" href="#">Furniture</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                Item Description:
+                                <div class="input-group input-group-alternative">
+                                    <input class="form-control" formControlName='i_description' placeholder="Enter item description" type="text">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group mb-3">
+                                Item Base Price:
+                                <div class="input-group input-group-alternative">
+                                    <input class="form-control" formControlName='i_baseprice' placeholder="Enter price" type="number">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                Start Date:
+                                <div class="input-group input-group-alternative">
+                                    <input class="form-control" formControlName='i_startdate' placeholder="start-date" type="date">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                End Date:
+                                <div class="input-group input-group-alternative">
+                                    <input class="form-control" formControlName='i_enddate' placeholder="end-date" type="date">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                Item Orignal Bill:
+                                <input type="file" class="form-control"  formControlName='i_orignalbill' (change)="onfileselect($event)" multiple>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                Item Photos:
+                                <input class="form-control" type="file" multiple>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary my-1" (click)="display()">Add Item</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="valid">
+            {{item_orignalbill}}
+        </div>
