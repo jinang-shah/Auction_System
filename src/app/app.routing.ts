@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
+import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
 
 const routes: Routes =[
   {
@@ -20,7 +21,10 @@ const routes: Routes =[
   {
     path:'item_complain',
     component : ItemreportComponent
-  }, {
+  },{
+    path:'complain_details',
+    component : ComplainDetailsComponent
+  },{
     path: '',
     component: AdminLayoutComponent,
     children: [

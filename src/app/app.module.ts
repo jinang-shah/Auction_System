@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
+import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ItemreportComponent } from './pages/itemreport/itemreport.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     AdditemComponent,
-    ItemreportComponent
+    ItemreportComponent,
+    ComplainDetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
