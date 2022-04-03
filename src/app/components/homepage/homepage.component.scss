@@ -47,6 +47,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  border-radius: 0.375rem;
 }
 .fas.fa-chevron-right {
   transform: scale(3);

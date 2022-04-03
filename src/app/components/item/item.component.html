@@ -8,14 +8,16 @@
     alt="Card image cap"
   />
   <div class="card-body">
-    <h4 class="card-title">Item Name</h4>
+    <h4 class="card-title">{{ item.name }}</h4>
     <p class="card-text">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum sequi
-      asperiores quisquam
+      {{ item.description }}
     </p>
     <div class="card-text details">
-      <span>200$</span
-      ><span class="badge badge-dot"> <i class="bg-danger"></i>Live </span>
+      <span
+        >Bid Amount : <b>{{ item.basePrize }}</b></span
+      ><span class="badge badge-dot">
+        <i class="bg-danger"></i>{{ item.status }}
+      </span>
     </div>
     <a href="#" class="btn btn-primary">Read More</a>
   </div>

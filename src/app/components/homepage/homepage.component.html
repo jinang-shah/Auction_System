@@ -1,4 +1,3 @@
-<app-header></app-header>
 <section class="home container">
   <div>
     <h1 class="display-1">Best Place to<br />Buy and Sell</h1>
@@ -12,7 +11,7 @@
   <div class="landing-image">
     <img
       src="https://www.oneclickitsolution.com/wp-content/uploads/2020/01/onlineauction_banner.png"
-      alt="Working Illustration"
+      alt="Online auction"
     />
   </div>
 </section>
@@ -21,18 +20,15 @@
     <div class="display-2">Live Biddings</div>
     <div class="cards-container">
       <div class="items">
-        <app-item></app-item>
-        <app-item></app-item>
-        <app-item></app-item>
-        <app-item></app-item>
-        <app-item></app-item>
-        <app-item></app-item>
-        <app-item></app-item>
-        <app-item></app-item>
+        <app-item *ngFor="let item of items"></app-item>
       </div>
       <div class="viewmore">
         <div class="grad">
-          <a href="/search?status=live">
+          <a
+            routerLink="/search"
+            routerLinkOption=""
+            [queryParams]="{ status: 'live' }"
+          >
             <i class="fas fa-chevron-right"></i
           ></a>
         </div>
@@ -40,4 +36,3 @@
     </div>
   </div>
 </section>
-<app-footer></app-footer>

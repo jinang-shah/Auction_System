@@ -8,10 +8,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { HomepageComponent } from "./homepage/homepage.component";
 import { HeaderComponent } from "./homepage/header/header.component";
 import { SearchProductComponent } from "./searchProduct/searchProduct.component";
-import { ItemComponent } from './item/item.component';
+import { ItemComponent } from "./item/item.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [FormsModule, CommonModule, RouterModule, NgbModule],
   declarations: [
     FooterComponent,
     NavbarComponent,
