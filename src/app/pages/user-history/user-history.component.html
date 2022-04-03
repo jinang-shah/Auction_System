@@ -7,8 +7,7 @@
   </div>
   <!-- Page content -->
   <div class="container-fluid mt--7" style="margin-bottom: 150px;">
-    <!-- Table -->
-    <!-- Dark table -->
+    <!-- Buying History Table -->
     <div class="row mt-5">
       <div class="col">
         <div class="card bg-default shadow">
@@ -19,7 +18,7 @@
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Product</th>
+                  <th scope="col">Product Details</th>
                   <th scope="col">Amount</th>
                   <th scope="col">Status</th>
                   <th scope="col">Purchased Date</th>
@@ -28,7 +27,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr *ngFor="let details of buyinghistory"> 
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <a
+                        href="javascript:void(0)"
+                        class="avatar rounded-circle mr-3"
+                      >
+                        <img
+                          alt="Image placeholder"
+                          src="{{details.productDetails.img}}"
+                        />
+                      </a>
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{details.productDetails.productName}} </span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>{{details.amount}}</td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-warning"></i> {{details.status}}
+                    </span>
+                  </td>
+                  <td>{{details.purchasedDate}} </td>
+                </tr>
+                <!-- <tr>
                   <th scope="row">
                     <div class="media align-items-center">
                       <a
@@ -152,7 +176,7 @@
                     </span>
                   </td>
                   <td>04/05/2021</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -190,8 +214,7 @@
     </div>
   </div>
   <div class="container-fluid mt--7">
-    <!-- Table -->
-    <!-- Dark table -->
+    <!-- Selling History Table -->
     <div class="row mt-5">
       <div class="col">
         <div class="card bg-default shadow">
@@ -211,7 +234,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr *ngFor="let details of buyinghistory">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <a
+                        href="javascript:void(0)"
+                        class="avatar rounded-circle mr-3"
+                      >
+                        <img
+                          alt="Image placeholder"
+                          src="{{details.productDetails.img}}"
+                        />
+                      </a>
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{details.productDetails.productName}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>{{details.amount}}</td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-warning"></i> {{details.status}}
+                    </span>
+                  </td>
+                  <td>{{details.purchasedDate}}</td>
+                </tr>
+                <!-- <tr>
                   <th scope="row">
                     <div class="media align-items-center">
                       <a
@@ -255,7 +303,7 @@
                   </th>
                   <td>$1,8 USD</td>
                   <td>
-                    <span class="badge badge-dot">
+                    <span class="badge badge-dot">" {{details.productDetails.img}} "
                       <i class="bg-success"></i> Completed
                     </span>
                   </td>
@@ -335,7 +383,7 @@
                     </span>
                   </td>
                   <td>04/05/2021</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
