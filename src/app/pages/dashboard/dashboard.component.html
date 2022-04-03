@@ -134,7 +134,7 @@
           <div class="row align-items-center">
             <div class="col">
               <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-              <h2 class="mb-0">Total orders</h2>
+              <h2 class="mb-0">Total Bid's Completed</h2>
             </div>
           </div>
         </div>
@@ -172,7 +172,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let newuser of newUser">
+                <th scope="row">
+                  {{newuser.userName}}
+                </th>
+                <td>
+                  {{newuser.userEmail}}
+                </td>
+                <td>
+                  {{newuser.userContact}}
+                </td>
+                <td>
+                   View Profile
+                </td>
+              </tr>
+              <!-- <tr>
                 <th scope="row">
                   ABC
                 </th>
@@ -241,7 +255,7 @@
                 <td>
                   46,53%
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
@@ -270,7 +284,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let newcomplain of newComplain">
+                <th scope="row">
+                  {{newcomplain.userName}}
+                </th>
+                <td>
+                  view complain
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2"> {{newcomplain.date}} </span>
+                    <div>
+                      
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- <tr>
                 <th scope="row">
                   Facebook
                 </th>
@@ -348,7 +378,7 @@
                     </div>
                   </div>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
