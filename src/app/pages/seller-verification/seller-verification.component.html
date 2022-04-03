@@ -18,22 +18,22 @@
         
       <div class="card-body">
         <div class="row">
-          <form>
-            <div class="form-group">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group" ngModelGroup="sellerData" #sellerData="ngModelGroup">
               <h2 style="color:black;">Seller Verification</h2>  
-              <p>To Become a seller Please upload a Valid Document</p>
+              <p>To Become a seller Please upload a Valid Document </p>
               <div>
-              <label for="exampleFormControlFile1">Upload PAN Card*</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <label for="exampleFormControlFile1">Upload PAN Card (pdf)*</label>
+              <input type="file" accept="application/pdf" class="form-control-file" name="pancard" ngModel required>
               </div>
               <div style="margin-top: 30px;">
-                <label for="exampleFormControlFile1">Upload Election Card/Electricity Bill *</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <label for="exampleFormControlFile1">Upload Election Card/Electricity Bill (pdf)*</label>
+                <input type="file" accept="application/pdf" class="form-control-file" name="elecard" ngModel required>
                 </div>
               <div>
             </div>
             
-              <button type="button" class="btn btn-primary btn-sm" style="margin-top: 50px ; width: 170px">Upload</button>
+              <button type="button" [disabled]="!f.valid" class="btn btn-primary btn-sm" style="margin-top: 50px ; width: 170px">Upload</button>
             
           </div>
           </form>
