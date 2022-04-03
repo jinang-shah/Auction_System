@@ -6,6 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AdditemComponent } from './pages/additem/additem.component';
+import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
+import { ItemreportComponent } from './pages/itemreport/itemreport.component';
+
 
 const routes: Routes =[
   {
@@ -13,9 +16,17 @@ const routes: Routes =[
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },{
-    path:'add_item',
+    path:'additem',
     component : AdditemComponent
-  }, {
+  }, 
+  {
+    path:'complian-details',
+    component : ComplainDetailsComponent
+  },
+  {
+    path:'itemreport',
+    component : ItemreportComponent
+  },{
     path: '',
     component: AdminLayoutComponent,
     children: [

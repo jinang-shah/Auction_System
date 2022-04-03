@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AdditemComponent } from './pages/additem/additem.component';
-
+import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
+import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,8 @@ import { AdditemComponent } from './pages/additem/additem.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     AdditemComponent,
+    ComplainDetailsComponent,
+    ItemreportComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
