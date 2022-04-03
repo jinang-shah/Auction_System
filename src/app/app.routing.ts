@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AdditemComponent } from './pages/additem/additem.component';
+import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 
 const routes: Routes =[
   {
@@ -15,6 +16,10 @@ const routes: Routes =[
   },{
     path:'add_item',
     component : AdditemComponent
+  },
+  {
+    path:'item_complain',
+    component : ItemreportComponent
   }, {
     path: '',
     component: AdminLayoutComponent,

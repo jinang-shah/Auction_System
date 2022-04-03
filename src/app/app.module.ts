@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AdditemComponent } from './pages/additem/additem.component';
+import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AdditemComponent } from './pages/additem/additem.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     AdditemComponent,
+    ItemreportComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
