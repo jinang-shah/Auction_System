@@ -1,0 +1,23 @@
+.filter {
+  padding: 2em 0;
+}
+.auction-select {
+  cursor: pointer;
+}
+.auction-select option {
+  background-color: white;
+  color: black;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2vw;
+  width: 100%;
+}
+.items-search {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

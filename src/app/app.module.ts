@@ -15,11 +15,18 @@ import { ComponentsModule } from './components/components.module';
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
+import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
+import { UserHistoryComponent } from './pages/user-history/user-history.component';
+import { CommonModule } from '@angular/common';
+
+import { ProductComponent } from 'src/app/pages/product/product.component'
+
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    CommonModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
@@ -34,6 +41,9 @@ import { ItemreportComponent } from './pages/itemreport/itemreport.component';
     AdditemComponent,
     ComplainDetailsComponent,
     ItemreportComponent
+    SellerVerificationComponent,
+    UserHistoryComponent,
+    ProductComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
