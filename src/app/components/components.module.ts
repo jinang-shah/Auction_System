@@ -1,3 +1,4 @@
+
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SidebarComponent } from "./sidebar/sidebar.component";
@@ -20,7 +21,7 @@ import { NotiitemComponent } from './notifications/notiitem/notiitem.component';
     NavbarComponent,
     SidebarComponent,
     NotificationsComponent,
-    NotiitemComponent
+    NotiitemComponent,
     HomepageComponent,
     HeaderComponent,
     SearchProductComponent,

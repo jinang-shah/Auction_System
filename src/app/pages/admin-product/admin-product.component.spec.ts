@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotiitemComponent } from './notiitem.component';
+import { AdminProductComponent } from './admin-product.component';
 
-describe('NotiitemComponent', () => {
-  let component: NotiitemComponent;
-  let fixture: ComponentFixture<NotiitemComponent>;
+describe('AdminProductComponent', () => {
+  let component: AdminProductComponent;
+  let fixture: ComponentFixture<AdminProductComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotiitemComponent ]
+      declarations: [ AdminProductComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotiitemComponent);
+    fixture = TestBed.createComponent(AdminProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

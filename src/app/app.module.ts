@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+
+import { AdminProductComponent } from './pages/admin-product/admin-product.component';
+import { CommonModule } from '@angular/common';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -27,7 +30,6 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from 'src/app/pages/product/product.component'
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -39,21 +41,23 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    CommonModule,
     ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    AdminProductComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    SellerDetailsComponent
+    SellerDetailsComponent,
     AdditemComponent,
     ItemreportComponent,
-    ComplainDetailsComponent
     ComplainDetailsComponent,
-    ItemreportComponent
+    ComplainDetailsComponent,
+    ItemreportComponent,
     SellerVerificationComponent,
     UserHistoryComponent,
     ProductComponent
