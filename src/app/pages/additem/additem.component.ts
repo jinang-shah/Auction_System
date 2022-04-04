@@ -16,6 +16,7 @@ export class AdditemComponent implements OnInit {
   bid_startdate:Date;
   bid_enddate:Date;
   item_orignalbill:File = null;
+  item_photo:File=null;
   valid:Boolean=false;
 
 
@@ -28,11 +29,12 @@ export class AdditemComponent implements OnInit {
       i_baseprice:new FormControl(),
       i_startdate:new FormControl(),
       i_enddate:new FormControl(),
-      i_orignalbill:new FormControl()
+      i_orignalbill:new FormControl(),
+      i_photo:new FormControl()
     })
    }
     onfileselect(event){
-      this.item_orignalbill =<File>event.target.files[2];
+      this.item_orignalbill =<File>event.target.files[0];
     }
   onUpload(){
     const fd = new FormData();
@@ -40,14 +42,15 @@ export class AdditemComponent implements OnInit {
   }
 
   additem(additem:any){
-    debugger
+    
     this.item_name = this.additemform.controls.i_name.value;
     this.item_description = this.additemform.controls.i_description.value;
     this.item_baseprice = this.additemform.controls.i_baseprice.value;
     this.bid_startdate = this.additemform.controls.i_startdate.value;
     this.bid_enddate = this.additemform.controls.i_enddate.value;
     this.item_orignalbill = this.additemform.controls.i_orignalbill.value;
-    debugger
+    this.item_photo = this.additemform.controls.i_photo.value;
+    
 
     const obj = {
         itemName:this.item_name,
