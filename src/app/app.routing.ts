@@ -5,6 +5,11 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+
+import { SellerDetailsComponent } from './pages/seller-details/seller-details.component';
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
@@ -17,6 +22,14 @@ import { NotificationsComponent } from "./components/notifications/notifications
 
 
 const routes: Routes = [
+  { path: 'reset-password', component: ResetPasswordComponent },
+
+  
+  { path: 'seller-details', component: SellerDetailsComponent },
+
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+
+  { path: 'change-password', component: ChangePasswordComponent },
   {
     path:'product',
     component:ProductComponent
@@ -81,6 +94,7 @@ const routes: Routes = [
     path: "**",
     redirectTo: "dashboard",
   },
+
 ];
 
 @NgModule({
