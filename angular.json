@@ -69,6 +69,7 @@
                 },
                 "fonts": true
               },
+
               "outputHashing": "all"
             }
           }
