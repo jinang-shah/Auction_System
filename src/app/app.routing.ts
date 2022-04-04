@@ -6,12 +6,15 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AdditemComponent } from './pages/additem/additem.component';
+import { ItemreportComponent } from './pages/itemreport/itemreport.component';
+import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ProductComponent } from './pages/product/product.component';
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { SearchProductComponent } from "./components/searchProduct/searchProduct.component";
 import { NotificationsComponent } from "./components/notifications/notifications.component";
+
 
 const routes: Routes = [
   {
@@ -24,6 +27,13 @@ const routes: Routes = [
   },{
     path:'additem',
     component : AdditemComponent
+  },
+  {
+    path:'item_complain',
+    component : ItemreportComponent
+  },{
+    path:'complain_details',
+    component : ComplainDetailsComponent
   }, 
   {
     path:'complian-details',
@@ -33,6 +43,7 @@ const routes: Routes = [
     path:'itemreport',
     component : ItemreportComponent
   },{
+
     path: '',
     component: HomepageComponent,
   },
