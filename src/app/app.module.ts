@@ -12,22 +12,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { CommonModule } from '@angular/common';
+
+import { ProductComponent } from 'src/app/pages/product/product.component'
 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    CommonModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ProductComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]
