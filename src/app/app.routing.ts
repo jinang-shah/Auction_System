@@ -1,62 +1,49 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { CommonModule, } from '@angular/common';
+import { BrowserModule  } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
-import { NotificationsComponent } from "./components/notifications/notifications.component";
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
-const routes: Routes = [
+const routes: Routes =[
   {
-    path: "notifications",
-    component: NotificationsComponent,
-  },
-  {
-    path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full",
-  },
-  {
-    path: "",
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  }, {
+    path: '',
     component: AdminLayoutComponent,
     children: [
       {
-        path: "",
-        loadChildren: () =>
-          import("src/app/layouts/admin-layout/admin-layout.module").then(
-            (m) => m.AdminLayoutModule
-          ),
-      },
-    ],
-  },
-  {
-    path: "",
+        path: '',
+        loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+      }
+    ]
+  }, {
+    path: '',
     component: AuthLayoutComponent,
     children: [
       {
-        path: "",
-        loadChildren: () =>
-          import("src/app/layouts/auth-layout/auth-layout.module").then(
-            (m) => m.AuthLayoutModule
-          ),
-      },
-    ],
-  },
-  {
-    path: "**",
-    redirectTo: "dashboard",
-  },
+        path: '',
+        loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
+      }
+    ]
+  }, {
+    path: '**',
+    redirectTo: 'dashboard'
+  }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true,
-    }),
+    RouterModule.forRoot(routes,{
+      useHash: true
+    })
   ],
-  exports: [],
+  exports: [
+  ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
