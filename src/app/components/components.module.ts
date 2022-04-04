@@ -5,8 +5,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { NotiitemComponent } from './notifications/notiitem/notiitem.component';
 
 @NgModule({
   imports: [
@@ -17,9 +15,7 @@ import { NotiitemComponent } from './notifications/notiitem/notiitem.component';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent,
-    NotificationsComponent,
-    NotiitemComponent
+    SidebarComponent
   ],
   exports: [
     FooterComponent,
