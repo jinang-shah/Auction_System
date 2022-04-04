@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 0 6rem;
 }
 
 .product_image_div{
@@ -14,24 +15,34 @@
     background-color: white;
     border-radius: 25px;
     padding: 25px;
+    height: 400px;
+}
+
+.active_image{
+    border: 1px solid #172b4d;
+}
+
+.main_image_div img{
+    height: 300px;
+    object-fit: contain;
 }
 
 .product_images_div{
     margin: 10px;
 }
 
-.product_img{
-    width: 100%;
-    object-fit: contain;
-    padding: 10px;
-    border-radius: 25px;
-}
-
-.product_img_min{
+.product_images_div img{
     height: 50px;
     width: 20%;
+    cursor: pointer;
     padding-left: 10px;
+    opacity: 0.8;
 }
+
+.product_images_div img:hover{
+    opacity: 1;
+}
+
 
 
 .product_info_div{
@@ -74,9 +85,9 @@
     margin: 10px 20px;
 }
 
-.span_product_seller{
+/* .span_product_seller{
     
-}
+} */
 
 .product_date{
     margin: 10px 20px;
@@ -165,6 +176,9 @@ small{
 .live_bidding_div{
     margin: 10px 10px;
     padding: 30px;
+    background-color: #172b4d;
+    width: 50%;
+    border-radius: 25px;
 }
 
 .live_bidding_title{
@@ -177,7 +191,20 @@ small{
 
 .live_bidding_history{
     overflow: scroll;
-    height: 200px;
+    height: 250px;
+    overflow-x:hidden;
+    background-color: white;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.span_bidder_name{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.single_bid_div{
+    margin: 10px;
 }
 
 
@@ -206,6 +233,12 @@ small{
     background-color:red;
     border-radius: 25px;
     color: white;
+}
+
+.single_bid_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
@@ -240,6 +273,7 @@ small{
 
 .span_comment_username{
     font-weight: bold;
+    margin: 5px 5px;
 }
 
 .post_comment_btn{
@@ -247,7 +281,7 @@ small{
     background-color: #F24951;
     border: 1px 0px  solid #F24951;
     border-radius: 0px 25px 25px 0px;
-    outline: #F24951;
+    outline: none;
     color: white;
     font-weight: bolder;
 }
@@ -255,3 +289,35 @@ small{
 .btn {
     width: 90px;
 }
+
+
+.bidding_details_div{
+    display: flex;
+    border-radius: 10px;
+    width: 40%;
+    background-color: #172b4d;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bidding_details_title{
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.bidding_details_bids{
+    background-color: white;
+    width: 70%;
+    margin: 10px;
+    overflow: scroll;
+    height: 300px;
+}
+
+.single_bid_div{
+
+}
+
