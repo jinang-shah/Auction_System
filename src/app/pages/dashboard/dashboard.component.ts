@@ -22,8 +22,53 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  ngOnInit() {
+  newUser = [
+    {
+      userName:'Yash',
+      userEmail:'yash@gmail',
+      userContact:'9898924254'  
+    },
+    {
+      userName:'XYZ',
+      userEmail:'XYZ@gmail',
+      userContact:'9898924254'  
+    },
+    {
+      userName:'ABC',
+      userEmail:'ABC@gmail',
+      userContact:'9898924254'  
+    },
+    {
+      userName:'PQR',
+      userEmail:'PQR@gmail',
+      userContact:'9898924254'  
+    },
+  ]
 
+  newComplain = [
+    {
+      userName:'Yash',
+      date:'22/12/21'
+    },
+    {
+      userName:'XYZ',
+      date:'22/12/21'
+    },
+    {
+      userName:'ABC',
+      date:'22/12/21'
+    },
+    {
+      userName:'PQR',
+      date:'22/12/21'
+    },
+    {
+      userName:'MNO',
+      date:'22/12/21'
+    },
+  ]
+
+  ngOnInit() {
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
