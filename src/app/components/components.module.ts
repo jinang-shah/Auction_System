@@ -10,6 +10,8 @@ import { HeaderComponent } from "./homepage/header/header.component";
 import { SearchProductComponent } from "./searchProduct/searchProduct.component";
 import { ItemComponent } from "./item/item.component";
 import { FormsModule } from "@angular/forms";
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotiitemComponent } from './notifications/notiitem/notiitem.component';
 
 @NgModule({
   imports: [FormsModule, CommonModule, RouterModule, NgbModule],
@@ -17,6 +19,8 @@ import { FormsModule } from "@angular/forms";
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    NotificationsComponent,
+    NotiitemComponent
     HomepageComponent,
     HeaderComponent,
     SearchProductComponent,
