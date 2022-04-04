@@ -4,6 +4,11 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
+import { ManageusersComponent } from './pages/manageusers/manageusers.component';
+import { ComplainComponent } from './pages/complain/complain.component';
+import { FavouritelistComponent } from './pages/favouritelist/favouritelist.component';
+
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -11,8 +16,6 @@ import { SellerDetailsComponent } from './pages/seller-details/seller-details.co
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ProductComponent } from './pages/product/product.component';
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { SearchProductComponent } from "./components/searchProduct/searchProduct.component";
@@ -26,6 +29,7 @@ const routes: Routes = [
   { path: 'seller-details', component: SellerDetailsComponent },
 
   { path: 'forgot-password', component: ForgotPasswordComponent },
+
 
   { path: 'change-password', component: ChangePasswordComponent },
   {
@@ -55,6 +59,21 @@ const routes: Routes = [
     component : ItemreportComponent
   },{
 
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path:'admin_users',
+    component:ManageusersComponent
+  },{
+      path:'admin_complain',
+      component: ComplainComponent
+  },
+  {
+      path:'admin_favouritelist',
+      component: FavouritelistComponent
+  }, {
     path: '',
     component: HomepageComponent,
   },

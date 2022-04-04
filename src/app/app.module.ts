@@ -9,9 +9,11 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { ManageusersComponent } from './pages/manageusers/manageusers.component';
+import { ComplainComponent } from './pages/complain/complain.component';
+import { FavouritelistComponent } from './pages/favouritelist/favouritelist.component';
 
 import { AdminProductComponent } from './pages/admin-product/admin-product.component';
 import { CommonModule } from '@angular/common';
@@ -22,11 +24,8 @@ import { SellerDetailsComponent } from './pages/seller-details/seller-details.co
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
-import { CommonModule } from '@angular/common';
 import { ProductComponent } from 'src/app/pages/product/product.component'
 
 
@@ -48,6 +47,9 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    ManageusersComponent,
+    ComplainComponent,
+    FavouritelistComponent,
     AdminProductComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
@@ -60,7 +62,7 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     ItemreportComponent,
     SellerVerificationComponent,
     UserHistoryComponent,
-    ProductComponent
+    ProductComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
