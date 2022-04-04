@@ -12,22 +12,32 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
+import { UserHistoryComponent } from './pages/user-history/user-history.component';
+import { CommonModule } from '@angular/common';
+
+import { ProductComponent } from 'src/app/pages/product/product.component'
 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    CommonModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    SellerVerificationComponent,
+    UserHistoryComponent,
+    ProductComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
