@@ -1,0 +1,38 @@
+<section class="home container">
+  <div>
+    <h1 class="display-1">Best Place to<br />Buy and Sell</h1>
+    <p class="lead display-3">
+      Online Auction is where everyone goes to shop,sell, and give, while
+      discovering variety and affordability. The buying process here is so easy
+      to be done.
+    </p>
+    <a href="#" class="btn btn-primary btn-lg active">Start Bidding</a>
+  </div>
+  <div class="landing-image">
+    <img
+      src="https://www.oneclickitsolution.com/wp-content/uploads/2020/01/onlineauction_banner.png"
+      alt="Online auction"
+    />
+  </div>
+</section>
+<section>
+  <div class="container bidding">
+    <div class="display-2">Live Biddings</div>
+    <div class="cards-container">
+      <div class="items">
+        <app-item *ngFor="let item of items" item="item"></app-item>
+      </div>
+      <div class="viewmore">
+        <div class="grad">
+          <a
+            routerLink="/search"
+            routerLinkOption=""
+            [queryParams]="{ status: 'live' }"
+          >
+            <i class="fas fa-chevron-right"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
