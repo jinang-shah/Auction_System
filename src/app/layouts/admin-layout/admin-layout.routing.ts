@@ -16,5 +16,4 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'seller-verification', component: SellerVerificationComponent },
     { path: 'user-history', component: UserHistoryComponent }
-
 ];
