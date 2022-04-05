@@ -25,6 +25,7 @@
 .main_image_div img{
     height: 300px;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .product_images_div{
@@ -58,7 +59,7 @@
 }
 
 .product_description_title{
-    font-weight: bolder;
+    font-weight: bold;
     margin: 10px 20px;
 }
 
@@ -81,13 +82,12 @@
 }
 
 .product_seller{
-    font-weight: bolder;
     margin: 10px 20px;
 }
 
-/* .span_product_seller{
-    
-} */
+.span_product_seller{
+    font-weight: bold;
+}
 
 .product_date{
     margin: 10px 20px;
@@ -158,6 +158,7 @@ small{
     margin-right: 50px;
     border-right:1px solid #DDDDDD;
     padding: 30px;
+    flex: 1 1 auto;
 }
 
 .live_status{
@@ -240,7 +241,7 @@ small{
     justify-content: space-between;
     align-items: center;
 }
-
+/* 
 
 .product_comments{
     background-color: white;
@@ -269,10 +270,26 @@ small{
 
 .user_comments{
     margin: 10px;
+    height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 80%;
+}
+
+.single_comment_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
 }
 
 .span_comment_username{
     font-weight: bold;
+    margin: 5px 5px;
+}
+
+.comment_data{
+    width: 100%;
     margin: 5px 5px;
 }
 
@@ -284,7 +301,7 @@ small{
     outline: none;
     color: white;
     font-weight: bolder;
-}
+} */
 
 .btn {
     width: 90px;
@@ -292,6 +309,7 @@ small{
 
 
 .bidding_details_div{
+    flex: 1 1 auto;
     display: flex;
     border-radius: 10px;
     width: 40%;
@@ -299,6 +317,8 @@ small{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: fit-content;
+    margin: 15px;
 }
 
 .bidding_details_title{
@@ -311,13 +331,111 @@ small{
 
 .bidding_details_bids{
     background-color: white;
-    width: 70%;
+    width: 90%;
     margin: 10px;
     overflow: scroll;
     height: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
 }
 
 .single_bid_div{
 
 }
 
+
+.comment_div{
+    flex: 1 1 auto;
+    width: 50%;
+    background-color: white;
+    margin: 15px;
+    box-shadow: 0 0 5px 1px #0000005c;
+}
+
+.comment_header{
+    margin: 10px;
+}
+
+.comment_input{
+    border-radius:  12px 0px 0px 12px;
+    border: 1px solid #DDDDDD;
+    padding: 6px;
+    width: 60%;
+    outline: none;
+}
+
+.post_comment_btn{
+    padding: 6px 12px;
+    background-color: #F24951;
+    border: 1px 0px  solid #F24951;
+    border-radius: 0px 25px 25px 0px;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.comment_container_div{
+    flex-direction: column;
+    justify-content: center;
+    align-self:center;
+    margin: 20px 10px 10px 10px;
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.single_comment_div{
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_user_time_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment_user_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.comment_name{
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.comment_time{
+    margin-right: 10%;
+}
+
+.comment_data_div{
+    width: 80%;
+    align-self: center;
+}
+
+.comment_data{
+
+}
+
+
+
+.comment_container_div::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.comment_container_div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.comment_container_div::-webkit-scrollbar-thumb {
+  background-color: #F24951;
+  outline: 1px solid slategrey;
+}
+
+.comment_container_div::-webkit-scrollbar-thumb {
+  background-color: red;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;  
+}
