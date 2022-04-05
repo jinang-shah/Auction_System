@@ -5,7 +5,7 @@
       <a
         class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
         routerLinkActive="active"
-        [routerLink]="['/dashboard']"
+        routerLink="/"
         >{{ getTitle() }}</a
       >
       <!-- Form -->
@@ -56,7 +56,7 @@
               <span class="badge badge-primary">3d ago</span>
             </p>
             <p class="lead last">
-              <a href="/notifications">View More</a>
+              <a routerLink="/notifications">View More</a>
             </p>
           </div>
         </li>
@@ -91,7 +91,7 @@
             </a>
             <a
               routerLinkActive="active"
-              [routerLink]="['/user-profile']"
+              [routerLink]="['/user-history']"
               class="dropdown-item"
             >
               <i class="fas fa-history"></i>
@@ -99,7 +99,7 @@
             </a>
             <a
               routerLinkActive="active"
-              [routerLink]="['/user-profile']"
+              [routerLink]="['/favouritelist']"
               class="dropdown-item"
             >
               <i class="fas fa-solid fa-bookmark"></i>
@@ -107,7 +107,7 @@
             </a>
             <a
               routerLinkActive="active"
-              [routerLink]="['/user-profile']"
+              [routerLink]="['/']"
               class="dropdown-item"
             >
               <i class="ni ni-support-16"></i>

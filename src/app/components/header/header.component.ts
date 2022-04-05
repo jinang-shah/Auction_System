@@ -6,7 +6,7 @@ import {
   PathLocationStrategy,
 } from "@angular/common";
 import { Router } from "@angular/router";
-import { ROUTES } from "../../sidebar/sidebar.component";
+import { ROUTES } from "../sidebar/sidebar.component";
 
 @Component({
   selector: "app-header",
@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
         return this.listTitles[item].title;
       }
     }
+    console.log(titlee);
     return "Online Auction";
   }
 }
