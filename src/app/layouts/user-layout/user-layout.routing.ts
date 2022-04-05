@@ -70,7 +70,7 @@ export const UserLayoutRoutes: Routes = [
     component: UserHistoryComponent,
   },
   {
-    path: "admin-favouritelist",
+    path: "favouritelist",
     component: FavouritelistComponent,
   },
   {

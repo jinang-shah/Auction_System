@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
         return this.listTitles[item].title;
       }
     }
+    console.log(titlee);
     return "Online Auction";
   }
 }
