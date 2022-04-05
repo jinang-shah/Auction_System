@@ -16,7 +16,6 @@ const routes: Routes = [
     component:ProductComponent
   }
   , {
-    path: '',
     path: "home",
     component: HomepageComponent,
   },
@@ -37,15 +36,11 @@ const routes: Routes = [
       },
     ],
   },
-  { {
-15
+  { 
     path: 'dashboard',
-16
     redirectTo: 'dashboard',
-17
     pathMatch: 'full',
-18
-  },
+  },{
     path: "",
     component: AuthLayoutComponent,
     children: [
