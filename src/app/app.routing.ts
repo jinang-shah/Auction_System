@@ -13,8 +13,6 @@ import { SellerDetailsComponent } from './pages/seller-details/seller-details.co
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ProductComponent } from './pages/product/product.component';
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { SearchProductComponent } from "./components/searchProduct/searchProduct.component";

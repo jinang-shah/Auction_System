@@ -9,7 +9,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
@@ -19,8 +18,6 @@ import { SellerDetailsComponent } from './pages/seller-details/seller-details.co
 import { AdditemComponent } from './pages/additem/additem.component';
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { CommonModule } from '@angular/common';
@@ -48,12 +45,12 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     ChangePasswordComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    SellerDetailsComponent
+    SellerDetailsComponent,
     AdditemComponent,
     ItemreportComponent,
-    ComplainDetailsComponent
     ComplainDetailsComponent,
-    ItemreportComponent
+    ComplainDetailsComponent,
+    ItemreportComponent,
     SellerVerificationComponent,
     UserHistoryComponent,
     ProductComponent
