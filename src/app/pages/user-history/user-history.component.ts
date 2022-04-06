@@ -56,6 +56,8 @@ export class UserHistoryComponent implements OnInit {
 }
   ]
 
+  sellinghistory = []
+
   ngOnInit(): void {
   }
 
