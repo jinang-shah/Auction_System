@@ -11,12 +11,12 @@ import { UserHistoryComponent } from 'src/app/pages/user-history/user-history.co
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
+    // { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path:'admin_products', component:AdminProductComponent}
-    { path: 'seller-verification', component: SellerVerificationComponent },
-    { path: 'user-history', component: UserHistoryComponent }
+    { path:'admin_products', component:AdminProductComponent},
+    // { path: 'seller-verification', component: SellerVerificationComponent },
+    // { path: 'user-history', component: UserHistoryComponent }
 ];

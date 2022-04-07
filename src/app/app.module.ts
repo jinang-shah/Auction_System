@@ -28,6 +28,7 @@ import { SellerVerificationComponent } from './pages/seller-verification/seller-
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { ProductComponent } from 'src/app/pages/product/product.component'
 
+   
 
 @NgModule({
   imports: [

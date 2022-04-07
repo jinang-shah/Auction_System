@@ -19,10 +19,16 @@ import { ComplainDetailsComponent } from './pages/complain-details/complain-deta
 import { ProductComponent } from './pages/product/product.component';
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { SearchProductComponent } from "./components/searchProduct/searchProduct.component";
-import { NotificationsComponent } from "./components/notifications/notifications.component";
+// import { NotificationsComponent } from "./components/notifications/notifications.component";
 
 
 const routes: Routes = [
+  {
+
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
   { path: 'reset-password', component: ResetPasswordComponent },
 
   
@@ -36,10 +42,11 @@ const routes: Routes = [
     path:'product',
     component:ProductComponent
   },
-  {
-    path: "notifications",
-    component: NotificationsComponent,
-  },{
+  // {
+  //   path: "notifications",
+  //   component: NotificationsComponent,
+  // }
+  ,{
     path:'additem',
     component : AdditemComponent
   },
@@ -57,12 +64,8 @@ const routes: Routes = [
   {
     path:'itemreport',
     component : ItemreportComponent
-  },{
-
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
   },
+  
   {
     path:'admin_users',
     component:ManageusersComponent
@@ -73,10 +76,11 @@ const routes: Routes = [
   {
       path:'admin_favouritelist',
       component: FavouritelistComponent
-  }, {
-    path: '',
-    component: HomepageComponent,
   },
+  // }, {
+  //   path: '',
+  //   component: HomepageComponent,
+  // },
   {
     path: "search",
     component: SearchProductComponent,

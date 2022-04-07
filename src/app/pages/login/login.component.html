@@ -45,6 +45,8 @@
             <div class="text-center text-muted mb-4">
               <!-- <small>Or sign in with credentials</small> -->
             </div>
+
+            <!-- email -->
             <form role="form">
               <div class="form-group mb-3">
                 <div class="input-group input-group-alternative">
@@ -60,6 +62,32 @@
                   />
                 </div>
               </div>
+
+              <!-- <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+              <input 
+              type="text" 
+              class="form-control" 
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
+              id="email" 
+              name="email" 
+              ngModel 
+              #emailref="ngModel" 
+              placeholder="Email">
+             
+          </div>
+          <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" >
+            <div [hidden]="!emailref.errors?.pattern">Invalid Email</div> 
+            </div>
+          </div>
+          </div> -->
+
+
+
+              <!-- password -->
               <div class="form-group">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
@@ -74,6 +102,30 @@
                   />
                 </div>
               </div>
+<!-- 
+              <div class="form-group">
+            <div class="input-group input-group-alternative mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+              </div>
+          <input 
+          type="password" 
+          class="form-control" 
+          pattern="'(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{8,}'"
+          id="password" 
+          name="password" 
+          ngModel 
+          #passwordref="ngModel" 
+          placeholder="Password"
+          required> 
+      </div>
+      <div *ngIf="passwordref.errors && (passwordref.touched || passwordref.dirty) ">
+        <div [hidden]="!passwordref.errors?.pattern.required">Password must be required</div> 
+        <div *ngIf="passwordref.errors.pattern"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
+         
+      </div>
+      </div> -->
+
               <div
                 class="custom-control custom-control-alternative custom-checkbox"
               >
