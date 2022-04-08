@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
+  loggedIn = false;
+  search_query;
   constructor(
     location: Location,
     private element: ElementRef,
@@ -40,5 +42,13 @@ export class HeaderComponent implements OnInit {
       }
     }
     return "Online Auction";
+  }
+  searchItem() {
+    if (!this.search_query) {
+      return;
+    }
+    this.router.navigate(["/search"], {
+      queryParams: { query: this.search_query },
+    });
   }
 }

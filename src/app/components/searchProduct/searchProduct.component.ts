@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { GetProductService } from "src/app/services/get-product.service";
 import Item from "src/db-json/items";
 
 @Component({
@@ -8,59 +9,69 @@ import Item from "src/db-json/items";
   styleUrls: ["./searchProduct.component.scss"],
 })
 export class SearchProductComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private getProductService: GetProductService
+  ) {}
   items = [];
   status: string;
   catagory: string;
   sortBy: string;
+  query: string;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((newParams) => {
       this.status = newParams.status || "";
       this.catagory = newParams.catagory || "";
       this.sortBy = newParams.sortBy || "";
-      this.items = Item.filter((item) => {
-        if (this.status !== "" && item.status !== this.status) return false;
-        if (this.catagory !== "" && item.catagory !== this.catagory)
-          return false;
-        return true;
-      });
-      switch (this.sortBy) {
-        case "newest":
-          this.items.sort((a, b) => a.startTimestamp - b.startTimestamp);
-          break;
-        case "lowest":
-          this.items.sort((a, b) => a.prize - b.prize);
-          break;
-        case "pname":
-          this.items.sort((a, b) => a.name.localeCompare(b.name));
-          break;
-        default:
-          break;
-      }
-      // this.items.sort()
+      this.query = newParams.query || "";
+
+      this.getProductService
+        .fetchProducts(this.query, this.status, this.catagory)
+        .subscribe(
+          (data: any[]) => {
+            switch (this.sortBy) {
+              case "newest":
+                data.sort((a, b) => a.startTimestamp - b.startTimestamp);
+                break;
+              case "lowest":
+                data.sort((a, b) => a.basePrize - b.basePrize);
+                break;
+              case "pname":
+                data.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+              default:
+                break;
+            }
+            this.items = data;
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     });
   }
-  onStatusChange(e: any): void {
-    this.status = e.target.value || "";
-    this.router.navigate(["/search"], {
-      queryParams: { status: this.status },
-      queryParamsHandling: "merge",
-    });
-  }
-  onCatagoryChange(e: any): void {
-    this.catagory = e.target.value || "";
+
+  // this function runs on any of 3 select option change
+  onFilterChanges(type, value) {
+    switch (type) {
+      case "status":
+        this.status = value;
+        break;
+      case "catagory":
+        this.catagory = value;
+        break;
+      case "sortBy":
+        this.sortBy = value;
+        break;
+    }
     this.router.navigate(["/search"], {
       queryParams: {
+        status: this.status,
         catagory: this.catagory,
+        sortBy: this.sortBy,
       },
-      queryParamsHandling: "merge",
-    });
-  }
-  onSortByChange(e: any): void {
-    this.sortBy = e.target.value || "";
-    this.router.navigate(["/search"], {
-      queryParams: { sortBy: this.sortBy },
       queryParamsHandling: "merge",
     });
   }

@@ -2,7 +2,7 @@
   <div class="filter">
     <select
       [ngModel]="status"
-      (change)="onStatusChange($event)"
+      (change)="onFilterChanges('status', $event.target.value)"
       class="btn btn-primary auction-select"
     >
       <option value="" selected>Status(All)</option>
@@ -12,10 +12,10 @@
     </select>
     <select
       [ngModel]="catagory"
-      (change)="onCatagoryChange($event)"
+      (change)="onFilterChanges('catagory', $event.target.value)"
       class="btn btn-primary auction-select"
     >
-      <option value="" selected>Catagory</option>
+      <option value="" selected>Catagory(All)</option>
       <option value="art">Art</option>
       <option value="electronics">Electronics</option>
       <option value="fashion">Fashion</option>
@@ -24,7 +24,7 @@
     </select>
     <select
       [ngModel]="sortBy"
-      (change)="onSortByChange($event)"
+      (change)="onFilterChanges('sortBy', $event.target.value)"
       class="btn btn-primary auction-select"
     >
       <option value="" selected>Sort By</option>

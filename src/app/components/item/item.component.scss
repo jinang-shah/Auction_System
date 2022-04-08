@@ -10,6 +10,8 @@
 }
 
 .card {
+  font-size: 1rem;
+  position: relative;
   margin: 0 1em 1em 0;
 }
 
@@ -44,4 +46,60 @@
 }
 .favIcon i {
   transform: scale(1.5);
+}
+
+/*  ribbon  */
+.greenRibbon {
+  background-color: #2dce89;
+  border-color: #2dce89;
+}
+.redRibbon {
+  background-color: #f5365c;
+  border-color: #f5365c;
+}
+.blueRibbon {
+  background-color: #11cdef;
+  border-color: #11cdef;
+}
+.ribbon {
+  z-index: 10;
+  top: -10px;
+  left: -10px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 175px;
+  padding: 5px 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #000;
+  font-size: 12px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg);
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  display: block;
+  border: 5px solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon::before {
+  top: 0;
+  right: 0;
+}
+.ribbon::after {
+  bottom: 0;
+  left: 0;
 }

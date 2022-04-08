@@ -1,4 +1,14 @@
 <div class="card" style="width: 18rem">
+  <div class="ribbon">
+    <span
+      [ngClass]="
+        { live: 'redRibbon', completed: 'greenRibbon', upcoming: 'blueRibbon' }[
+          item.status
+        ]
+      "
+      >{{ item.status }}</span
+    >
+  </div>
   <div class="favIcon">
     <i class="ni ni-favourite-28"></i>
   </div>
@@ -15,10 +25,10 @@
     <div class="card-text details">
       <span
         >Bid Amount : <b>{{ item.basePrize }}</b></span
-      ><span class="badge badge-dot">
-        <i class="bg-danger"></i>{{ item.status }}
-      </span>
+      >
     </div>
-    <a href="#" class="btn btn-primary">Read More</a>
+    <a [routerLink]="['/product', item.id]" class="btn btn-primary"
+      >Read More</a
+    >
   </div>
 </div>
