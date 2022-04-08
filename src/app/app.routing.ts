@@ -12,11 +12,10 @@ import { SearchProductComponent } from "./components/searchProduct/searchProduct
 
 const routes: Routes = [
   {
-    path:'product',
-    component:ProductComponent
+    path: 'product',
+    component: ProductComponent
   }
   , {
-    path: '',
     path: "home",
     component: HomepageComponent,
   },
@@ -37,15 +36,13 @@ const routes: Routes = [
       },
     ],
   },
-  { {
-15
+  {
+
     path: 'dashboard',
-16
     redirectTo: 'dashboard',
-17
     pathMatch: 'full',
-18
   },
+  {
     path: "",
     component: AuthLayoutComponent,
     children: [
@@ -74,4 +71,4 @@ const routes: Routes = [
   ],
   exports: [],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
