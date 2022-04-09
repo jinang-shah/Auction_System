@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+      
+  
 
-  constructor() { }
+ngOnInit() {
+}
 
-  ngOnInit() {
+onSubmit(form:NgForm){
+  console.log(form.value);
+}
+
   }
 
-}
+  
