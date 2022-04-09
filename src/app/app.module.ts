@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { SellerVerificationComponent } from './pages/seller-verification/seller-
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { CommonModule } from '@angular/common';
 
-import { ProductComponent } from 'src/app/pages/product/product.component'
+import { ProductComponent } from 'src/app/pages/product/product.component';
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    ReactiveFormsModule
 
   ],
   declarations: [
@@ -37,7 +38,7 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     AuthLayoutComponent,
     SellerVerificationComponent,
     UserHistoryComponent,
-    ProductComponent
+    ProductComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

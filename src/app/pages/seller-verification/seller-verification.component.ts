@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SellerVerificationService } from 'src/app/services/sellerVerification/seller-verification.service';
 
 @Component({
   selector: 'app-seller-verification',
@@ -8,12 +9,28 @@ import { NgForm } from '@angular/forms';
 })
 export class SellerVerificationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sellerVerification: SellerVerificationService) { }
 
+  sellerVerificationForm = new FormGroup({
+    pancard: new FormControl('',[ Validators.required,]),
+    elecard: new FormControl('',[ Validators.required,]),
+  });
+
+  
   ngOnInit(): void {
   }
 
-  onSubmit(data:NgForm){
+  onSubmit(){
+    const obj = this.sellerVerificationForm.value
+    console.log(obj);
+    
+    
+    this.sellerVerification.sellerVerification(obj).subscribe((data) => {
+      console.log(data);
+      })
+
+      console.log(this.sellerVerificationForm.value) 
+    this.sellerVerificationForm.reset()
     
   }
 
