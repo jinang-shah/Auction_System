@@ -19,7 +19,7 @@ export class ForgotPasswordComponent implements OnInit {
     console.log(obj);
     
     this.forgotPassService.forgotPassService(obj);
-
+    form.reset();
 
   }
 }

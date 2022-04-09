@@ -37,7 +37,7 @@ form: FormGroup = new FormGroup({});
     console.log(obj);
     
     this.changePassService.changePassService(obj);
-
+    this.form.reset();
 
   }
    

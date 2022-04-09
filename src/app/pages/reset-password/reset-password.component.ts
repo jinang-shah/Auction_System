@@ -35,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
     console.log(obj);
     
     this.resetPassService.resetPassService(obj);
-
+    this.form.reset();
 
   }
    
