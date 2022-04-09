@@ -1,0 +1,126 @@
+<header>
+  <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a
+        class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
+        routerLinkActive="active"
+        routerLink="/"
+        >{{ getTitle() }}</a
+      >
+      <!-- Form -->
+      <form
+        class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
+      >
+        <div class="form-group mb-0" [ngClass]="{ focused: focus === true }">
+          <div class="input-group input-group-alternative">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fas fa-search"></i
+              ></span>
+            </div>
+            <input
+              class="form-control"
+              placeholder="Search Product"
+              type="text"
+              (focus)="focus = true"
+              (blur)="focus = false"
+            />
+          </div>
+        </div>
+      </form>
+      <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <i class="notiicon ni ni-bell-55"> </i>
+              <span class="badge badge-dot">
+                <i class="bg-info"></i>
+              </span>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0">4 new notifications</h6>
+            </div>
+            <p class="lead">
+              Auction of ItemName Started
+              <span class="badge badge-primary">5m ago</span>
+            </p>
+            <p class="lead">
+              Auction ended for ItemName
+              <span class="badge badge-primary">1h ago</span>
+            </p>
+            <p class="lead">
+              Auction of Item2Name Started
+              <span class="badge badge-primary">3d ago</span>
+            </p>
+            <p class="lead last">
+              <a routerLink="/notifications">View More</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+      <!-- User -->
+      <ul class="navbar-nav align-items-center d-none d-md-flex">
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+            <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle">
+                <img
+                  alt="Image placeholder"
+                  src="assets/img/theme/team-4-800x800.jpg"
+                />
+              </span>
+              <div class="media-body ml-2 d-none d-lg-block">
+                <span class="mb-0 text-sm font-weight-bold">UserName</span>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0">Welcome!</h6>
+            </div>
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/user-profile']"
+              class="dropdown-item"
+            >
+              <i class="ni ni-single-02"></i>
+              <span>My profile</span>
+            </a>
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/user-history']"
+              class="dropdown-item"
+            >
+              <i class="fas fa-history"></i>
+              <span>My History</span>
+            </a>
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/favouritelist']"
+              class="dropdown-item"
+            >
+              <i class="fas fa-solid fa-bookmark"></i>
+              <span>Saved Items</span>
+            </a>
+            <a
+              routerLinkActive="active"
+              [routerLink]="['/']"
+              class="dropdown-item"
+            >
+              <i class="ni ni-support-16"></i>
+              <span>Other</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#!" class="dropdown-item">
+              <i class="ni ni-user-run"></i>
+              <span>Logout</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
