@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserhistoryService } from 'src/app/services/userhistory/userhistory.service';
 
 @Component({
   selector: 'app-user-history',
@@ -7,58 +8,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHistoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userhistoryservice:UserhistoryService) { }
 
-  buyinghistory = [
-    {
-      productDetails:{
-        img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-        productName:'Samsung phone'
-    },
-      amount:'20$',
-      status:'pending',
-      purchasedDate:'22/03/21'
-  },
-  {
-    productDetails:{
-      img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-      productName:'Samsung phone'
-  },
-    amount:'20$',
-    status:'pending',
-    purchasedDate:'22/03/21'
-},
-{
-  productDetails:{
-    img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-    productName:'Samsung phone'
-},
-  amount:'20$',
-  status:'pending',
-  purchasedDate:'22/03/21'
-},{
-  productDetails:{
-    img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-    productName:'Samsung phone'
-},
-  amount:'20$',
-  status:'pending',
-  purchasedDate:'22/03/21'
-},
-{
-  productDetails:{
-    img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-    productName:'Samsung phone'
-},
-  amount:'20$',
-  status:'pending',
-  purchasedDate:'22/03/21'
-}
+  buyinghistory :any= [
+//     {
+//       productDetails:{
+//         img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+//         productName:'Samsung phone'
+//     },
+//       amount:'20$',
+//       status:'pending',
+//       purchasedDate:'22/03/21'
+//   },
+//   {
+//     productDetails:{
+//       img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+//       productName:'Samsung phone'
+//   },
+//     amount:'20$',
+//     status:'pending',
+//     purchasedDate:'22/03/21'
+// },
+// {
+//   productDetails:{
+//     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+//     productName:'Samsung phone'
+// },
+//   amount:'20$',
+//   status:'pending',
+//   purchasedDate:'22/03/21'
+// },{
+//   productDetails:{
+//     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+//     productName:'Samsung phone'
+// },
+//   amount:'20$',
+//   status:'pending',
+//   purchasedDate:'22/03/21'
+// },
+// {
+//   productDetails:{
+//     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+//     productName:'Samsung phone'
+// },
+//   amount:'20$',
+//   status:'pending',
+//   purchasedDate:'22/03/21'
+// }
   ]
 
-  sellinghistory = []
+  sellinghistory:any = []
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+
+    this.userhistoryservice.getbuyinghistory().subscribe((buyinghistory) => {
+      this.buyinghistory = buyinghistory
+    })
+
+    this.userhistoryservice.getsellinghistory().subscribe((sellinghistory) => {
+      this.sellinghistory = sellinghistory
+    })
   }
 
 }
