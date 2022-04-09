@@ -15,49 +15,25 @@ export class UserHistoryComponent implements OnInit {
 //       productDetails:{
 //         img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
 //         productName:'Samsung phone'
-//     },
+//        },
 //       amount:'20$',
 //       status:'pending',
 //       purchasedDate:'22/03/21'
-//   },
-//   {
-//     productDetails:{
-//       img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-//       productName:'Samsung phone'
-//   },
-//     amount:'20$',
-//     status:'pending',
-//     purchasedDate:'22/03/21'
-// },
-// {
-//   productDetails:{
-//     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-//     productName:'Samsung phone'
-// },
-//   amount:'20$',
-//   status:'pending',
-//   purchasedDate:'22/03/21'
-// },{
-//   productDetails:{
-//     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-//     productName:'Samsung phone'
-// },
-//   amount:'20$',
-//   status:'pending',
-//   purchasedDate:'22/03/21'
-// },
-// {
-//   productDetails:{
-//     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-//     productName:'Samsung phone'
-// },
-//   amount:'20$',
-//   status:'pending',
-//   purchasedDate:'22/03/21'
-// }
+//     },
+
   ]
 
-  sellinghistory:any = []
+  sellinghistory:any = [
+    //     {
+//       productDetails:{
+//         img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+//         productName:'Samsung phone'
+//        },
+//       minPrice:'20$',
+//       status:'pending',
+//       sellingDate:'22/03/21'
+//     },
+  ]
 
   ngOnInit(): void { 
 
