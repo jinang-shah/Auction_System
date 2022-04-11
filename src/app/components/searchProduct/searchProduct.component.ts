@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { GetProductService } from "src/app/services/get-product.service";
+import { LoaderService } from "src/app/services/loader.service";
 import Item from "src/db-json/items";
 
 @Component({
@@ -12,7 +13,8 @@ export class SearchProductComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private getProductService: GetProductService
+    private getProductService: GetProductService,
+    private loader: LoaderService
   ) {}
   items = [];
   status: string;
@@ -26,11 +28,12 @@ export class SearchProductComponent implements OnInit {
       this.catagory = newParams.catagory || "";
       this.sortBy = newParams.sortBy || "";
       this.query = newParams.query || "";
-
+      this.loader.show();
       this.getProductService
         .fetchProducts(this.query, this.status, this.catagory)
         .subscribe(
           (data: any[]) => {
+            this.loader.hide();
             switch (this.sortBy) {
               case "newest":
                 data.sort((a, b) => a.startTimestamp - b.startTimestamp);

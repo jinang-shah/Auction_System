@@ -10,6 +10,7 @@ import { HeaderComponent } from "./homepage/header/header.component";
 import { SearchProductComponent } from "./searchProduct/searchProduct.component";
 import { ItemComponent } from "./item/item.component";
 import { FormsModule } from "@angular/forms";
+import { LoaderComponent } from "./loader/loader.component";
 
 @NgModule({
   imports: [FormsModule, CommonModule, RouterModule, NgbModule],
@@ -21,7 +22,13 @@ import { FormsModule } from "@angular/forms";
     HeaderComponent,
     SearchProductComponent,
     ItemComponent,
+    LoaderComponent,
   ],
-  exports: [FooterComponent, NavbarComponent, SidebarComponent],
+  exports: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    LoaderComponent,
+  ],
 })
 export class ComponentsModule {}
