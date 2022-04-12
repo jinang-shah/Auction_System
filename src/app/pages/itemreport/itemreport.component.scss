@@ -10,3 +10,13 @@
   flex: 0 0 80.666667%;
   max-width: 80.666667%;
 }
+
+.card1 {
+  position: absolute;
+  background-color: #e0e0e0;
+  display: flex;
+  top: 50%;
+  left: 40%;
+  // margin-top: -300px;
+  // transform-origin: 50% bottom;
+}

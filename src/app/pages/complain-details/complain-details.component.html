@@ -25,26 +25,26 @@
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="item-info">Item Complain Details</div>
                         <form role="form">
-
+                            <div *ngFor="let complain of complainn">
                             <div class="form-group mb-3">
                                 Product Name:
                                 <div class="input-group input-group-alternative h-10">
 
-                                    <div class="form-control"> Product Name</div>
+                                    <div class="form-control"> {{complain.item_name}}</div>
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 Complain By:
                                 <div class="input-group input-group-alternative h-5">
 
-                                    <div class="form-control">Complainer Name</div>
+                                    <div class="form-control">{{complain.complain_by}}</div>
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 Complaint Description:
                                 <div class="input-group input-group-alternative h-5">
 
-                                    <div class="form-control h-20">Complain Description by user</div>
+                                    <div class="form-control h-20">{{complain.complain_des}}</div>
                                 </div>
                             </div>
 
@@ -54,11 +54,12 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary my-1">View Item Profile</button>
+                                <button type="button" (click)="viewitem()" class="btn btn-primary my-1">View Item Profile</button>
                             </div>
 
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary my-1">Close</button>
+                            </div>
                             </div>
                         </form>
                     </div>

@@ -24,7 +24,7 @@
                     <div class="card-header bg-transparent pb-5">
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="item-info">Fill Item Complain</div>
-                            <form [formGroup]="item_report" (ngSubmit)="itemreport(item_report)">
+                            <form [formGroup]="item_report" (ngSubmit)="itemreport()">
 
                                 <div class="form-group mb-3">
                                     Complain Description:
@@ -32,16 +32,32 @@
                                         <textarea rows="5" class="form-control" formControlName='c_description'
                                             placeholder="Enter item description"></textarea>
                                     </div>
+                                    <span class="input-group input-group-alternative"
+                                        *ngIf="item_report.get('c_description').touched  && item_report.get('c_description').hasError('required')"
+                                        style="color: red; background-color: rgb(219, 214, 214);">Please enter complain</span>
                                 </div>
                                 <div class="form-group mb-3">
                                     Item Photos:
                                     <input class="form-control" formControlName='i_photo' type="file" multiple>
+                                    <span class="input-group input-group-alternative"
+                                        *ngIf="item_report.get('i_photo').touched && item_report.get('i_photo').hasError('required')"
+                                        style="color: red; background-color: silver;">Please upload photo</span>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary my-1">Submit Complain</button>
+                                    <button type="submit" [disabled]="!item_report.valid" class="btn btn-primary my-1" (click)="display()">Submit Complain</button>
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="submitvalid">
+                <div class="card card1" style="width: 18rem;">
+                    <div class="card-body">
+                        <h2 class="card-title">Confirmation</h2>
+                        <p class="card-text">Complain added successfuly</p>
+                        <a class="card-link" (click)="closecard()">Close</a>
+                        <a class="card-link" (click)="addnewcomplain()">Submit new complain</a>
                     </div>
                 </div>
             </div>
