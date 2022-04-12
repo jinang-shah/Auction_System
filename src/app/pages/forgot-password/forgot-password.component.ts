@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ForgotPassService } from 'src/app/services/forgotPass/forgot-pass.service';
+import { LoginService } from 'src/app/services/loginService/login.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,7 +9,7 @@ import { ForgotPassService } from 'src/app/services/forgotPass/forgot-pass.servi
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private forgotPassService:ForgotPassService) { }
+  constructor(private loginService:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
     const obj = form.value
     console.log(obj);
     
-    this.forgotPassService.forgotPassService(obj);
+    this.loginService.loginService(obj);
     form.reset();
 
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ResetPasswordService } from 'src/app/services/resetPass/reset-password.service';
+import { LoginService } from 'src/app/services/loginService/login.service';
 import { ConfirmedValidator } from '../change-password/confirmPass.validators';
 
 @Component({
@@ -12,7 +12,7 @@ export class ResetPasswordComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   
-  constructor(private changePass: FormBuilder,private resetPassService:ResetPasswordService) {
+  constructor(private changePass: FormBuilder,private loginService:LoginService) {
   
     this.form = changePass.group({
       
@@ -34,7 +34,7 @@ export class ResetPasswordComponent implements OnInit {
     const obj = this.form.value
     console.log(obj);
     
-    this.resetPassService.resetPassService(obj);
+    this.loginService.loginService(obj);
     this.form.reset();
 
   }

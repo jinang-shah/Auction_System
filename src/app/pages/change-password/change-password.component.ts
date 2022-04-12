@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators,FormBuilder,FormControl } from '@angular/forms';
-import { ChangePasswordService } from 'src/app/services/changePass/change-password.service';
+import { LoginService } from 'src/app/services/loginService/login.service';
  
 import { ConfirmedValidator } from './confirmPass.validators'
 @Component({
@@ -14,7 +14,7 @@ export class ChangePasswordComponent implements OnInit {
 
 form: FormGroup = new FormGroup({});
   
-  constructor(private changePass: FormBuilder,private changePassService:ChangePasswordService) {
+  constructor(private changePass: FormBuilder,private loginService:LoginService) {
   
     this.form = changePass.group({
       oldpassword: ['', [Validators.required]],
@@ -36,8 +36,8 @@ form: FormGroup = new FormGroup({});
     const obj = this.form.value
     console.log(obj);
     
-    this.changePassService.changePassService(obj);
     this.form.reset();
+    this.loginService.loginService(obj);
 
   }
    
