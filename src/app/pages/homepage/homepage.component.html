@@ -1,18 +1,24 @@
-<section class="home container">
-  <div>
-    <h1 class="display-1">Best Place to<br />Buy and Sell</h1>
-    <p class="lead display-3">
-      Online Auction is where everyone goes to shop,sell, and give, while
-      discovering variety and affordability. The buying process here is so easy
-      to be done.
-    </p>
-    <a href="#" class="btn btn-primary btn-lg active">Start Bidding</a>
-  </div>
-  <div class="landing-image">
-    <img
-      src="https://www.oneclickitsolution.com/wp-content/uploads/2020/01/onlineauction_banner.png"
-      alt="Online auction"
-    />
+<app-header></app-header>
+<section class="hero">
+  <div class="home-container">
+    <div>
+      <h1 class="display-1">Best Place to<br />Buy and Sell</h1>
+      <p class="lead display-3">
+        Online Auction is where everyone goes to shop,sell, and give, while
+        discovering variety and affordability. The buying process here is so
+        easy to be done.
+      </p>
+      <a routerLink="/search" class="btn btn-primary btn-lg">Start Bidding</a>
+      <a routerLink="/add-item" class="btn btn-outline-primary btn-lg"
+        >Add Your Product</a
+      >
+    </div>
+    <div class="landing-image">
+      <img
+        src="https://www.oneclickitsolution.com/wp-content/uploads/2020/01/onlineauction_banner.png"
+        alt="Online auction"
+      />
+    </div>
   </div>
 </section>
 <section>
@@ -20,7 +26,7 @@
     <div class="display-2">Live Biddings</div>
     <div class="cards-container">
       <div class="items">
-        <app-item *ngFor="let item of items" item="item"></app-item>
+        <app-item *ngFor="let item of items" [item]="item"></app-item>
       </div>
       <div class="viewmore">
         <div class="grad">
