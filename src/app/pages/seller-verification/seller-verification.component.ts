@@ -22,14 +22,11 @@ export class SellerVerificationComponent implements OnInit {
 
   onSubmit(){
     const obj = this.sellerVerificationForm.value
-    console.log(obj);
-    
-    
+      
     this.sellerVerification.sellerVerification(obj).subscribe((data) => {
       console.log(data);
       })
 
-      console.log(this.sellerVerificationForm.value) 
     this.sellerVerificationForm.reset()
     
   }
