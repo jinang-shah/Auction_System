@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { DashboardService } from 'src/app/services/dashboard/dashboard.service';
 
 // core components
 import {
@@ -22,8 +23,23 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  ngOnInit() {
+  constructor(private dashboardservice:DashboardService){}
+  newUser:any = [
+    // {
+    //   userName:'Yash',
+    //   userEmail:'yash@gmail',
+    //   userContact:'9898924254'  
+    // },
+  ]
 
+  newComplain:any = [
+    // {
+    //   userName:'Yash',
+    //   date:'22/12/21'
+    // },
+  ]
+
+  ngOnInit() {
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
       [0, 20, 5, 25, 10, 30, 15, 40, 40]
@@ -49,6 +65,14 @@ export class DashboardComponent implements OnInit {
 			options: chartExample1.options,
 			data: chartExample1.data
 		});
+
+    this.dashboardservice.getnewusers().subscribe((newusers) => {
+      this.newUser = newusers
+    })
+
+    this.dashboardservice.getnewcomplains().subscribe((newcomplains) => {
+      this.newComplain = newcomplains
+    })
   }
 
 

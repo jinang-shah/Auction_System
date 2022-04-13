@@ -1,0 +1,428 @@
+
+.product_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 6rem;
+    background: linear-gradient(to right top, #c91c69, #d91e59, #e42b46, #ea3d31, #eb5212);
+}
+
+.product_image_div{
+    width: 50%;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 25px;
+    height: 400px;
+}
+
+.active_image{
+    border: 1px solid #172b4d;
+}
+
+.main_image_div img{
+    height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.product_images_div{
+    margin: 10px;
+}
+
+.product_images_div img{
+    height: 50px;
+    width: 20%;
+    cursor: pointer;
+    margin-left: 10px;
+    opacity: 0.8;
+}
+
+.product_images_div img:hover{
+    opacity: 1;
+}
+
+
+
+.product_info_div{
+    width: 50%;
+    background-color: white;
+    border-radius: 25px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.product_name{
+    margin: 20px;
+}
+
+
+.fav_active{
+    color: #EA4327;
+}
+
+.product_description_title{
+    font-weight: bold;
+    margin: 5px 20px;
+}
+
+.product_description{
+    word-wrap: break-word;
+    margin: 20px;
+    width: 80%;
+}
+
+.product_catagory{
+    margin: 20px;
+}
+
+.span_product_catagory{
+    font-weight: bolder;
+}
+
+.span_product_date{
+    font-weight: bolder;
+}
+
+.product_seller{
+    margin: 10px 20px;
+}
+
+.span_product_seller{
+    font-weight: bold;
+}
+
+.product_date{
+    margin: 10px 20px;
+}
+
+img{
+    width: 100%;
+    object-fit: contain;
+    height: fit-content;
+}
+
+.base_price{
+    font-weight: bold;
+}
+
+.upcoming_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.upcoming_sub_div{
+    padding: 30px 50px 30px 30px;
+    margin-left: 50px;
+    margin-top: 20px;
+    height: max-content;
+    box-shadow: 0 0 5px 1px #0000005c;
+}
+
+.upcoming_status{
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: orange;
+    color: white;
+}
+
+.span_price{
+    font-weight: bold;
+    color: green;
+}
+
+/* .span_upcoming{
+
+} */
+
+.btn_addToLike{
+    padding: 10px 10px;
+    background-color: #F24951;
+    border-radius: 25px;
+    outline: none;
+    border: 1px solid #F24951;
+    color: white;
+    font-weight: bolder;
+    margin: 20px;
+}
+
+small{
+    margin: 10px 0px;
+}
+
+.live_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: start;
+}
+
+.live_sub_div{
+    padding: 10px;
+    margin-right: 50px;
+    border-right:1px solid #DDDDDD;
+    padding: 30px;
+}
+
+.live_status{
+    width: fit-content;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+}
+
+.current_bid_amount{
+    font-size: large;
+    font-weight: bolder;
+}
+
+.live_bidding_div{
+    margin: 10px 10px;
+    padding: 30px;
+    background-color: #172b4d;
+    width: 50%;
+    border-radius: 25px;
+}
+
+.live_bidding_title{
+    color: white;
+    background-color: #F24951;
+    border: 1px solid #F24951;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.live_bidding_history{
+    overflow: scroll;
+    height: 250px;
+    overflow-x:hidden;
+    background-color: white;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.span_bidder_name{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.single_bid_div{
+    margin: 10px;
+}
+
+
+.live_bidding_input{
+    border: 1px solid white;
+    outline: none;
+    border-radius: 25px;
+    background-color: #DDDDDD;
+    padding: 10px 20px;
+    width: 50%;
+}
+
+.live_bidding_btn{
+    padding: 10px 20px;
+    width: 50%;
+    background-color: #F24951;
+    border-radius: 25px;
+    border: 1px solid #F24951;
+    color: white;
+    font-weight: bolder;
+}
+
+.completed_status{
+    width: fit-content;
+    padding: 10px;
+    background-color:red;
+    border-radius: 25px;
+    color: white;
+}
+
+.single_bid_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    width: 90px;
+}
+
+.bidding_details_div{
+    flex: 1 1 auto;
+    display: flex;
+    border-radius: 10px;
+    width: 40%;
+    background-color: #172b4d;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    margin: 15px;
+}
+
+.bidding_details_title{
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.bidding_details_bids{
+    background-color: white;
+    width: 90%;
+    margin: 10px;
+    overflow: scroll;
+    height: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
+}
+
+.comment_div{
+    width: 500px;
+    background-color: white;
+    margin: 20px;
+    box-shadow: 0 0 5px 1px #0000005c;
+}
+
+
+.completed_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: start;
+}
+
+.comment_header{
+    margin: 10px;
+}
+
+.comment_title{
+    padding:10px 5px;
+}
+
+.comment_input{
+    border-radius:  12px 0px 0px 12px;
+    border: 1px solid #DDDDDD;
+    padding: 6px;
+    width: 60%;
+    outline: none;
+}
+
+.post_comment_btn{
+    padding: 6px 12px;
+    background-color: #F24951;
+    border: 1px 0px  solid #F24951;
+    border-radius: 0px 25px 25px 0px;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.comment_container_div{
+    flex-direction: column;
+    justify-content: center;
+    align-self:center;
+    margin: 20px 10px 10px 10px;
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.single_comment_div{
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_user_time_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment_user_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.comment_name{
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.comment_time{
+    margin-right: 10%;
+}
+
+.comment_data_div{
+    width: 80%;
+    align-self: center;
+}
+
+.comment_container_div::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.comment_container_div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.comment_container_div::-webkit-scrollbar-thumb {
+  background-color: #F24951;
+  outline: 1px solid slategrey;
+}
+
+.comment_container_div::-webkit-scrollbar-thumb {
+  background-color: red;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;  
+}
+
+.completed_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bid_win_div{
+    border-right: 1px solid #DDDDDD;
+    padding: 70px;
+    margin: 0px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.bid_win_gif{
+    height: 180px;
+}
+
+.bid_win_title{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.payment_btn{
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 5px;
+    outline: none;
+}
+
+
