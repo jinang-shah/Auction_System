@@ -5,6 +5,7 @@
     align-items: center;
     width: 100%;
     padding: 0 6rem;
+    background: linear-gradient(to right top, #c91c69, #d91e59, #e42b46, #ea3d31, #eb5212);
 }
 
 .product_image_div{
@@ -25,6 +26,7 @@
 .main_image_div img{
     height: 300px;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .product_images_div{
@@ -35,7 +37,7 @@
     height: 50px;
     width: 20%;
     cursor: pointer;
-    padding-left: 10px;
+    margin-left: 10px;
     opacity: 0.8;
 }
 
@@ -57,9 +59,14 @@
     margin: 20px;
 }
 
+
+.fav_active{
+    color: #EA4327;
+}
+
 .product_description_title{
-    font-weight: bolder;
-    margin: 10px 20px;
+    font-weight: bold;
+    margin: 5px 20px;
 }
 
 .product_description{
@@ -81,13 +88,12 @@
 }
 
 .product_seller{
-    font-weight: bolder;
     margin: 10px 20px;
 }
 
-/* .span_product_seller{
-    
-} */
+.span_product_seller{
+    font-weight: bold;
+}
 
 .product_date{
     margin: 10px 20px;
@@ -107,10 +113,16 @@ img{
     background-color: white;
     border-radius: 25px;
     margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .upcoming_sub_div{
-    padding: 30px;
+    padding: 30px 50px 30px 30px;
+    margin-left: 50px;
+    margin-top: 20px;
+    height: max-content;
+    box-shadow: 0 0 5px 1px #0000005c;
 }
 
 .upcoming_status{
@@ -241,57 +253,12 @@ small{
     align-items: center;
 }
 
-
-.product_comments{
-    background-color: white;
-    border-radius: 25px;
-}
-
-.product_comments_div {
-    background-color: white;
-    border-radius: 25px;
-    margin: 10px;
-}
-
-.product_comments_sub_div{
-    padding: 10px 10px;   
-}
-
-
-
-.comment_input{
-    border-radius:  25px 0px 0px 25px;
-    border: 1px solid #DDDDDD;
-    padding: 10px;
-    width: 40%;
-    outline: none;
-}
-
-.user_comments{
-    margin: 10px;
-}
-
-.span_comment_username{
-    font-weight: bold;
-    margin: 5px 5px;
-}
-
-.post_comment_btn{
-    padding: 10px 20px;
-    background-color: #F24951;
-    border: 1px 0px  solid #F24951;
-    border-radius: 0px 25px 25px 0px;
-    outline: none;
-    color: white;
-    font-weight: bolder;
-}
-
 .btn {
     width: 90px;
 }
 
-
 .bidding_details_div{
+    flex: 1 1 auto;
     display: flex;
     border-radius: 10px;
     width: 40%;
@@ -299,6 +266,8 @@ small{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: fit-content;
+    margin: 15px;
 }
 
 .bidding_details_title{
@@ -311,13 +280,149 @@ small{
 
 .bidding_details_bids{
     background-color: white;
-    width: 70%;
+    width: 90%;
     margin: 10px;
     overflow: scroll;
     height: 300px;
+    border-radius: 20px;
+    overflow-x: hidden;
 }
 
-.single_bid_div{
-
+.comment_div{
+    width: 500px;
+    background-color: white;
+    margin: 20px;
+    box-shadow: 0 0 5px 1px #0000005c;
 }
+
+
+.completed_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: start;
+}
+
+.comment_header{
+    margin: 10px;
+}
+
+.comment_title{
+    padding:10px 5px;
+}
+
+.comment_input{
+    border-radius:  12px 0px 0px 12px;
+    border: 1px solid #DDDDDD;
+    padding: 6px;
+    width: 60%;
+    outline: none;
+}
+
+.post_comment_btn{
+    padding: 6px 12px;
+    background-color: #F24951;
+    border: 1px 0px  solid #F24951;
+    border-radius: 0px 25px 25px 0px;
+    outline: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.comment_container_div{
+    flex-direction: column;
+    justify-content: center;
+    align-self:center;
+    margin: 20px 10px 10px 10px;
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.single_comment_div{
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_user_time_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment_user_div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.comment_name{
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.comment_time{
+    margin-right: 10%;
+}
+
+.comment_data_div{
+    width: 80%;
+    align-self: center;
+}
+
+.comment_container_div::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.comment_container_div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.comment_container_div::-webkit-scrollbar-thumb {
+  background-color: #F24951;
+  outline: 1px solid slategrey;
+}
+
+.comment_container_div::-webkit-scrollbar-thumb {
+  background-color: red;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;  
+}
+
+.completed_div{
+    background-color: white;
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bid_win_div{
+    border-right: 1px solid #DDDDDD;
+    padding: 70px;
+    margin: 0px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.bid_win_gif{
+    height: 180px;
+}
+
+.bid_win_title{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.payment_btn{
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 5px;
+    outline: none;
+}
+
 
