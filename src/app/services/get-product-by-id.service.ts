@@ -10,9 +10,22 @@ export class GetProductByIdService {
 
   url = "https://fakestoreapi.com/products"
 
-  fetchProductById(_id) {
-    return this.http
-      .get(this.url, { params: { _id } })
-
+  getProductById = (productId)=> {
+    return this.http.get('http://localhost:8000/product/product/'+productId)
   }
+
+  postComment(productId, commentData) {
+    return this.http.post('http://localhost:8000/add_comment', commentData, { params: { productId } })
+  }
+
+
+
+  addToFavourite(userId, productId) {
+    return this.http.post(this.url, {
+      userId: userId,
+      productId: productId
+    })
+  }
+
+
 }

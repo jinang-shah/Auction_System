@@ -27,14 +27,12 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     NgbModule,
     RouterModule,
     AppRoutingModule,
-
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
     ProductComponent
-
   ],
   providers: [],
   bootstrap: [AppComponent]
