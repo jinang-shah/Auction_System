@@ -14,7 +14,9 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductComponent } from 'src/app/pages/product/product.component';
+
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { ProductComponent } from 'src/app/pages/product/product.component';
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [
     AppComponent,
