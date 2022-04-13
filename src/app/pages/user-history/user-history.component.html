@@ -7,28 +7,27 @@
   </div>
   <!-- Page content -->
   <div class="container-fluid mt--7" style="margin-bottom: 150px;">
-    <!-- Table -->
-    <!-- Dark table -->
+    <!-- Buying History Table -->
     <div class="row mt-5">
       <div class="col">
         <div class="card bg-default shadow">
           <div class="card-header bg-transparent border-0">
             <h3 class="text-white mb-0">Buying History</h3>
           </div>
-          <div class="table-responsive">
+          <!-- <div *ngIf="buyinghistory.length == 0;" >No Buying History...</div>
+          <div class="table-responsive"  *ngIf="buyinghistory.length > 0;"> -->
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Product</th>
+                  <th scope="col">Product Details</th>
                   <th scope="col">Amount</th>
                   <th scope="col">Status</th>
                   <th scope="col">Purchased Date</th>
-                  <!-- <th scope="col">Completion</th> -->
-                  <th scope="col"></th>
+                  <th scope="col">Report a Product</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr *ngFor="let details of buyinghistory"> 
                   <th scope="row">
                     <div class="media align-items-center">
                       <a
@@ -37,124 +36,28 @@
                       >
                         <img
                           alt="Image placeholder"
-                          src="../assets/img/theme/bootstrap.jpg"
+                          src="{{details.productDetails.img}}"
                         />
                       </a>
                       <div class="media-body">
-                        <span class="mb-0 text-sm">mobile</span>
+                        <span class="mb-0 text-sm">{{details.productDetails.productName}} </span>
                       </div>
                     </div>
                   </th>
-                  <td>$2,500 USD</td>
+                  <td>{{details.amount}}</td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i> pending
+                      <i class="bg-warning"></i> {{details.status}}
                     </span>
                   </td>
-                  <td>29/03/2021</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/angular.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Table</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$1,800 USD</td>
-                  <td>
-                    <span class="badge badge-dot">
-                      <i class="bg-success"></i> completed
-                    </span>
-                  </td>
-                  <td>22/12/20</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/sketch.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Car</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$3,150 USD</td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-danger"></i> delayed
-                    </span>
-                  </td>
-                  <td>18/03/2021</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/react.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Ball</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$4,400 USD</td>
-                  <td>
-                    <span class="badge badge-dot">
-                      <i class="bg-info"></i> on schedule
-                    </span>
-                  </td>
-                  <td>02/11/2020</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/vue.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">toy</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$2,200 USD</td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-success"></i> completed
-                    </span>
-                  </td>
-                  <td>04/05/2021</td>
+                  <td>{{details.purchasedDate}} </td>
+                  <td><button class="btn btn-danger">Report</button></td>
+
                 </tr>
               </tbody>
             </table>
+          <div class="nohistory" *ngIf="buyinghistory.length == 0;" >No buying History.</div>
+
           </div>
           <div class="card-footer py-4">
             <nav aria-label="...">
@@ -188,17 +91,15 @@
         </div>
       </div>
     </div>
-  </div>
+  
   <div class="container-fluid mt--7">
-    <!-- Table -->
-    <!-- Dark table -->
+    <!-- Selling History Table -->
     <div class="row mt-5">
       <div class="col">
         <div class="card bg-default shadow">
           <div class="card-header bg-transparent border-0">
             <h3 class="text-white mb-0">Selling History</h3>
           </div>
-          <div class="table-responsive">
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
@@ -206,12 +107,12 @@
                   <th scope="col">Min Price..</th>
                   <th scope="col">Status</th>
                   <th scope="col">Selling Date</th>
-                  <!-- <th scope="col">Completion</th> -->
-                  <th scope="col"></th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
+                
+                <tr *ngFor="let details of sellinghistory">
                   <th scope="row">
                     <div class="media align-items-center">
                       <a
@@ -220,126 +121,27 @@
                       >
                         <img
                           alt="Image placeholder"
-                          src="../assets/img/theme/bootstrap.jpg"
+                          src="{{details.productDetails.img}}"
                         />
                       </a>
                       <div class="media-body">
-                        <span class="mb-0 text-sm">mobile</span>
+                        <span class="mb-0 text-sm">{{details.productDetails.productName}}</span>
                       </div>
                     </div>
                   </th>
-                  <td>$2,5 USD</td>
+                  <td>{{details.amount}}</td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i> pending
+                      <i class="bg-warning"></i> {{details.status}}
                     </span>
                   </td>
-                  <td>29/03/2021</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/angular.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Table</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$1,8 USD</td>
-                  <td>
-                    <span class="badge badge-dot">
-                      <i class="bg-success"></i> Completed
-                    </span>
-                  </td>
-                  <td>22/12/20</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/sketch.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Car</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$3,15 USD</td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-danger"></i> Live
-                    </span>
-                  </td>
-                  <td>18/03/2021</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/react.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">Ball</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$4,4 USD</td>
-                  <td>
-                    <span class="badge badge-dot">
-                      <i class="bg-info"></i> UpComing
-                    </span>
-                  </td>
-                  <td>02/11/2020</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="../assets/img/theme/vue.jpg"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">toy</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>$2,2 USD</td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-success"></i> Completed
-                    </span>
-                  </td>
-                  <td>04/05/2021</td>
+                  <td>{{details.purchasedDate}}</td>
                 </tr>
               </tbody>
             </table>
+          <div class="nohistory" *ngIf="sellinghistory.length == 0" >No selling History.</div>
           </div>
-          <div class="card-footer py-4">
+           <div class="card-footer py-4">
             <nav aria-label="...">
               <ul class="pagination justify-content-end mb-0">
                 <li class="page-item disabled">
@@ -371,4 +173,4 @@
         </div>
       </div>
     </div>
-  </div>
+  

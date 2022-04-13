@@ -1,0 +1,27 @@
+header {
+  background-image: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;
+}
+.lead {
+  font-size: 1rem;
+  padding: 0 1rem;
+  width: 400px;
+}
+.lead.last {
+  text-align: right;
+}
+.lead span {
+  font-size: 0.8em;
+}
+.notiicon.ni-bell-55 {
+  padding-right: 0.8em;
+  transform: scale(1.6);
+}
+.badge-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+a.btn-outline-secondary {
+  color: white;
+}
