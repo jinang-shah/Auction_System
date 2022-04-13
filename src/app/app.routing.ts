@@ -3,25 +3,23 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { ProductComponent } from './pages/product/product.component';
-import { HomepageComponent } from "./components/homepage/homepage.component";
-import { SearchProductComponent } from "./components/searchProduct/searchProduct.component";
-
+import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 
 const routes: Routes = [
   {
-    path: 'product',
-    component: ProductComponent
-  }
-  , {
-    path: "home",
-    component: HomepageComponent,
-  },
-  {
-    path: "search",
-    component: SearchProductComponent,
+    path: "",
+    component: UserLayoutComponent,
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("src/app/layouts/user-layout/user-layout.module").then(
+            (m) => m.UserLayoutModule
+          ),
+      },
+    ],
   },
   {
     path: "",
@@ -35,12 +33,6 @@ const routes: Routes = [
           ),
       },
     ],
-  },
-  {
-
-    path: 'dashboard',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
   },
   {
     path: "",
@@ -57,7 +49,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "dashboard",
+    redirectTo: "",
   },
 ];
 
