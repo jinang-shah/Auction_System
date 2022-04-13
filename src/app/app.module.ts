@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -24,7 +25,10 @@ import { UserHistoryComponent } from './pages/user-history/user-history.componen
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
+    
+  
   ],
   declarations: [
     AppComponent,

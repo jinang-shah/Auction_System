@@ -10,16 +10,83 @@ export class UserHistoryComponent implements OnInit {
 
   constructor(private userhistoryservice:UserhistoryService) { }
 
+  page:number = 1;
+  count: number = 0;
+  tableSize:number = 5; 
+  
+// for seller pagination
+  pages:number = 1;
+  counts: number = 0;
+  tableSizes:number = 5;
+
+
   buyinghistory :any= [
-//     {
-//       productDetails:{
-//         img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
-//         productName:'Samsung phone'
-//        },
-//       amount:'20$',
-//       status:'pending',
-//       purchasedDate:'22/03/21'
-//     },
+    // {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // },
+    // {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // }, {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // }, {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // }, {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // }, {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // }, {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // }, {
+    //   productDetails:{
+    //     img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    //     productName:'Samsung phone'
+    //    },
+    //   amount:'20$',
+    //   status:'pending',
+    //   purchasedDate:'22/03/21'
+    // },
 
   ]
 
@@ -37,13 +104,29 @@ export class UserHistoryComponent implements OnInit {
 
   ngOnInit(): void { 
 
-    this.userhistoryservice.getbuyinghistory().subscribe((buyinghistory) => {
-      this.buyinghistory = buyinghistory
+    this.userhistoryservice.getbuyinghistory().subscribe((buyinghistory1) => {
+
+      this.buyinghistory = buyinghistory1
+      console.log(this.buyinghistory);
+      console.log(buyinghistory1," : buyingHistory");
+      
+      
     })
 
     this.userhistoryservice.getsellinghistory().subscribe((sellinghistory) => {
       this.sellinghistory = sellinghistory
     })
+
+    
+    
+  }
+
+
+  onTableDataChange(event :any){
+    this.page = event;   
+  }
+  onTableDataChanges(event :any){
+    this.pages = event;   
   }
 
 }
