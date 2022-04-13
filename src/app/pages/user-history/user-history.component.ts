@@ -9,6 +9,55 @@ export class UserHistoryComponent implements OnInit {
 
   constructor() { }
 
+  buyinghistory = [
+    {
+      productDetails:{
+        img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+        productName:'Samsung phone'
+    },
+      amount:'20$',
+      status:'pending',
+      purchasedDate:'22/03/21'
+  },
+  {
+    productDetails:{
+      img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+      productName:'Samsung phone'
+  },
+    amount:'20$',
+    status:'pending',
+    purchasedDate:'22/03/21'
+},
+{
+  productDetails:{
+    img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    productName:'Samsung phone'
+},
+  amount:'20$',
+  status:'pending',
+  purchasedDate:'22/03/21'
+},{
+  productDetails:{
+    img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    productName:'Samsung phone'
+},
+  amount:'20$',
+  status:'pending',
+  purchasedDate:'22/03/21'
+},
+{
+  productDetails:{
+    img:'https://m.media-amazon.com/images/I/71F4jU7MRUS._SX466_.jpg',
+    productName:'Samsung phone'
+},
+  amount:'20$',
+  status:'pending',
+  purchasedDate:'22/03/21'
+}
+  ]
+
+  sellinghistory = []
+
   ngOnInit(): void {
   }
 

@@ -23,6 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "allowedCommonJsDependencies": ["chart.js"],
+
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
@@ -69,7 +70,6 @@
                 },
                 "fonts": true
               },
-
               "outputHashing": "all"
             }
           }
