@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loader.show();
-    this.getProductervice.fetchProducts("", "live", "").subscribe(
+    this.getProductervice.fetchProducts("", "live", "", 1, 6).subscribe(
       (data: []) => {
         this.loader.hide();
         this.items = data;

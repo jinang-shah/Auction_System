@@ -7,9 +7,9 @@ import { Injectable } from "@angular/core";
 export class GetProductService {
   constructor(public http: HttpClient) {}
 
-  fetchProducts(query, status, catagory) {
+  fetchProducts(query, status, catagory, pageNo, itemsPerPage) {
     return this.http.get("http://localhost:3000", {
-      params: { query, status, catagory },
+      params: { query, status, catagory, pageNo, itemsPerPage },
     });
   }
 }

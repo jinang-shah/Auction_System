@@ -49,19 +49,7 @@
 }
 
 /*  ribbon  */
-.greenRibbon {
-  background-color: #2dce89;
-  border-color: #2dce89;
-}
-.redRibbon {
-  color: white;
-  background-color: #f5365c;
-  border-color: #f5365c;
-}
-.blueRibbon {
-  background-color: #11cdef;
-  border-color: #11cdef;
-}
+
 .ribbon {
   z-index: 10;
   top: -10px;
@@ -77,6 +65,7 @@
   width: 175px;
   padding: 5px 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #42c13a;
   color: #000;
   font-size: 12px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);

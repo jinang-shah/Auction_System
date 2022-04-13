@@ -1,8 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { GetProductService } from "src/app/services/get-product.service";
 import { LoaderService } from "src/app/services/loader.service";
-import Item from "src/db-json/items";
 
 @Component({
   selector: "app-searchProduct",
@@ -17,6 +16,9 @@ export class SearchProductComponent implements OnInit {
     private loader: LoaderService
   ) {}
   items = [];
+  currentPage = 0;
+  isEndOfData = false;
+  isFetching = false;
   status: string;
   catagory: string;
   sortBy: string;
@@ -30,30 +32,41 @@ export class SearchProductComponent implements OnInit {
       this.query = newParams.query || "";
       this.loader.show();
       this.getProductService
-        .fetchProducts(this.query, this.status, this.catagory)
+        .fetchProducts(this.query, this.status, this.catagory, 0, 10)
         .subscribe(
           (data: any[]) => {
             this.loader.hide();
-            switch (this.sortBy) {
-              case "newest":
-                data.sort((a, b) => a.startTimestamp - b.startTimestamp);
-                break;
-              case "lowest":
-                data.sort((a, b) => a.basePrize - b.basePrize);
-                break;
-              case "pname":
-                data.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-              default:
-                break;
-            }
             this.items = data;
+            this.sortItems();
           },
           (err) => {
             console.log(err);
           }
         );
     });
+  }
+
+  @HostListener("window:scroll", ["$event"]) onWindowScroll() {
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+      this.currentPage++;
+      if (this.isFetching) return;
+      this.isFetching = true;
+      this.getProductService
+        .fetchProducts(
+          this.query,
+          this.status,
+          this.catagory,
+          this.currentPage,
+          10
+        )
+        .subscribe((data: []) => {
+          this.isFetching = false;
+          if (data.length == 0) {
+            this.isEndOfData = true;
+          }
+          this.items.push(...data);
+        });
+    }
   }
 
   // this function runs on any of 3 select option change
@@ -69,6 +82,10 @@ export class SearchProductComponent implements OnInit {
         this.sortBy = value;
         break;
     }
+    if (type == "sortBy") {
+      this.sortItems();
+      return;
+    }
     this.router.navigate(["/search"], {
       queryParams: {
         status: this.status,
@@ -77,5 +94,21 @@ export class SearchProductComponent implements OnInit {
       },
       queryParamsHandling: "merge",
     });
+  }
+
+  sortItems() {
+    switch (this.sortBy) {
+      case "newest":
+        this.items.sort((a, b) => a.startTimestamp - b.startTimestamp);
+        break;
+      case "lowest":
+        this.items.sort((a, b) => a.basePrize - b.basePrize);
+        break;
+      case "pname":
+        this.items.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      default:
+        break;
+    }
   }
 }
