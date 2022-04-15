@@ -23,12 +23,9 @@ export class AdditemComponent implements OnInit {
   catagories: any = ['Furniture','Electric','Footware']
   submitvalid:Boolean=false;
   
- 
-
   constructor(private itemdata:AdditemService,private router:Router) {
     
    }
-
    additemform=new FormGroup({
       i_name: new FormControl('',[Validators.required,Validators.minLength(3)]),
       i_category: new FormControl('',Validators.required),
@@ -42,14 +39,15 @@ export class AdditemComponent implements OnInit {
 
   onfileselect(event){
       this.item_orignalbill =<File>event.target.files[2];
+
     }
   onUpload(){
     const fd = new FormData();
     fd.append('image' , this.item_orignalbill,this.item_orignalbill.name)
   }
   
-
   additem(){
+
     this.item_name = this.additemform.controls.i_name.value;
     this.item_category= this.additemform.controls.i_category.value;
     this.item_description = this.additemform.controls.i_description.value;

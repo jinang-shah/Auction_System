@@ -4,25 +4,23 @@
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6">
-
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="separator separator-bottom separator-skew zindex-100">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
     </div>
-    <div class="separator separator-bottom separator-skew zindex-100">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-            xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-    </div>
-</div>
-<!-- Page content -->
-<div class="container mt--9 pb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
-            <div class="card bg-secondary shadow border-0">
-                <div class="card-header bg-transparent pb-5">
-
+    <!-- Page content -->
+    <div class="container mt--9 pb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-header bg-transparent pb-5">
                     <div class="card-body px-lg-5 py-lg-5">
                         <form [formGroup]="additemform" (ngSubmit)="additem()">
                             <div class="form-group mb-2">
@@ -44,41 +42,51 @@
                                     style="color: red; background-color: silver;">Please select the category</span>
                             </div>
 
-                            <div class="form-group mb-3">
-                                Item Description:
-                                <div class="input-group input-group-alternative">
-                                    <input class="form-control" formControlName='i_description' placeholder="Enter item description" type="text">
+                                <div class="form-group mb-3">
+                                    Item Description:
+                                    <div class="input-group input-group-alternative">
+                                        <input class="form-control" formControlName='i_description'
+                                            placeholder="Enter item description" type="text">
+                                    </div>
+                                    <span class="input-group input-group-alternative"
+                                        *ngIf="additemform.get('i_description').touched && additemform.get('i_description').hasError('required')"
+                                        style="color: red; background-color: silver;">Please enter the description</span>
                                 </div>
-                                <span class="input-group input-group-alternative"
-                                    *ngIf="additemform.get('i_description').touched && additemform.get('i_description').hasError('required')"
-                                    style="color: red; background-color: silver;">Please enter the description</span>
-                            </div>
+                                
+                    
 
 
+
                             <div class="form-group mb-3">
-                                Item Base Price:
-                                <div class="input-group input-group-alternative">
-                                    <input class="form-control" formControlName='i_baseprice' placeholder="Enter price" type="number">
-                                </div>
+                                    Item Base Price:
+                                    <div class="input-group input-group-alternative">
+                                        <input class="form-control" formControlName='i_baseprice'
+                                            placeholder="Enter price" type="number">
+                                    </div>
+                                
                                 <span class="input-group input-group-alternative"
                                     *ngIf="additemform.get('i_baseprice').touched && additemform.get('i_baseprice').hasError('required')"
                                     style="color: red; background-color: silver;">Please enter the price more then 1 rupees</span>
                             </div>
 
-                            <div class="form-group mb-3">
-                                Start Date:
-                                <div class="input-group input-group-alternative">
-                                    <input class="form-control" formControlName='i_startdate' placeholder="start-date" type="date">
-                                </div>
-                                
-                            </div>
+                                <div class="form-group mb-3">
+                                    Start Date:
+                                    <div class="input-group input-group-alternative">
+                                        <input class="form-control" formControlName='i_startdate'
+                                            placeholder="start-date" type="date">
+                                    </div>
+                                </div>   
+                          
 
-                            <div class="form-group mb-3">
-                                End Date:
-                                <div class="input-group input-group-alternative">
-                                    <input class="form-control" formControlName='i_enddate' placeholder="end-date" type="date">
+
+                                <div class="form-group mb-3">
+                                    End Date:
+                                    <div class="input-group input-group-alternative">
+                                        <input class="form-control" formControlName='i_enddate' placeholder="end-date"
+                                            type="date">
+                                    </div>
                                 </div>
-                            </div>
+                               
                             <div class="form-group mb-3">
                                 Item Orignal Bill:
                                 <input type="file" accept="image/*" class="form-control"  formControlName='i_orignalbill' (change)="onfileselect($event)" multiple>
@@ -98,10 +106,10 @@
                                 <button [disabled]="!additemform.valid" type="submit" class="btn btn-primary my-1" (click)="display()">Add Item</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
-        </div>
 
         <div *ngIf="submitvalid">
             <div class="card card1" style="width: 18rem;">
@@ -113,7 +121,6 @@
                 </div>
             </div>
         </div>
-    </div></div>
-</body>
+    </div>
+</div>
 
-<!--  -->
