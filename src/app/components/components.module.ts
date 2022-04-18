@@ -20,7 +20,7 @@ import { NotiitemComponent } from './notifications/notiitem/notiitem.component';
     NavbarComponent,
     SidebarComponent,
     NotificationsComponent,
-    NotiitemComponent
+    NotiitemComponent,
     HomepageComponent,
     HeaderComponent,
     SearchProductComponent,

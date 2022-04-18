@@ -24,7 +24,7 @@
                     <div class="card-header bg-transparent pb-5">
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="item-info">Fill Item Complain</div>
-                            <form [formGroup]="item_report" (ngSubmit)="itemreport()">
+                            <form [formGroup]="item_report" #item_reportDirective="ngForm" (ngSubmit)="item_report.valid && itemreport() && display()">
 
                                 <div class="form-group mb-3">
                                     Complain Description:
@@ -32,19 +32,18 @@
                                         <textarea rows="5" class="form-control" formControlName='c_description'
                                             placeholder="Enter item description"></textarea>
                                     </div>
-                                    <span class="input-group input-group-alternative"
-                                        *ngIf="item_report.get('c_description').touched  && item_report.get('c_description').hasError('required')"
-                                        style="color: red; background-color: rgb(219, 214, 214);">Please enter complain</span>
+                                    <div class="input-group input-group-alternative" *ngIf="item_reportDirective.submitted"
+                                        style="color: red; background-color: rgb(219, 214, 214);">
+                                        <div *ngIf="hasError('c_description','required')">Please enter the complain</div>
+                                    </div>
                                 </div>
                                 <div class="form-group mb-3">
                                     Item Photos:
-                                    <input class="form-control" formControlName='i_photo' type="file" multiple>
-                                    <span class="input-group input-group-alternative"
-                                        *ngIf="item_report.get('i_photo').touched && item_report.get('i_photo').hasError('required')"
-                                        style="color: red; background-color: silver;">Please upload photo</span>
+                                    <input class="form-control" formControlName='item_photo' type="file" (change)="onphotoselect($event)"  multiple>
+                                <div *ngIf="photoerror" style="color: red; background-color: silver;"> please select valid item image</div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" [disabled]="!item_report.valid" class="btn btn-primary my-1" (click)="display()">Submit Complain</button>
+                                    <button type="submit" class="btn btn-primary my-1">Submit Complain</button>
                                 </div>
                             </form>
                         </div>
