@@ -1,6 +1,6 @@
 <div class="container">
-  <app-notification></app-notification>
-  <app-notification></app-notification>
-  <app-notification></app-notification>
-  <app-notification></app-notification>
+  <app-notification
+    *ngFor="let item of notifications"
+    [item]="item"
+  ></app-notification>
 </div>
