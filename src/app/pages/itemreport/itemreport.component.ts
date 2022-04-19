@@ -12,8 +12,8 @@ import { ItemComplain } from 'src/app/models/complain';
 export class ItemreportComponent implements OnInit {
  
   item_report:FormGroup;
-  item_complain:string="";
-  item_photo:File=null;
+  complainDetails:string="";
+  images:File=null;
   submitvalid:Boolean=false;
   photoerror = false;
 
@@ -24,8 +24,8 @@ export class ItemreportComponent implements OnInit {
   createForm(){
     
       this.item_report=new FormGroup({
-      c_description: new FormControl('',[Validators.required,Validators.minLength(3)]),
-      item_photo:new FormControl('',[Validators.required])
+      complainDetails: new FormControl('',[Validators.required,Validators.minLength(3)]),
+      images:new FormControl('',[Validators.required])
     })
   }
 
@@ -35,8 +35,8 @@ export class ItemreportComponent implements OnInit {
   }
 
   onphotoselect(event){
-      this.item_photo = <File>event.target.files[0];
-      console.log("photo",this.item_photo,event);
+      this.images = <File>event.target.files[0];
+      console.log("photo",this.images,event);
   }
 
     
@@ -44,13 +44,13 @@ export class ItemreportComponent implements OnInit {
 
 
   itemreport(){
-    if(this.item_photo == null)
+    if(this.images == null)
     {
       return this.photoerror = true;
     }
     this.photoerror=false;
     const complainData: ItemComplain = this.item_report.value as ItemComplain;
-    complainData.item_photo = this.item_photo;
+    complainData.images = this.images;
     const fd = new FormData();
     const keys = Object.keys(complainData);
     for (const key of keys) {

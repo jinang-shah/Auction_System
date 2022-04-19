@@ -17,7 +17,7 @@ import { ComplainDetailsComponent } from './pages/complain-details/complain-deta
 import { ItemreportComponent } from './pages/itemreport/itemreport.component';
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { ProductComponent } from 'src/app/pages/product/product.component';
 
@@ -47,7 +47,7 @@ import { ProductComponent } from 'src/app/pages/product/product.component';
     ProductComponent
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdditemService {
-  url = 'http://localhost:3000/additem'
+  // url = 'http://localhost:3000/additem'
+  url = 'http://localhost:8000/product/additem'
   constructor(private http: HttpClient) { }
   additem_lists(data:any){
     console.log("service",data);

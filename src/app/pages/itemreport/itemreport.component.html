@@ -29,17 +29,17 @@
                                 <div class="form-group mb-3">
                                     Complain Description:
                                     <div class="input-group input-group-alternative h-5">
-                                        <textarea rows="5" class="form-control" formControlName='c_description'
+                                        <textarea rows="5" class="form-control" formControlName='complainDetails'
                                             placeholder="Enter item description"></textarea>
                                     </div>
                                     <div class="input-group input-group-alternative" *ngIf="item_reportDirective.submitted"
                                         style="color: red; background-color: rgb(219, 214, 214);">
-                                        <div *ngIf="hasError('c_description','required')">Please enter the complain</div>
+                                        <div *ngIf="hasError('complainDetails','required')">Please enter the complain</div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
                                     Item Photos:
-                                    <input class="form-control" formControlName='item_photo' type="file" (change)="onphotoselect($event)"  multiple>
+                                    <input class="form-control" formControlName='images' type="file" (change)="onphotoselect($event)"  multiple>
                                 <div *ngIf="photoerror" style="color: red; background-color: silver;"> please select valid item image</div>
                                 </div>
                                 <div class="text-center">
