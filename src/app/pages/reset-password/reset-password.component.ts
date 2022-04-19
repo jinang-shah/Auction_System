@@ -33,10 +33,12 @@ export class ResetPasswordComponent implements OnInit {
   submit(){
     const obj = this.form.value
     console.log(obj);
-    
-    this.loginService.loginService(obj);
     this.form.reset();
 
+    this.loginService.resetPassService(obj).subscribe((data)=>{
+      console.log("done")
+    });
+    
   }
    
 }

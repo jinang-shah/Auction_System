@@ -17,9 +17,11 @@ export class ForgotPasswordComponent implements OnInit {
   submit(form:NgForm){
     const obj = form.value
     console.log(obj);
-    
-    this.loginService.loginService(obj);
     form.reset();
+    this.loginService.forgotPassService(obj).subscribe((data)=>{
+      console.log("done")
+    });
+    
 
   }
 }

@@ -21,7 +21,8 @@ import { ComplainDetailsComponent } from './pages/complain-details/complain-deta
 import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from 'src/app/pages/product/product.component'
+import { ProductComponent } from 'src/app/pages/product/product.component';
+import { ChatComponent } from './pages/chat/chat.component'
 
 
 
@@ -53,7 +54,8 @@ import { ProductComponent } from 'src/app/pages/product/product.component'
     ItemreportComponent,
     SellerVerificationComponent,
     UserHistoryComponent,
-    ProductComponent
+    ProductComponent,
+    ChatComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

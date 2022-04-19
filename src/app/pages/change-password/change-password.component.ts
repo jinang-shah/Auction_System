@@ -33,11 +33,21 @@ form: FormGroup = new FormGroup({});
   }
    
   submit(){
-    const obj = this.form.value
+    // const obj = this.form.value
+
+    const obj = {
+      oldPassword:this.form.value.newpassword,
+      newPassword:this.form.value.oldpassword,
+      confirmPassword:this.form.value.confirm_password,
+    }
+
     console.log(obj);
     
+    
     this.form.reset();
-    this.loginService.loginService(obj);
+    this.loginService.changePassService(obj).subscribe((data)=>{
+      console.log("done")
+    })
 
   }
    

@@ -10,15 +10,16 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   changePassService(obj){
-    this.http.post('',obj)
+    
+    return this.http.post('http://localhost:8000/user/change-password',obj)
   }
   
   forgotPassService(obj){
-    this.http.post('',obj)
+   return this.http.post('http://localhost:8000/user/forgot-password',obj)
   }
 
   resetPassService(obj){
-    this.http.post('',obj)
+   return this.http.post('http://localhost:8000/user/reset-password',obj)
   }
 
 }
