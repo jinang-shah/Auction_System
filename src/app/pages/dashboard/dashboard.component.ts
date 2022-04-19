@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { DashboardService } from 'src/app/services/dashboard/dashboard.service';
 
 // core components
 import {
@@ -22,50 +23,20 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  newUser = [
-    {
-      userName:'Yash',
-      userEmail:'yash@gmail',
-      userContact:'9898924254'  
-    },
-    {
-      userName:'XYZ',
-      userEmail:'XYZ@gmail',
-      userContact:'9898924254'  
-    },
-    {
-      userName:'ABC',
-      userEmail:'ABC@gmail',
-      userContact:'9898924254'  
-    },
-    {
-      userName:'PQR',
-      userEmail:'PQR@gmail',
-      userContact:'9898924254'  
-    },
+  constructor(private dashboardservice:DashboardService){}
+  newUser:any = [
+    // {
+    //   userName:'Yash',
+    //   userEmail:'yash@gmail',
+    //   userContact:'9898924254'  
+    // },
   ]
 
-  newComplain = [
-    {
-      userName:'Yash',
-      date:'22/12/21'
-    },
-    {
-      userName:'XYZ',
-      date:'22/12/21'
-    },
-    {
-      userName:'ABC',
-      date:'22/12/21'
-    },
-    {
-      userName:'PQR',
-      date:'22/12/21'
-    },
-    {
-      userName:'MNO',
-      date:'22/12/21'
-    },
+  newComplain:any = [
+    // {
+    //   userName:'Yash',
+    //   date:'22/12/21'
+    // },
   ]
 
   ngOnInit() {
@@ -94,6 +65,14 @@ export class DashboardComponent implements OnInit {
 			options: chartExample1.options,
 			data: chartExample1.data
 		});
+
+    this.dashboardservice.getnewusers().subscribe((newusers) => {
+      this.newUser = newusers
+    })
+
+    this.dashboardservice.getnewcomplains().subscribe((newcomplains) => {
+      this.newComplain = newcomplains
+    })
   }
 
 
