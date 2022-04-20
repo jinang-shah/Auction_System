@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
-
+import { HttpClient } from "@angular/common/http";
 
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";

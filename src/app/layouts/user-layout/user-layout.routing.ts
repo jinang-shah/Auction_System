@@ -1,7 +1,5 @@
 import { Routes } from "@angular/router";
-
 import { SearchProductComponent } from "src/app/pages/searchProduct/searchProduct.component";
-import { AdditemComponent } from "src/app/pages/additem/additem.component";
 import { ChangePasswordComponent } from "src/app/pages/change-password/change-password.component";
 import { ComplainDetailsComponent } from "src/app/pages/complain-details/complain-details.component";
 import { ForgotPasswordComponent } from "src/app/pages/forgot-password/forgot-password.component";
@@ -15,6 +13,8 @@ import { SellerVerificationComponent } from "src/app/pages/seller-verification/s
 import { UserHistoryComponent } from "src/app/pages/user-history/user-history.component";
 import { FavouritelistComponent } from "src/app/pages/favouritelist/favouritelist.component";
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
+import { AdditemComponent } from "src/app/pages/additem/additem.component";
+
 
 export const UserLayoutRoutes: Routes = [
   {
@@ -50,7 +50,7 @@ export const UserLayoutRoutes: Routes = [
     component: AdditemComponent,
   },
   {
-    path: "item_complain",
+    path: "item-complain",
     component: ItemreportComponent,
   },
   {

@@ -1,7 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl, ReactiveFormsModule, Validators} from '@angular/forms'; 
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdditemService } from 'src/app/services/additem.service';
-import {Router} from '@angular/router'
+import { Router } from '@angular/router'
 import { AddItem } from 'src/app/models/item';
 import { DatePipe } from '@angular/common';
 
@@ -12,65 +13,65 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./additem.component.scss']
 })
 export class AdditemComponent implements OnInit {
- 
-  additemform:FormGroup;
-  name:string="";
-  description:string="";
-  category:string="";
-  basePrice!:number;
-  startDate!:string;
-  endDate!:string;
-  bill:File = null;
-  images:File = null;
-  min_date:Date = new Date();
-  catagories: any = ['Furniture','Electric','Footware']
-  submitvalid:Boolean=false;
+
+  additemform: FormGroup;
+  name: string = "";
+  description: string = "";
+  category: string = "";
+  basePrice!: number;
+  startDate!: string;
+  endDate!: string;
+  bill: File = null;
+  images: File = null;
+  min_date: Date = new Date();
+  catagories: any = ['Furniture', 'Electric', 'Footware']
+  submitvalid: Boolean = false;
 
   // image
   billerror = false;
   photoerror = false;
-  
-  constructor(private itemdata:AdditemService,private router:Router, public datepipe: DatePipe) {
-    this.createForm(); 
+
+  constructor(private itemdata: AdditemService, private router: Router, public datepipe: DatePipe) {
+    this.createForm();
     const dateFormat = 'yyyy-MM-dd';
     this.startDate = datepipe.transform(
       new Date().setDate(new Date().getDate()),
       dateFormat
     );
     this.endDate = datepipe.transform(
-      new Date().setDate(new Date().getDate()+1),
+      new Date().setDate(new Date().getDate() + 1),
       dateFormat
     );
-  
-   }
-  
+    console.log("Working");
 
-   createForm()
-   {
-     this.additemform = new FormGroup({
-      name: new FormControl('',[Validators.required,Validators.minLength(3)]),
-      category: new FormControl('',Validators.required),
-      description: new FormControl('',[Validators.required,Validators.minLength(3)]),
-      basePrice: new FormControl('',[Validators.required,Validators.min(1)]),
-      startDate: new FormControl('',[Validators.required]),
-      endDate: new FormControl('',[Validators.required]),
-      bill: new FormControl('',[Validators.required]),
-      images:new FormControl('',[Validators.required])
+  }
+
+
+  createForm() {
+    this.additemform = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      category: new FormControl('', Validators.required),
+      description: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      basePrice: new FormControl('', [Validators.required, Validators.min(1)]),
+      startDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
+      bill: new FormControl('', [Validators.required]),
+      images: new FormControl('', [Validators.required])
     })
-   }
-   
+  }
 
-  onbillselect(event){
 
-      this.bill = <File>event.target.files[0];
-      console.log(this.bill,event);
+  onbillselect(event) {
 
-    }
+    this.bill = <File>event.target.files[0];
+    console.log(this.bill, event);
 
-  onphotoselect(event){
+  }
 
-      this.images = <File>event.target.files[0];
-      console.log("photo",this.images,event);
+  onphotoselect(event) {
+
+    this.images = <File>event.target.files[0];
+    console.log("photo", this.images, event);
 
   }
 
@@ -79,18 +80,15 @@ export class AdditemComponent implements OnInit {
   //   fd.append('image' , this.item_orignalbill,this.item_orignalbill.name);
   // }
 
-  hasError(controlName,error)
-  {
+  hasError(controlName, error) {
     return this.additemform.controls[controlName].hasError(error);
   }
 
-  additem(){
-    if(this.bill == null)
-    {
+  additem() {
+    if (this.bill == null) {
       return this.billerror = true;
     }
-    if(this.images == null)
-    {
+    if (this.images == null) {
       return this.photoerror = true;
     }
     this.photoerror = false;
@@ -102,7 +100,7 @@ export class AdditemComponent implements OnInit {
     const fd = new FormData();
     const keys = Object.keys(itemData);
     for (const key of keys) {
-     fd.append(key , itemData[key]); 
+      fd.append(key, itemData[key]);
     }
 
     // this.item_name = this.additemform.controls.i_name.value;
@@ -115,33 +113,34 @@ export class AdditemComponent implements OnInit {
     // this.item_photo = this.additemform.controls.i_photo.value;
 
     const obj = {
-        // item_name:this.item_name,
-        // item_category:this.item_category,
-        // item_description:this.item_description,
-        // item_base_price:this.item_baseprice,
-        // bid_start_date:this.bid_startdate,
-        // bid_end_date:this.bid_enddate,
-        // item_bill:this.item_orignalbill,
-        // item_photo:this.item_photo
-      
+      // item_name:this.item_name,
+      // item_category:this.item_category,
+      // item_description:this.item_description,
+      // item_base_price:this.item_baseprice,
+      // bid_start_date:this.bid_startdate,
+      // bid_end_date:this.bid_enddate,
+      // item_bill:this.item_orignalbill,
+      // item_photo:this.item_photo
+
     }
-    console.log("fd",fd);
-    this.itemdata.additem_lists(fd).subscribe(data=>{
-    console.log(data); 
-    });  
+    console.log("fd", fd);
+    this.itemdata.additem_lists(fd).subscribe(data => {
+      console.log(data);
+    });
+    this.display();
   }
-  display(){
-    this.submitvalid=true;
+  display() {
+    this.submitvalid = true;
   }
-  refreshpage(){
-    this.router.navigateByUrl('/add_item');
-    this.submitvalid=false;
+  refreshpage() {
+    this.router.navigateByUrl('/additem');
+    this.submitvalid = false;
   }
-  addnewitem(){
+  addnewitem() {
     window.location.reload()
   }
   ngOnInit(): void {
-     
+
   }
 
 }
