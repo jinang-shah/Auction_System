@@ -1,63 +1,40 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
-import { ChangePasswordComponent } from './pages/change-password/change-password.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { SellerDetailsComponent } from './pages/seller-details/seller-details.component';
-import { AdditemComponent } from './pages/additem/additem.component';
-import { ItemreportComponent } from './pages/itemreport/itemreport.component';
-import { ComplainDetailsComponent } from './pages/complain-details/complain-details.component';
-import { SellerVerificationComponent } from './pages/seller-verification/seller-verification.component';
-import { UserHistoryComponent } from './pages/user-history/user-history.component';
-import { CommonModule } from '@angular/common';
-import { ProductComponent } from 'src/app/pages/product/product.component';
-import { ChatComponent } from './pages/chat/chat.component'
-
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
+import { AppRoutingModule } from "./app.routing";
+import { ComponentsModule } from "./components/components.module";
+import { CommonModule, DatePipe } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { AppComponent } from "./app.component";
+import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 
 
 @NgModule({
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule,
     ComponentsModule,
+    HttpClientModule,
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    ChangePasswordComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
-    SellerDetailsComponent,
-    AdditemComponent,
-    ItemreportComponent,
-    ComplainDetailsComponent,
-    ComplainDetailsComponent,
-    ItemreportComponent,
-    SellerVerificationComponent,
-    UserHistoryComponent,
-    ProductComponent,
-    ChatComponent
+    UserLayoutComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
