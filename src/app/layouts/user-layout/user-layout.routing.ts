@@ -26,7 +26,7 @@ export const UserLayoutRoutes: Routes = [
     component: SearchProductComponent,
   },
   {
-    path: "reset-password",
+    path: "reset-password/:id",
     component: ResetPasswordComponent,
   },
   {

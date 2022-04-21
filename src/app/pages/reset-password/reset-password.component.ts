@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/loginService/login.service';
 import { ConfirmedValidator } from '../change-password/confirmPass.validators';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -12,18 +12,26 @@ export class ResetPasswordComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   
-  constructor(private changePass: FormBuilder,private loginService:LoginService) {
+  constructor(private changePass: FormBuilder,private loginService:LoginService,private route: ActivatedRoute ) {
   
     this.form = changePass.group({
       
-      newpassword: ['', [Validators.required,Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{8,}')]],
+      password: ['', [Validators.required,Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:\{\\\}\\\[\\\]\\\|\\\+\\\-\\\=\\\_\\\)\\\(\\\)\\\`\\\/\\\\\\]])[A-Za-z0-9\d$@].{8,}')]],
       confirm_password: ['', [Validators.required]]
     }, { 
-      validator: ConfirmedValidator('newpassword', 'confirm_password')
+      validator: ConfirmedValidator('password', 'confirm_password')
     })
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log(this.route.params); // { orderby: "price" }
+
+    //throw new Error('Method not implemented.');
+      this.route.params
+        .subscribe(params => {
+          console.log(1);
+          console.log(params); // { orderby: "price" }
+           this.loginService.resetToken = params.id;// { orderby: "price" }
+        })
   }
     
   get f(){
@@ -32,7 +40,7 @@ export class ResetPasswordComponent implements OnInit {
    
   submit(){
     const obj = this.form.value
-    console.log(obj);
+    // console.log(obj);
     this.form.reset();
 
     this.loginService.resetPassService(obj).subscribe((data)=>{
