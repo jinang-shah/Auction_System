@@ -230,74 +230,11 @@
     </div>
   </div>
 </div>
-            
-            
-            
-            
-            
-            <!-- <div class="form-group">
-              <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                </div> 
-                <input class="form-control" 
-                placeholder="Password" 
-                type="password"
-                ngModel
-                #password = "ngModel">
-                <span class="help-block" *ngIf="!password.valid && password.touched"> Please Enter Valid Email !</span>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <div class="input-group input-group-alternative mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
-                </div>
-                <input class="form-control" placeholder="mobile number" type="text">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group input-group-alternative mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-align-left-2"></i></span>
-                </div>
-                <textarea class="form-control" placeholder="address" type="text"></textarea>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label" for="input-city">City</label>
-                  <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City">
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label" for="input-country">States</label>
-                  <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="State">
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label" for="input-country">Postal code</label>
-                  <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
-                </div>
-              </div>
-            </div>
-            <hr>
-            <input type="file">
-            <br><br>
-            (UPLOAD AADHAR CARD)
 
-            <div class="row my-4">
-              <div class="col-12">
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                  <label class="custom-control-label" for="customCheckRegister">
-                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                  </label>
-                </div>
-              </div>
-            </div> -->
-
+<div>
+  <ul>
+    <li *ngFor="let items of">
+      {{item.name}}
+    </li>
+  </ul>
+</div>

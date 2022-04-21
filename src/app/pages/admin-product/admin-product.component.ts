@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminProductService } from 'src/app/services/admin-product.service';
+import { AdminServicesService } from 'src/app/services/admin-services.service';
 
 @Component({
   selector: 'app-admin-product',
@@ -33,10 +35,15 @@ export class AdminProductComponent implements OnInit {
       image:"../assets/img/theme/team-1-800x800.jpg"
     }
   ]
+  data: any[];
 
-  constructor() { }
+  constructor(private adminservice:AdminProductService ) { }
 
   ngOnInit(): void {
+    this.adminservice.getProduct()
+    .subscribe((data)=>{
+      data})
   }
+  
 
 }

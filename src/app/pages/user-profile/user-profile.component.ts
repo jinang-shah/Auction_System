@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserProfileService } from 'src/app/services/user-profile.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,13 +9,19 @@ import { NgForm } from '@angular/forms';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userProfileService: UserProfileService) { }
 
   ngOnInit() {
   }
 
   onSubmit(form:NgForm){
-    console.log(form.value);
+    const obj = form; 
+     console.log(obj.value)
+    this.userProfileService.user_profile(obj)
+    .subscribe((data) => {
+      
+    },
+    (err)=>{console.log("error in profile page",err);})
   }
 
 }

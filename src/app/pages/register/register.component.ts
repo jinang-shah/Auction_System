@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-register',
@@ -8,15 +9,20 @@ import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angula
 })
 export class RegisterComponent implements OnInit {
       
-  
+constructor(private loginService:LoginService){}
 
 ngOnInit() {
+  
 }
 
 onSubmit(form:NgForm){
-  console.log(form.value);
+  const obj = form; 
+  this.loginService.register(obj)
+  .subscribe((data) => {
+    console.log(data);
+  },
+  (err)=>{console.log("error in registration",err);})
 }
-
-  }
+}
 
   
