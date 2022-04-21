@@ -45,7 +45,6 @@
                   </td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <!-- <i class="bg-warning"></i> pending -->
                       <select name="" id="">
                         <option value="" >verified</option>
                         <option value="">not verified</option>
@@ -83,10 +82,6 @@
                     </div>
                   </td>
                 </tr>
-
-
-
-
                 
               </tbody>
             </table>
@@ -119,4 +114,13 @@
         </div>
       </div>
     </div>
+
+    <div>
+      <ul>
+        <li *ngFor="let items of data">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+
     

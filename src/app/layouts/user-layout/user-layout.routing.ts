@@ -26,19 +26,19 @@ export const UserLayoutRoutes: Routes = [
     component: SearchProductComponent,
   },
   {
-    path: "reset-password",
+    path: "reset_password",
     component: ResetPasswordComponent,
   },
   {
-    path: "seller-details",
+    path: "seller_details",
     component: SellerDetailsComponent,
   },
   {
-    path: "forgot-password",
+    path: "forgot_password",
     component: ForgotPasswordComponent,
   },
   {
-    path: "change-password",
+    path: "change_password",
     component: ChangePasswordComponent,
   },
   {
@@ -54,19 +54,19 @@ export const UserLayoutRoutes: Routes = [
     component: ItemreportComponent,
   },
   {
-    path: "complian-details",
+    path: "complain_details",
     component: ComplainDetailsComponent,
   },
   {
-    path: "user-profile",
+    path: "user_profile",
     component: UserProfileComponent,
   },
   {
-    path: "seller-verification",
+    path: "seller_verification",
     component: SellerVerificationComponent,
   },
   {
-    path: "user-history",
+    path: "user_history",
     component: UserHistoryComponent,
   },
   {
