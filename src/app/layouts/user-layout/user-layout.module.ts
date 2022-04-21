@@ -22,6 +22,8 @@ import { UserHistoryComponent } from "src/app/pages/user-history/user-history.co
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
 import { NotificationComponent } from "src/app/pages/notification-page/notificationPage/notification/notification.component";
 import { ComponentsModule } from "src/app/components/components.module";
+import {NgxPaginationModule} from 'ngx-pagination';
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -33,6 +35,7 @@ import { ComponentsModule } from "src/app/components/components.module";
     ComponentsModule,
     NgbModule,
     ClipboardModule,
+    NgxPaginationModule
   ],
   declarations: [
     HomepageComponent,
