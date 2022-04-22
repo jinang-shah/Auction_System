@@ -36,8 +36,11 @@ export class ComplainDetailsComponent implements OnInit {
   }
 
   viewitem() {
-    this.router.navigateByUrl('/add_item');
+    this.router.navigateByUrl('/product');
 
+  }
+  close() {
+    this.router.navigateByUrl('/admin-complain')
   }
 
 

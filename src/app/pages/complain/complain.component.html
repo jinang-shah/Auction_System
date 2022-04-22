@@ -18,178 +18,42 @@
                                         <th scope="col">Status</th>
                                         <th scope="col"></th>
                                     </tr>
+                                
                                 </thead>
-                                <tbody>
-                                    <tr *ngFor="let complain of complains">
-                                        <th scope="row">
+                                <div *ngFor="let complain of complainListArr | keyvalue">
+                                    <div *ngFor="let com of complain.value">
+                                <tbody>   
+                                    <tr>
+                                        <td scope="row">
                                             <div class="media align-items-center">
-
                                                 <div class="media-body">
-                                                    <span class="mb-0 text-sm">{{complain.date}}</span>
+                                                    <span class="mb-0 text-sm">{{com.date}}</span>
                                                 </div>
                                             </div>
-                                        </th>
-                                        <td>{{complain.name}}</td>
+                                        </td>
+                                        <td>{{com.name}}</td>
                                         <td>
-                                            <a [routerLink]="['/complain',complain.id]">
+                                            <a [routerLink]="['/admin-complain',com.id]">
                                                 <button type="button" class="btn btn-secondary btn-sm">
-                    View Complain
-                  </button></a>
+                                                View Complain
+                                                </button></a>
                                         </td>
                                         <td>
                                             <select name="" id="">
-                    <option [selected]="complain.status=='pending'">Pending</option>
-                    <option [selected]="complain.status=='solved'">Solved</option>
-                  </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">04-03-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Nisha</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
+                                                <option [selected]="com.status=='pending'">Pending</option>
+                                                <option [selected]="com.status=='solved'">Solved</option>
+                                            </select>   
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">27-03-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Surali</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">07-02-2021</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Krunal</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">01-04-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Jinang</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">15-03-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Yash</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-
-                                        <td class="text-right">
-
-                                        </td>
-                                    </tr> -->
                                 </tbody>
+                                </div>
+                                </div>
                             </table>
                         </div>
                     </div>
