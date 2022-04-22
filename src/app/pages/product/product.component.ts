@@ -139,16 +139,11 @@ export class ProductComponent implements OnInit {
     // ]
   };
 
-  
-
-  constructor(private getProductById: GetProductByIdService)
-  {
-    console.log("socket : ",this.socket)
-    this.socket.on("connect",()=>{
+  constructor(private getProductById: GetProductByIdService) {
+    console.log("socket : ", this.socket)
+    this.socket.on("connect", () => {
       console.log("new user connected")
-      this.socket.emit('userdata',{productId:this.product._id,userId:this.user.user_id})
-      
-      
+      this.socket.emit('userdata', { productId: this.product._id, userId: this.user.user_id })
     })
 
 
@@ -192,39 +187,47 @@ export class ProductComponent implements OnInit {
     const commentData = {
       timeStamp: new Date(),
       data: this.comment,
-      productId:this.product._id
+      productId: this.product._id
     };
 
-    this.socket.emit('sendComment',commentData)
-    // this.getProductById
-    //   .getProductById("625ec3baf4024dcedd774b8e")
-    //   .subscribe((data) => {
-    //     console.log("after commentx",data);
-    //     this.product = data;
-    //   });
-    
+    this.socket.emit('sendComment', commentData)
+  }
+
+  makeBid(newBid) {
+    const bidDetails = {
+      timeStamp: new Date(),
+      amount: this.product.maxBid + newBid,
+      productId: this.product._id
+    };
+
+    this.socket.emit('makeBid', bidDetails)
   }
 
   ngOnInit(): void {
-
     this.getProductById
-      .getProductById("625ec3baf4024dcedd774b8e")
+      .getProductById("626295062364602a553dd1da")
       .subscribe((data) => {
         this.product = data;
 
         this.main_image = this.product.images[0];
 
-          this.socket.on('receiveComment',(data)=>{
-           if(this.product._id===data.productId){
-             console.log("comment")
-             this.product.comments.push(data);
-             console.log(this.product)
-           } 
+        this.socket.on('receiveComment', (data) => {
+          if (this.product._id === data.productId) {
+            console.log("comment")
+            this.product.comments.unshift(data);
+            console.log(this.product)
+          }
         })
-        
 
-        
-        
+        this.socket.on('receiveBid', (data) => {
+          if (this.product._id === data.productId) {
+            console.log(data)
+            console.log("new bid")
+            this.product.bidDetails.unshift(data);
+            this.product.maxBid = data.amount;
+            console.log(this.product)
+          }
+        })
       });
 
     this.isFavourite = this.checkIsFavourite(this.product._id);
@@ -236,26 +239,5 @@ export class ProductComponent implements OnInit {
     this.main_image = this.product.images[index];
   }
 
-  
+
 }
-
-
-
-// this.getProductById
-//       .getProductById("6255116196c147e65960161f")
-//       .subscribe((data) => {
-//         this.product = data;
-
-//         this.main_image = this.product.images[0];
-
-//         console.log("A user connected",this.product);
-//         this.socket.emit('data',{productId:this.product._id,userId:this.user.user_id})
-
-//         this.socket.on('receiveComment',(data)=>{
-//           console.log("comment")
-//            this.product.comments.push(data);
-//            console.log(this.product)
-//         })
-        
-//       });
-//     });
