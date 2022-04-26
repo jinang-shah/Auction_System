@@ -40,21 +40,21 @@
                       >
                         <img
                           alt="I"
-                          src=""
+                          src="{{details.image}}"
                         />
                       </a>
                       <div class="media-body">
-                        <span class="mb-0 text-sm">{{details.product_name}} </span>
+                        <span class="mb-0 text-sm">{{details.name}} </span>
                       </div>
                     </div>
                   </th>
                   <td>{{details.amount}}</td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i> {{details.product_status}}
+                      <i class="bg-warning"></i> {{details.status}}
                     </span>
                   </td>
-                  <td>{{details.purchased_date}} </td>
+                  <td>{{details.date}} </td>
                   <td><button class="btn btn-danger">Report</button></td>
 
                 </tr>
@@ -137,21 +137,21 @@
                       >
                         <img
                           alt="I"
-                          src=""
+                          src="{{details.image}}"
                         />
                       </a>
                       <div class="media-body">
-                        <span class="mb-0 text-sm">{{details.product_name}}</span>
+                        <span class="mb-0 text-sm">{{details.name}}</span>
                       </div>
                     </div>
                   </th>
                   <td>{{details.amount}}</td>
                   <td>
                     <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i> {{details.product_status}}
+                      <i class="bg-warning"></i> {{details.status}}
                     </span>
                   </td>
-                  <td>{{details.purchased_date}}</td>
+                  <td>{{details.date}}</td>
                 </tr>
               </tbody>
             </table>
