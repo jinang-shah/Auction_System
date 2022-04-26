@@ -11,10 +11,11 @@ export class ProductComponent implements OnInit {
   main_image!: string;
   isFavourite!: boolean;
   comment = "";
+  customBid = null;
   socket = io("ws://localhost:8000");
 
   user = {
-    user_id: "625a60030ad994a0889689e2",
+    user_id: "625a60030ad994a0889689e2",   // satyam 625a60030ad994a0889689e2  //625fe991ce662df8411b84c6
     isAdmin: false,
     fav_products: ["SDYTFYGKJHGSDH"],
   };
@@ -141,7 +142,8 @@ export class ProductComponent implements OnInit {
 
   constructor(private getProductById: GetProductByIdService) {
     console.log("socket : ", this.socket)
-    this.socket.on("connect", () => {
+
+    this.socket.on("connect", async () => {
       console.log("new user connected")
       this.socket.emit('userdata', { productId: this.product._id, userId: this.user.user_id })
     })
@@ -194,6 +196,11 @@ export class ProductComponent implements OnInit {
   }
 
   makeBid(newBid) {
+    if (newBid < 10) {
+      alert("make bid >= 10$")
+      this.customBid = null;
+      return;
+    }
     const bidDetails = {
       timeStamp: new Date(),
       amount: this.product.maxBid + newBid,
@@ -201,15 +208,22 @@ export class ProductComponent implements OnInit {
     };
 
     this.socket.emit('makeBid', bidDetails)
+    this.customBid = null;
   }
 
   ngOnInit(): void {
     this.getProductById
-      .getProductById("626295062364602a553dd1da")
+      .getProductById("626666412b20c65c70c4c5d5")  //2 -> 626666412b20c65c70c4c5d5  // 1 626295062364602a553dd1da
       .subscribe((data) => {
         this.product = data;
+        console.log(data)
 
         this.main_image = this.product.images[0];
+
+        this.socket.on("connect", async () => {
+          console.log("new user connected")
+          this.socket.emit('userdata', { productId: this.product._id, userId: this.user.user_id })
+        })
 
         this.socket.on('receiveComment', (data) => {
           if (this.product._id === data.productId) {
