@@ -49,22 +49,18 @@
             <button class="post_comment_btn" (click)="postComment()">Post</button>
         </div>
         <hr>
-        <div class="empty_comment_div" style="margin:15px" *ngIf="product.comments.length==0">
-            <p>No comments available</p>
-        </div>
-        <div class="comment_container_div" *ngIf="product.comments.length!=0">
-            <div class="single_comment_div"  *ngFor="let comment of product.comments">
+        <div class="comment_container_div">
+            <div class="single_comment_div" *ngFor="let comment of product.comments">
                 <div class="comment_user_time_div">
                     <div class="comment_user_div">
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
-                        <p class="comment_name">{{comment.name}}</p>
+                        <p class="comment_name">{{comment.senderId.name}}</p>
                     </div>
-                    <p class="comment_time">{{comment.time}}</p>
+                    <p class="comment_time">{{comment.timeStamp | date:'short'}}</p>
                 </div>
                 <div class="comment_data_div">
                     <p class="comment_data">{{comment.data}}</p>
                 </div>
-
             </div>
         </div>
     </div>
@@ -73,34 +69,34 @@
 <div class="live_div" *ngIf="product.status =='live'">
     <div class=" live_sub_div">
         <h3 class="live_status"><span class="span_live"> Live</span></h3>
-        <p class="current_bid_amount">Current Bid Amount : <span class="span_price">${{product.max_bid_amt}}</span></p>
-        <p *ngIf="!user.isAdmin && user.user_id!=product.seller_id" class="current_bid_amount">Your Last Bid Amount :
+        <p class="current_bid_amount">Current Bid Amount : <span class="span_price">${{product.maxBid}}</span></p>
+        <p *ngIf="!user.isAdmin && user.user_id!=product.sellerId" class="current_bid_amount">Your Last Bid Amount :
             <span class="span_price">$800</span>
         </p>
-        <p class="base_price">Base Price : ${{product.base_price}}</p>
-        <p>Started on : {{product.start_date}}</p>
-        <p>Ends on : {{product.end_date}}</p>
-        <div *ngIf="!user.isAdmin && !(user.user_id==product.seller_id)">
+        <p class="base_price">Base Price : ${{product.basePrice}}</p>
+        <p>Started on : {{product.startDate | date:'short'}}</p>
+        <p>Ends on : {{product.endDate | date:'short' }}</p>
+        <div *ngIf="!user.isAdmin && !(user.user_id==product.sellerId)">
             <hr>
-            <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $50</button>
-            <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $100</button>
-            <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $200</button>
+            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(50)">+ $50</button>
+            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(100)">+ $100</button>
+            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(200)">+ $200</button>
             <br>
             <br>
-            <input class="live_bidding_input" type="text" placeholder="enter $100">
+            <input class="live_bidding_input" [(ngModel)]="customBid" type="number" placeholder="enter amount">
             <br>
-            <button class="live_bidding_btn">Make Bid</button>
+            <button class="live_bidding_btn" (click)="makeBid(customBid)">Make Bid</button>
         </div>
     </div>
 
-    <div *ngIf="user.isAdmin || user.user_id==product.seller_id" class="bidding_details_div">
+    <div *ngIf="user.isAdmin || user.user_id==product.sellerId" class="bidding_details_div">
         <h2 class="bidding_details_title  bg-gradient-danger">Bidding Details :</h2>
         <div class="bidding_details_bids">
             <div class="single_bid_div">
-                <div class="single_bid_details" *ngFor="let bid of product.bidds;let i=index">
-                    <p> <span style="margin-left: 5px;" class="span_bidder_name">{{i+1}}) {{bid.name}}:</span>
-                        ${{bid.bid_amt}}</p>
-                    <p>{{bid.time}}</p>
+                <div class="single_bid_details" *ngFor="let bid of product.bidDetails;let i=index">
+                    <p> <span style="margin-left: 5px;" class="span_bidder_name">{{i+1}}) {{bid.bidderId.name}}:</span>
+                        ${{bid.bidAmount}}</p>
+                    <p>{{bid.timeStamp | date:'short' }}</p>
                 </div>
             </div>
         </div>
@@ -118,9 +114,9 @@
                 <div class="comment_user_time_div">
                     <div class="comment_user_div">
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
-                        <p class="comment_name">{{comment.name}}</p>
+                        <p class="comment_name">{{comment.senderId.name}}</p>
                     </div>
-                    <p class="comment_time">{{comment.time}}</p>
+                    <p class="comment_time">{{comment.timeStamp | date:'short'}}</p>
                 </div>
                 <div class="comment_data_div">
                     <p class="comment_data">{{comment.data}}</p>
@@ -138,12 +134,12 @@
 <div class="completed_div" *ngIf="product.status =='completed'">
     <div class=" live_sub_div">
         <h3 class="completed_status"> <span class="span_completed"> Completed</span></h3>
-        <p class="current_bid_amount">Sold For : <span class="span_price">$1000</span></p>
-        <p class="base_price">Base Price : <span class="span_price">$500</span></p>
-        <p>Completed On : {{product.end_date}}</p>
+        <p class="current_bid_amount">Sold For : <span class="span_price">${{product.maxBid}}</span></p>
+        <p class="base_price">Base Price : <span class="span_price">${{product.basePrice}}</span></p>
+        <p>Completed On : {{product.endDate | date:'short' }}</p>
     </div>
 
-    <div class="bid_win_div" *ngIf="user.user_id==product.buyer_id">
+    <div class="bid_win_div" *ngIf="user.user_id==product.buyerId">
         <img class="bid_win_gif" src="../../../assets/images/win.gif" alt="">
         <p class="bid_win_title">Congratulations You Won!!</p>
         <small>complete your payment in 10 days</small>
@@ -155,10 +151,10 @@
         <h2 class="bidding_details_title  bg-gradient-danger">Bidding Details :</h2>
         <div class="bidding_details_bids">
             <div class="single_bid_div">
-                <div class="single_bid_details" *ngFor="let bid of product.bidds;let i=index">
-                    <p> <span style="margin-left: 5px;" class="span_bidder_name">{{i+1}}) {{bid.name}}:</span>
-                        ${{bid.bid_amt}}</p>
-                    <p>5:30pm 10/02/22</p>
+                <div class="single_bid_details" *ngFor="let bid of product.bidDetails;let i=index">
+                    <p> <span style="margin-left: 5px;" class="span_bidder_name">{{i+1}}) {{bid.bidderId.name}}:</span>
+                        ${{bid.amount}}</p>
+                    <p>{{bid.timeStamp | date:'short'}}</p>
                 </div>
             </div>
         </div>
@@ -175,9 +171,9 @@
                 <div class="comment_user_time_div">
                     <div class="comment_user_div">
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
-                        <p class="comment_name">{{comment.name}}</p>
+                        <p class="comment_name">{{comment.senderId.name}}</p>
                     </div>
-                    <p class="comment_time">{{comment.time}}</p>
+                    <p class="comment_time">{{comment.timeStamp | date:'short'}}</p>
                 </div>
                 <div class="comment_data_div">
                     <p class="comment_data">{{comment.data}}</p>
