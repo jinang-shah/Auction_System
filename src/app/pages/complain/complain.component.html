@@ -1,4 +1,5 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+
     <div class="container-fluid">
         <div class="header-body">
 
@@ -32,7 +33,7 @@
                                         <td>{{complain.name}}</td>
                                         <td>
                                             <a [routerLink]="['/complain',complain.id]">
-                                                <button type="button" class="btn btn-secondary btn-sm">
+                                                <button type="button" (click)="viewcomplain()" class="btn btn-secondary btn-sm">
                     View Complain
                   </button></a>
                                         </td>

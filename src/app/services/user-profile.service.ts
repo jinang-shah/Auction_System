@@ -4,15 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class UserProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getComplain(){
-    return this.http.get('url');
+  public user_profile(data) {
+    return this.http.post('',data);
   }
 
-  getUsers(){
-    return this.http.get('http://localhost:8000/admin/users');
-  }
+  
 }

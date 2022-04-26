@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/adminService/admin.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-complain',
   templateUrl: './complain.component.html',
@@ -8,7 +8,7 @@ import { AdminService } from 'src/app/services/adminService/admin.service';
 })
 export class ComplainComponent implements OnInit {
 
-  constructor(private adminservice:AdminService ) { }
+  constructor(private adminservice:AdminService,private router:Router ) { }
 
   
 
@@ -33,9 +33,10 @@ export class ComplainComponent implements OnInit {
       id:"2266"
     }
   ]
-
  
-
+viewcomplain(){
+  this.router.navigateByUrl('/complian-details')
+}
   
 
   ngOnInit(): void {
