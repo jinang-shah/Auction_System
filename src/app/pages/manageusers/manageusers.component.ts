@@ -10,29 +10,9 @@ import { Router } from "@angular/router";
 export class ManageusersComponent implements OnInit {
   constructor(private adminservice: AdminService, private router: Router) {}
 
-  users: any = [
-    {
-      name: "xyz",
-      mail: "22/13/21",
-      number: 2345654323,
-      status: "verified",
-      id: "3456c",
-    },
-    {
-      name: "xyz",
-      mail: "22/13/21",
-      number: 2345654323,
-      status: "verified",
-      id: "21",
-    },
-    {
-      name: "xyz",
-      mail: "22/13/21",
-      number: 2345654323,
-      status: "unverified",
-      id: "234123",
-    },
-  ];
+
+  users: any = [];
+
 
   viewprofile(id) {
     this.router.navigateByUrl("/seller-details");

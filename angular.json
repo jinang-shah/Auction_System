@@ -70,8 +70,11 @@
                 },
                 "fonts": true
               },
+
+             
               "outputHashing": "all"
             }
+
           }
         },
         "serve": {

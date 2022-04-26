@@ -11,15 +11,15 @@ export const AdminLayoutRoutes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: "admin-products",
+    path: "admin_products",
     component: AdminProductComponent,
   },
   {
-    path: "admin-users",
+    path: "admin_users",
     component: ManageusersComponent,
   },
   {
-    path: "admin-complain",
+    path: "admin_complain",
     component: ComplainComponent,
   },
 ];
