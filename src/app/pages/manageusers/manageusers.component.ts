@@ -1,52 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { AdminService } from 'src/app/services/adminService/admin.service';
+import { Component, OnInit } from "@angular/core";
+import { AdminService } from "src/app/services/adminService/admin.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-manageusers',
-  templateUrl: './manageusers.component.html',
-  styleUrls: ['./manageusers.component.scss']
+  selector: "app-manageusers",
+  templateUrl: "./manageusers.component.html",
+  styleUrls: ["./manageusers.component.scss"],
 })
 export class ManageusersComponent implements OnInit {
+  constructor(private adminservice: AdminService, private router: Router) {}
 
-  constructor(private adminservice:AdminService ) { }
-
-  
-
-  users:any= [
+  users: any = [
     {
-      name:"xyz",
-      mail:"22/13/21",
+      name: "xyz",
+      mail: "22/13/21",
       number: 2345654323,
-      status:'verified',
-      id:"3456"
+      status: "verified",
+      id: "3456c",
     },
     {
-      name:"xyz",
-      mail:"22/13/21",
+      name: "xyz",
+      mail: "22/13/21",
       number: 2345654323,
-      status:'verified',
-      id: "21"
+      status: "verified",
+      id: "21",
     },
     {
-      name:"xyz",
-      mail:"22/13/21",
+      name: "xyz",
+      mail: "22/13/21",
       number: 2345654323,
-      status:'unverified',
-      id:"234123"
+      status: "unverified",
+      id: "234123",
     },
-    
-  
-  ]
+  ];
 
- 
-
-  
-
-  ngOnInit(): void {
-    this.adminservice.getUsers()
-    .subscribe((data)=>{
-      this.users= data;
-    })
+  viewprofile(id) {
+    this.router.navigateByUrl("/seller-details");
   }
 
+  ngOnInit(): void {
+    this.adminservice.getUsers().subscribe((data) => {
+      this.users = data;
+    });
+  }
 }

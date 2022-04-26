@@ -34,23 +34,24 @@
                                         <td>{{user.mail}}</td>
                                         <td>{{user.number}}</td>
                                         <td>
-                                            <a [routerLink]="['/user',user.id]">
-                                                <button type="button" class="btn btn-secondary btn-sm">
-                        View Profile
-                      </button></a>
+                                            <!-- <a [routerLink]="['http://localhost:4200/#/seller-details',user.id]"> -->
+                                            <button type="button" (click)="viewprofile()" class="btn btn-secondary btn-sm">
+                                                View Profile
+                                            </button>
+                                            <!-- </a> -->
                                         </td>
                                         <td>
                                             <select name="" id="">
-                        <option>Select</option>
-                        <option [selected]="user.status=='verified'">Verified</option>
-                        <option [selected]="user.status=='unverified'">Un-Verified</option>
-                      </select>
+                                                <option>Select</option>
+                                                <option [selected]="user.status=='verified'">Verified</option>
+                                                <option [selected]="user.status=='unverified'">Un-Verified</option>
+                                            </select>
 
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-outline-danger">
-                        X
-                      </button>
+                                                X
+                                            </button>
 
                                         </td>
                                         <td>
