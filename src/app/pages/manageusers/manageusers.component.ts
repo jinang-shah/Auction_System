@@ -35,7 +35,7 @@ export class ManageusersComponent implements OnInit {
   ];
 
   viewprofile(id) {
-    this.router.navigateByUrl("/seller-details");
+    this.router.navigateByUrl("/user-profile/" + id);
   }
 
   ngOnInit(): void {
