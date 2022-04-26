@@ -18,8 +18,10 @@ export class ForgotPasswordComponent implements OnInit {
     const obj = form.value
     console.log(obj);
     form.reset();
-    this.loginService.forgotPassService(obj).subscribe((data)=>{
-      console.log("done")
+    this.loginService.forgotPassService(obj).subscribe((resdata)=>{
+      console.log(resdata);
+      this.loginService.resetToken = resdata;
+      console.log(this.loginService.resetToken);
     });
     
 
