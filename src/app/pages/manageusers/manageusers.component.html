@@ -28,86 +28,77 @@
                           <span class="mb-0 text-sm">{{ user.name }}</span>
                         </div>
                         <div class="table-responsive">
-                            <table class="table align-items-center table-dark table-flush">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">User Name</th>
-                                        <th scope="col">User Mail_ID</th>
-                                        <th scope="col">User Phone Number></th>
-                                        <th scope="col">Profile</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Remove User</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let user of users">
-                                        <th scope="row">
-                                            <div class="media align-items-center">
+                          <table class="table align-items-center table-dark table-flush">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">User Name</th>
+                                <th scope="col">User Mail_ID</th>
+                                <th scope="col">User Phone Number></th>
+                                <th scope="col">Profile</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Remove User</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let user of users">
+                                <th scope="row">
+                                  <div class="media align-items-center">
 
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">{{user.name}}</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>{{user.mail}}</td>
-                                        <td>{{user.number}}</td>
-                                        <td>
-                                            <!-- <a [routerLink]="['http://localhost:4200/#/seller-details',user.id]"> -->
-                                            <button type="button" (click)="viewprofile()" class="btn btn-secondary btn-sm">
-                                                View Profile
-                                            </button>
-                                            <!-- </a> -->
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                                                <option>Select</option>
-                                                <option [selected]="user.status=='verified'">Verified</option>
-                                                <option [selected]="user.status=='unverified'">Un-Verified</option>
-                                            </select>
+                                    <div class="media-body">
+                                      <span class="mb-0 text-sm">{{user.name}}</span>
+                                    </div>
+                                  </div>
+                                </th>
+                                <td>{{user.mail}}</td>
+                                <td>{{user.number}}</td>
+                                <td>
+                                  <!-- <a [routerLink]="['http://localhost:4200/#/seller-details',user.id]"> -->
+                                  <button type="button" (click)="viewprofile()" class="btn btn-secondary btn-sm">
+                                    View Profile
+                                  </button>
+                                  <!-- </a> -->
+                                </td>
+                                <td>
+                                  <select name="" id="">
+                                    <option>Select</option>
+                                    <option [selected]="user.status=='verified'">Verified</option>
+                                    <option [selected]="user.status=='unverified'">Un-Verified</option>
+                                  </select>
 
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger">
-                                                X
-                                            </button>
+                                </td>
+                                <td>
+                                  <button type="button" class="btn btn-outline-danger">
+                                    X
+                                  </button>
 
-                                        </td>
-                                        <td>
+                                </td>
+                                <td>
 
-                                        </td>
-                                    </tr>
+                                </td>
+                              </tr>
+                              <td>{{ user.email }}</td>
+                              <td>{{ user.mobile }}</td>
+                              <td>
+                                <a [routerLink]="['/user', user.id]">
+                                  <button type="button" class="btn btn-secondary btn-sm">
+                                    View Profile
+                                  </button></a>
+                              </td>
+                              <td>
+                                <select name="" id="">
+                                  <option [selected]="user.status">Verified</option>
+                                  <option [selected]="!user.status">Un-Verified</option>
+                                </select>
+                              </td>
+                              <td>
+                                <button type="button" class="btn btn-outline-danger">
+                                  X
+                                </button>
+                              </td>
+                              <td></td>
 
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                    </th>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.mobile }}</td>
-                    <td>
-                      <a [routerLink]="['/user', user.id]">
-                        <button type="button" class="btn btn-secondary btn-sm">
-                          View Profile
-                        </button></a
-                      >
-                    </td>
-                    <td>
-                      <select name="" id="">
-                        <option [selected]="user.status">Verified</option>
-                        <option [selected]="!user.status">Un-Verified</option>
-                      </select>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-outline-danger">
-                        X
-                      </button>
-                    </td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
