@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
 
   user = {
     user_id: "625a60030ad994a0889689e2",   // satyam 625a60030ad994a0889689e2  //625fe991ce662df8411b84c6
-    isAdmin: false,
+    isAdmin: true,
     fav_products: ["SDYTFYGKJHGSDH"],
   };
 
@@ -213,9 +213,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductById
-      .getProductById("626666412b20c65c70c4c5d5")  //2 -> 626666412b20c65c70c4c5d5  // 1 626295062364602a553dd1da
+      .getProductById("626295062364602a553dd1da")  //2 -> 626666412b20c65c70c4c5d5  // 1 626295062364602a553dd1da
       .subscribe((data) => {
         this.product = data;
+
         console.log(data)
 
         this.main_image = this.product.images[0];

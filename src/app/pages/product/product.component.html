@@ -112,7 +112,7 @@
         <div class="comment_container_div">
             <div class="single_comment_div" *ngFor="let comment of product.comments">
                 <div class="comment_user_time_div">
-                    <div class="comment_user_div">
+                    <div class="comment_user_div">{{console.log(comment)&&3}}
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
                         <p class="comment_name">{{comment.senderId.name}}</p>
                     </div>
@@ -168,6 +168,7 @@
         <hr>
         <div class="comment_container_div">
             <div class="single_comment_div" *ngFor="let comment of product.comments">
+                {{comment | json}}
                 <div class="comment_user_time_div">
                     <div class="comment_user_div">
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
