@@ -58,7 +58,7 @@ export const UserLayoutRoutes: Routes = [
     component: ComplainDetailsComponent,
   },
   {
-    path: "user_profile",
+    path: "user_profile/:id",
     component: UserProfileComponent,
   },
   {
