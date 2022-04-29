@@ -62,4 +62,16 @@ export class AdminProductComponent implements OnInit {
     this.adminservice.verifyProduct(productId,data).subscribe((data)=>{console.log(data);
     }) 
   }
+
+  deleteProduct(id){
+    this.adminservice.removeProduct(id).subscribe((data) => {
+      console.log(data);
+    })
+    this.adminservice.getProduct().subscribe((data) => {
+      console.log('data:',data);   
+      this.products = data;
+    });
+  }
+
+
 }

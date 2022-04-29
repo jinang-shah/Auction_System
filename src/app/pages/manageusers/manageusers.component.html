@@ -1,211 +1,79 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-        <div class="header-body">
-
-            <div class="row mt-5">
-                <div class="col">
-                    <div class="card bg-default shadow">
-                        <div class="card-header bg-transparent border-0">
-                            <h1 class="text-white mb-0">Manage Users</h1>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-dark table-flush">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">User Name</th>
-                                        <th scope="col">User Mail_ID</th>
-                                        <th scope="col">User Phone Number></th>
-                                        <th scope="col">Profile</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Remove User</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let user of users">
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">{{user.name}}</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.mobile}}</td>
-                                        <td>
-                                            <a [routerLink]="['/user_profile',user._id]">
-                                                <button type="button" class="btn btn-secondary btn-sm">
-                                                    View Profile
-                                                </button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                                                <option>Select</option>
-                                                <option [selected]="user.status=='verified'">Verified</option>
-                                                <option [selected]="user.status=='unverified'">Un-Verified</option>
-                                            </select>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger">
-                                                X
-                                            </button>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">Surali</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>surali.shah@gmail.com</td>
-                                        <td>+91 9075238895</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Profile
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Select</option>
-                        <option>Verified</option>
-                        <option>Un-Verified</option>
-                      </select>
-
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger">
-                        X
-                      </button>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">Krunal</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>krunal.thakkar@gmail.com</td>
-                                        <td>+91 8356723905</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Profile
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Select</option>
-                        <option>Verified</option>
-                        <option>Un-Verified</option>
-                      </select>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger">
-                        X
-                      </button>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">Jinang</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>jinang.shah@gmail.com</td>
-                                        <td>+91 7343459032</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Profile
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Select</option>
-                        <option>Verified</option>
-                        <option>Un-Verified</option>
-                      </select>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger">
-                        X
-                      </button>
-
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">Yash</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>yash.maheshwari@gmail.com</td>
-                                        <td>+91 8923467431</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Profile
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Select</option>
-                        <option>Verified</option>
-                        <option>Un-Verified</option>
-                      </select>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-outline-danger">
-                        X
-                      </button>
-
-                                        </td>
-                                        <td class="text-right">
-
-                                        </td>
-                                    </tr> -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row mt-5">
+        <div class="col">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+              <h1 class="text-white mb-0">Manage Users</h1>
             </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">User Name</th>
+                    <th scope="col">User Mail_ID</th>
+                    <th scope="col">User Phone Number></th>
+                    <th scope="col">Profile</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Remove User</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{ user.name }}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.mobile }}</td>
+                    <td>
+                      <button
+                        type="button"
+                        (click)="viewprofile(user._id)"
+                        class="btn btn-secondary btn-sm"
+                      >
+                        View Profile
+                      </button>
+                      <!-- </a> -->
+                    </td>
+                    <td>
+                      <select
+                        name="userverify"
+                        id="user._id"
+                        (change)="verifyUsers($event, user._id)"
+                      >
+                        <option [selected]="user.isSeller" [[value]]="true">
+                          Verified
+                        </option>
+                        <option [selected]="!user.isSeller" [[value]]="false">
+                          Unverified
+                        </option>
+                      </select>
+                    </td>
+                    <td>
+                      <button
+                        class="delete"
+                        (click)="deleteUser(user._id)"
+                        type="button"
+                        class="btn btn-outline-danger"
+                      >
+                        X
+                      </button>
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- </div> -->
