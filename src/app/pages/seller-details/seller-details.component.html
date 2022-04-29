@@ -10,8 +10,8 @@
     </div>
     <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-      </svg>
+            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
     </div>
 </div>
 <!-- Seller Details -->
@@ -35,7 +35,7 @@
                                         <div class="form-control"> Seller Name</div>
                                     </td>
                                     <td>
-                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"> <button type="button" class="btn btn-primary my-1">View Complete Profile</button></a>
+                                        <button type="button" (click)="viewCompleteProfile()" class="btn btn-primary my-1">View Complete Profile</button>
                                     </td>
                                 </tr><br><br>
                                 <tr>
@@ -44,7 +44,9 @@
                                     </td>
                                     <td>
 
-                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"> <button type="button" class="btn btn-primary my-1">View Document</button></a>
+                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf">
+                                            <button type="button" class="btn btn-primary my-1">View
+                                                Document</button></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,7 +55,9 @@
                                     </td>
                                     <td>
 
-                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"> <button type="button" class="btn btn-primary my-1">View Document</button></a>
+                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf">
+                                            <button type="button" class="btn btn-primary my-1">View
+                                                Document</button></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -62,14 +66,16 @@
                                     </td>
                                     <td>
 
-                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"> <button type="button" class="btn btn-primary my-1">View Document</button></a>
+                                        <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf">
+                                            <button type="button" class="btn btn-primary my-1">View
+                                                Document</button></a>
                                     </td>
                                 </tr>
                             </table>
                             <br><br>
 
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary my-1">Back</button>
+                                <button type="button" class="btn btn-primary my-1" (click)="goBack()">Back</button>
                             </div>
                         </form>
                     </div>

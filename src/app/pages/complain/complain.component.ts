@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/adminService/admin.service';
 import { ComplainlistService } from 'src/app/services/complainlist.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-complain',
   templateUrl: './complain.component.html',
@@ -8,12 +9,17 @@ import { ComplainlistService } from 'src/app/services/complainlist.service';
 })
 export class ComplainComponent implements OnInit {
 
-  constructor(private adminservice: AdminService, private complainlist: ComplainlistService) { }
+  constructor(private adminservice: AdminService, private complainlist: ComplainlistService, private router: Router) { }
 
 
   complainListArr: any = []
   item_namee: string = "";
   list: {}[] = [];
+
+
+  viewcomplain() {
+    this.router.navigateByUrl('/complian-details')
+  }
 
 
   ngOnInit(): void {

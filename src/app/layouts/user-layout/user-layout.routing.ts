@@ -26,7 +26,7 @@ export const UserLayoutRoutes: Routes = [
     component: SearchProductComponent,
   },
   {
-    path: "reset-password",
+    path: "reset-password/:id",
     component: ResetPasswordComponent,
   },
   {
@@ -54,11 +54,11 @@ export const UserLayoutRoutes: Routes = [
     component: ItemreportComponent,
   },
   {
-    path: "complian-details",
+    path: "complain-details",
     component: ComplainDetailsComponent,
   },
   {
-    path: "user-profile",
+    path: "user-profile/:id",
     component: UserProfileComponent,
   },
   {

@@ -34,7 +34,7 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserLayoutComponent,
+    UserLayoutComponent
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

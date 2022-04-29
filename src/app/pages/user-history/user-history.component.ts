@@ -105,12 +105,9 @@ export class UserHistoryComponent implements OnInit {
   ngOnInit(): void { 
 
     this.userhistoryservice.getbuyinghistory().subscribe((buyinghistory1) => {
-
+      console.log(buyinghistory1);
+      
       this.buyinghistory = buyinghistory1
-      console.log(this.buyinghistory);
-      console.log(buyinghistory1," : buyingHistory");
-      
-      
     })
 
     this.userhistoryservice.getsellinghistory().subscribe((sellinghistory) => {
