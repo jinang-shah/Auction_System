@@ -24,5 +24,6 @@ export class ComplainlistService {
     }
     let url2 = 'http://localhost:8000/admin/complain/solve/' + complainId;
     return this.http.patch(url2, data)
+    //complain
   }
 }
