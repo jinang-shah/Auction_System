@@ -16,7 +16,7 @@ export class ComplainDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.complain.getcomplaindetails("6260ecc98480ba77b129a988")
+    this.complain.getcomplaindetails("625ebe6ff8357d3ae55b41b1")
       .subscribe((data) => {
         console.log("data", data);
         this.complainn.push(data);

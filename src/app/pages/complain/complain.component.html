@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+<!-- <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
 
@@ -8,7 +8,22 @@
                         <div class="card-header bg-transparent border-0">
                             <h1 class="text-white mb-0">Complains of Users List</h1>
                         </div>
+                        <table class="table align-items-center table-dark table-flush">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Complain Details</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
+                                </tr>
+                        
+                            </thead>
+                        </table>   
+
                         <div class="table-responsive">
+                            <div *ngFor="let complain of complainListArr | keyvalue">
+                                <div *ngFor="let com of complain.value">
                             <table class="table align-items-center table-dark table-flush">
                                 <thead class="thead-dark">
                                     <tr>
@@ -19,9 +34,8 @@
                                         <th scope="col"></th>
                                     </tr>
                                 
-                                </thead>
-                                <div *ngFor="let complain of complainListArr | keyvalue">
-                                    <div *ngFor="let com of complain.value">
+                                </thead> 
+                                
                                 <tbody>   
                                     <tr>
                                         <td scope="row">
@@ -52,8 +66,71 @@
                                         <td></td>
                                     </tr>
                                 </tbody>
-                                </div>
-                                </div>
+                                
+                            </table>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div> -->
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+
+    <div class="container-fluid">
+        <div class="header-body">
+
+            <div class="row">
+                <div class="col-10">
+                    <div class="card bg-default shadow">
+                        <div class="card-header bg-transparent border-0">
+                            <h1 class="text-white mb-0">Complains of Users List</h1>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-dark table-flush">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Complain Details</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let complain of complainListArr">
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+
+                                                <div class="media-body">
+                                                    <span class="mb-0 text-sm">{{complain.date}}</span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td>{{complain.name}}</td>
+                                        <td>
+                                            <a [routerLink]="['/complain',complain.id]">
+                                                <button type="button" (click)="viewcomplain()"
+                                                    class="btn btn-secondary btn-sm">
+                                                    View Complain
+                                                </button></a>
+                                        </td>
+                                        <td>
+                                            <select name="greet" id="complain.id" (change)="solveComplain($event,complain.id)">
+                                                <option [selected]="!complain.status">Pending</option>
+                                                <option [selected]="complain.status">Solved</option>
+                                            </select>
+
+                                        </td>
+
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>

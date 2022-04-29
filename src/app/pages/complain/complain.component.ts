@@ -11,7 +11,7 @@ export class ComplainComponent implements OnInit {
   constructor(private adminservice: AdminService, private complainlist: ComplainlistService) { }
 
 
-  complainListArr: {}[] = []
+  complainListArr: any = []
   item_namee: string = "";
   list: {}[] = [];
 
@@ -20,12 +20,20 @@ export class ComplainComponent implements OnInit {
 
     this.complainlist.getcomplainlist()
       .subscribe((data) => {
-        // console.log("data", data);
-        this.complainListArr.push(data);
+        console.log("data", data);
+        this.complainListArr = data
+        // this.complainListArr.push(data);
         // console.log("COM", this.complainListArr)
       })
-
-    console.log(this.list);
   }
+
+  solveComplain(e, complainId) {
+    const data = {
+      status: e.target.value
+    }
+    this.complainlist.solveComplains(complainId, data).subscribe((data) => { console.log(data) })
+  }
+
+
 
 }
