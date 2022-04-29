@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,6 +28,7 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
     NgbModule,
     RouterModule,
     AppRoutingModule,
+
   ],
   declarations: [
     AppComponent,
@@ -34,7 +36,7 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
     AuthLayoutComponent,
     UserLayoutComponent,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
