@@ -46,7 +46,7 @@
                   <td>
                     <!-- admin-product.component.html -->
                     <span class="badge badge-dot mr-4">
-                      <select name="greet" id="product.id" (change)="verifyProduct($event,product._id)">
+                      <select name="greet" id="product._id" (change)="verifyProduct($event,product._id)">
                         <option [selected]="product.isVerified" [[value]]="true">verified</option>
                         <option [selected]="!product.isVerified" [[value]]="false">Unverified</option>
                       </select>
@@ -66,8 +66,10 @@
                   <td>
                     <div class="d-flex align-items-center">
                    
-                      <button type="button" class="btn btn-danger"> Remove </button>
+                      <button type="button" class="btn btn-danger" (click)="deleteProduct(product._id)"> Remove </button>
                     </div>
+
+
                   </td>
                   
                   <td class="text-right">

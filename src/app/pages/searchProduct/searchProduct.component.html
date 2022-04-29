@@ -11,11 +11,11 @@
       <option value="upcoming">Upcoming</option>
     </select>
     <select
-      [ngModel]="catagory"
-      (change)="onFilterChanges('catagory', $event.target.value)"
+      [ngModel]="category"
+      (change)="onFilterChanges('category', $event.target.value)"
       class="btn btn-primary auction-select"
     >
-      <option value="" selected>Catagory(All)</option>
+      <option value="" selected>Category(All)</option>
       <option value="art">Art</option>
       <option value="electronics">Electronics</option>
       <option value="fashion">Fashion</option>
@@ -28,9 +28,10 @@
       class="btn btn-primary auction-select"
     >
       <option value="" selected>Sort By</option>
-      <option value="newest">Newest First</option>
-      <option value="lowest">Lowest Prize</option>
-      <option value="pname">Product Name</option>
+      <option value="startDate:asc">Starting Date</option>
+      <option value="basePrice:asc">Lowest Prize</option>
+      <option value="basePrice:desc">Highest Prize</option>
+      <option value="name:asc">Product Name</option>
     </select>
   </div>
   <div class="items-search">
