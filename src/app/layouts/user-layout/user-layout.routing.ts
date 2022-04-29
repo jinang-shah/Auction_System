@@ -30,15 +30,15 @@ export const UserLayoutRoutes: Routes = [
     component: ResetPasswordComponent,
   },
   {
-    path: "seller_details",
+    path: "seller-details",
     component: SellerDetailsComponent,
   },
   {
-    path: "forgot_password",
+    path: "forgot-password",
     component: ForgotPasswordComponent,
   },
   {
-    path: "change_password",
+    path: "change-password",
     component: ChangePasswordComponent,
   },
   {
@@ -50,23 +50,23 @@ export const UserLayoutRoutes: Routes = [
     component: AdditemComponent,
   },
   {
-    path: "item_complain",
+    path: "item-complain",
     component: ItemreportComponent,
   },
   {
-    path: "complain_details",
+    path: "complain-details",
     component: ComplainDetailsComponent,
   },
   {
-    path: "user_profile",
+    path: "user-profile/:id",
     component: UserProfileComponent,
   },
   {
-    path: "seller_verification",
+    path: "seller-verification",
     component: SellerVerificationComponent,
   },
   {
-    path: "user_history",
+    path: "user-history",
     component: UserHistoryComponent,
   },
   {

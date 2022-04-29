@@ -10,17 +10,12 @@ import { Router } from "@angular/router";
 export class ManageusersComponent implements OnInit {
   constructor(private adminservice: AdminService, private router: Router) {}
 
-
   users: any = [];
-
-
-  viewprofile(id) {
-    this.router.navigateByUrl("/seller-details");
-  }
 
   ngOnInit(): void {
     this.adminservice.getUsers().subscribe((data) => {
       this.users = data;
+      // console.log(data);
     });
   }
 }
