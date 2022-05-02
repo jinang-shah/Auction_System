@@ -96,8 +96,8 @@
                 <p *ngIf="password.errors?.required" class="text-danger">
                   Password is a required field!
                 </p>
-                <p *ngIf="email.errors?.pattern" class="text-danger">
-                  *Please enter a valid Password*
+                <p *ngIf="message" class="text-danger">
+                  {{ message }}
                 </p>
               </div>
               <div
