@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import Item from "src/db-json/items";
+import { GetProductService } from "src/app/services/get-product.service";
+import { LoaderService } from "src/app/services/loader.service";
 
 @Component({
   selector: "app-searchProduct",
@@ -8,60 +9,100 @@ import Item from "src/db-json/items";
   styleUrls: ["./searchProduct.component.scss"],
 })
 export class SearchProductComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private getProductService: GetProductService,
+    private loader: LoaderService
+  ) {}
   items = [];
-  status: string;
-  catagory: string;
-  sortBy: string;
+  currentPage = 0;
+  isEndOfData = false;
+  isFetching = false;
+  status: string = "";
+  category: string = "";
+  sortBy: string = "";
+  query: string = "";
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((newParams) => {
+      console.log("changed", this.isFetching, this.isEndOfData);
       this.status = newParams.status || "";
-      this.catagory = newParams.catagory || "";
+      this.category = newParams.category || "";
       this.sortBy = newParams.sortBy || "";
-      this.items = Item.filter((item) => {
-        if (this.status !== "" && item.status !== this.status) return false;
-        if (this.catagory !== "" && item.catagory !== this.catagory)
-          return false;
-        return true;
-      });
-      switch (this.sortBy) {
-        case "newest":
-          this.items.sort((a, b) => a.startTimestamp - b.startTimestamp);
-          break;
-        case "lowest":
-          this.items.sort((a, b) => a.prize - b.prize);
-          break;
-        case "pname":
-          this.items.sort((a, b) => a.name.localeCompare(b.name));
-          break;
-        default:
-          break;
+
+      if (newParams.query) {
+        this.query = newParams.query;
+        this.fetchData(true);
+        return;
       }
-      // this.items.sort()
+
+      this.fetchData();
     });
   }
-  onStatusChange(e: any): void {
-    this.status = e.target.value || "";
-    this.router.navigate(["/search"], {
-      queryParams: { status: this.status },
-      queryParamsHandling: "merge",
-    });
+
+  @HostListener("window:scroll", ["$event"]) onWindowScroll() {
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+      if (this.isEndOfData) return;
+      this.currentPage++;
+      this.fetchData();
+    }
   }
-  onCatagoryChange(e: any): void {
-    this.catagory = e.target.value || "";
+
+  // this function runs on any of 3 select option change
+  onFilterChanges(type, value) {
+    switch (type) {
+      case "status":
+        this.status = value;
+        break;
+      case "category":
+        this.category = value;
+        break;
+      case "sortBy":
+        this.sortBy = value;
+        break;
+    }
     this.router.navigate(["/search"], {
       queryParams: {
-        catagory: this.catagory,
+        status: this.status,
+        category: this.category,
+        sortBy: this.sortBy,
       },
       queryParamsHandling: "merge",
     });
+    this.fetchData(true);
   }
-  onSortByChange(e: any): void {
-    this.sortBy = e.target.value || "";
-    this.router.navigate(["/search"], {
-      queryParams: { sortBy: this.sortBy },
-      queryParamsHandling: "merge",
-    });
+
+  fetchData(removeOld: boolean = false) {
+    if (removeOld) {
+      this.items = [];
+      this.currentPage = 0;
+    }
+    if (this.isFetching) return;
+    this.isFetching = true;
+    this.getProductService
+      .fetchProducts({
+        query: this.query,
+        status: this.status,
+        category: this.category,
+        sortBy: this.sortBy,
+        pageNo: this.currentPage,
+        itemsPerPage: 10,
+      })
+      .subscribe(
+        (data: any[]) => {
+          console.log("now", data);
+          this.isFetching = false;
+          if (!data || data.length == 0) {
+            this.isEndOfData = true;
+            return;
+          }
+          this.items.push(...data);
+        },
+        (err) => {
+          this.isFetching = false;
+          console.log(err);
+        }
+      );
   }
 }

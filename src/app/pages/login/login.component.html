@@ -28,7 +28,8 @@
       <div class="card bg-secondary shadow border-0">
         <div class="card-header bg-transparent pb-5">
           <div class="text-muted text-center mt-2 mb-3">
-            <h1>Login Page</h1>
+            <h1 class="Login-Page">Login Page</h1>
+            <hr />
             <!-- <small>Sign in with</small></div> -->
             <!-- <div class="btn-wrapper text-center">
             <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
@@ -45,7 +46,7 @@
             <div class="text-center text-muted mb-4">
               <!-- <small>Or sign in with credentials</small> -->
             </div>
-            <form role="form">
+            <form #form="ngForm" role="form" (ngSubmit)="onSubmit(form)">
               <div class="form-group mb-3">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
@@ -57,8 +58,21 @@
                     class="form-control"
                     placeholder="Email"
                     type="email"
+                    name="email"
+                    ngModel
+                    #email="ngModel"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    required
                   />
                 </div>
+              </div>
+              <div *ngIf="email.touched || email.dirty">
+                <p *ngIf="email.errors?.required" class="text-danger">
+                  Email is a required field!
+                </p>
+                <p *ngIf="email.errors?.pattern" class="text-danger">
+                  *Please enter a valid Email*
+                </p>
               </div>
               <div class="form-group">
                 <div class="input-group input-group-alternative">
@@ -71,8 +85,20 @@
                     class="form-control"
                     placeholder="Password"
                     type="password"
+                    ngModel
+                    #password="ngModel"
+                    required
+                    name="password"
                   />
                 </div>
+              </div>
+              <div *ngIf="password.touched || password.dirty">
+                <p *ngIf="password.errors?.required" class="text-danger">
+                  Password is a required field!
+                </p>
+                <p *ngIf="email.errors?.pattern" class="text-danger">
+                  *Please enter a valid Password*
+                </p>
               </div>
               <div
                 class="custom-control custom-control-alternative custom-checkbox"
@@ -87,23 +113,29 @@
                 </label>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary my-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary my-4"
+                  [disabled]="!form.valid"
+                >
                   Sign in
                 </button>
               </div>
             </form>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <a href="javascript:void(0)" class="text-light"
-              ><small>Forgot password?</small></a
-            >
-          </div>
-          <div class="col-6 text-right">
-            <a href="javascript:void(0)" class="text-light"
-              ><small>Create new account</small></a
-            >
+          <hr />
+          <!-- </div> -->
+          <div class="row mt-3">
+            <div class="col-6">
+              <a href="javascript:void(0)" class="text-dark"
+                ><mark>Forgot Password?</mark></a
+              >
+            </div>
+            <div class="col-6 text-right">
+              <a href="javascript:void(0)" class="text-dark"
+                ><mark>Create New Account!</mark></a
+              >
+            </div>
           </div>
         </div>
       </div>

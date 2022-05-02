@@ -5,12 +5,13 @@
       <a
         class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
         routerLinkActive="active"
-        routerLink="/"
+        [routerLink]="['/']"
         >{{ getTitle() }}</a
       >
       <!-- Form -->
       <form
-        class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
+        class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto"
+        (ngSubmit)="searchItem()"
       >
         <div class="form-group mb-0" [ngClass]="{ focused: focus === true }">
           <div class="input-group input-group-alternative">
@@ -20,6 +21,7 @@
               ></span>
             </div>
             <input
+              [(ngModel)]="search_query"
               class="form-control"
               placeholder="Search Product"
               type="text"
@@ -29,7 +31,7 @@
           </div>
         </div>
       </form>
-      <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <ul *ngIf="loggedIn" class="navbar-nav align-items-center d-md-flex">
         <li class="nav-item" ngbDropdown placement="bottom-right">
           <a class="nav-link pr-0" role="button" ngbDropdownToggle>
             <div class="media align-items-center">
@@ -63,7 +65,12 @@
       </ul>
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
-        <li class="nav-item" ngbDropdown placement="bottom-right">
+        <li
+          *ngIf="loggedIn"
+          class="nav-item"
+          ngbDropdown
+          placement="bottom-right"
+        >
           <a class="nav-link pr-0" role="button" ngbDropdownToggle>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
@@ -73,7 +80,9 @@
                 />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm font-weight-bold">UserName</span>
+                <span class="mb-0 text-sm font-weight-bold">{{
+                  user.name
+                }}</span>
               </div>
             </div>
           </a>
@@ -114,11 +123,15 @@
               <span>Other</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
+            <a (click)="logout()" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
           </div>
+        </li>
+        <li *ngIf="!loggedIn">
+          <a routerLink="/login" class="btn btn-outline-secondary">Login</a>
+          <a routerLink="/register" class="btn btn-secondary">Register</a>
         </li>
       </ul>
     </div>

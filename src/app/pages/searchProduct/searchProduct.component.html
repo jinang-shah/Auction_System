@@ -2,7 +2,7 @@
   <div class="filter">
     <select
       [ngModel]="status"
-      (change)="onStatusChange($event)"
+      (change)="onFilterChanges('status', $event.target.value)"
       class="btn btn-primary auction-select"
     >
       <option value="" selected>Status(All)</option>
@@ -11,11 +11,11 @@
       <option value="upcoming">Upcoming</option>
     </select>
     <select
-      [ngModel]="catagory"
-      (change)="onCatagoryChange($event)"
+      [ngModel]="category"
+      (change)="onFilterChanges('category', $event.target.value)"
       class="btn btn-primary auction-select"
     >
-      <option value="" selected>Catagory</option>
+      <option value="" selected>Category(All)</option>
       <option value="art">Art</option>
       <option value="electronics">Electronics</option>
       <option value="fashion">Fashion</option>
@@ -24,16 +24,25 @@
     </select>
     <select
       [ngModel]="sortBy"
-      (change)="onSortByChange($event)"
+      (change)="onFilterChanges('sortBy', $event.target.value)"
       class="btn btn-primary auction-select"
     >
       <option value="" selected>Sort By</option>
-      <option value="newest">Newest First</option>
-      <option value="lowest">Lowest Prize</option>
-      <option value="pname">Product Name</option>
+      <option value="startDate:asc">Starting Date</option>
+      <option value="basePrice:asc">Lowest Prize</option>
+      <option value="basePrice:desc">Highest Prize</option>
+      <option value="name:asc">Product Name</option>
     </select>
   </div>
   <div class="items-search">
+    <div *ngIf="items.length == 0">No Product Found</div>
     <app-item *ngFor="let item of items" [item]="item"></app-item>
+  </div>
+  <div *ngIf="!isEndOfData" class="loading">
+    <div class="lines l1"></div>
+    <div class="lines l2"></div>
+    <div class="lines l3"></div>
+    <div class="lines l4"></div>
+    <div class="lines l5"></div>
   </div>
 </div>
