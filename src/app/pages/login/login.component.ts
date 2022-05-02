@@ -11,6 +11,7 @@ import { LoginService } from "src/app/services/loginService/login.service";
 export class LoginComponent implements OnInit, OnDestroy {
   constructor(private loginService: LoginService, private router:Router) {}
   ngOnInit() {}
+  message = ''
   ngOnDestroy() {}
   onSubmit(form: NgForm) {
     console.log(form);
@@ -26,6 +27,14 @@ export class LoginComponent implements OnInit, OnDestroy {
       if(data.isValid){
         this.router.navigateByUrl('/')
       }
+    else{
+      
+      this.message=data.message;
+      setTimeout(()=>{
+        this.message=null
+      },5000)
+      //window.location.reload;
+    }
     });
   }
 }
