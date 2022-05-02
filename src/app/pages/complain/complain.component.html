@@ -21,7 +21,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let complain of complains">
+                                    <tr *ngFor="let complain of complainListArr">
                                         <th scope="row">
                                             <div class="media align-items-center">
 
@@ -33,43 +33,16 @@
                                         <td>{{complain.name}}</td>
                                         <td>
                                             <a [routerLink]="['/complain',complain.id]">
-                                                <button type="button" (click)="viewcomplain()" class="btn btn-secondary btn-sm">
-                    View Complain
-                  </button></a>
+                                                <button type="button" (click)="viewcomplain()"
+                                                    class="btn btn-secondary btn-sm">
+                                                    View Complain
+                                                </button></a>
                                         </td>
                                         <td>
-                                            <select name="" id="">
-                    <option [selected]="complain.status=='pending'">Pending</option>
-                    <option [selected]="complain.status=='solved'">Solved</option>
-                  </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <!-- <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">04-03-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Nisha</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
+                                            <select name="greet" id="complain.id" (change)="solveComplain($event,complain.id)">
+                                                <option [selected]="!complain.status">Pending</option>
+                                                <option [selected]="complain.status">Solved</option>
+                                            </select>
 
                                         </td>
 
@@ -77,119 +50,6 @@
 
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">27-03-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Surali</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">07-02-2021</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Krunal</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">01-04-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Jinang</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-
-                                                <div class="media-body">
-                                                    <span class="mb-0 text-sm">15-03-2022</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td>Yash</td>
-                                        <td>
-
-                                            <button type="button" class="btn btn-secondary btn-sm">
-                        View Complain
-                      </button>
-                                        </td>
-                                        <td>
-                                            <select name="" id="">
-                        <option>Pending</option>
-                        <option>Solved</option>
-                      </select>
-
-                                        </td>
-
-
-                                        <td class="text-right">
-
-                                        </td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

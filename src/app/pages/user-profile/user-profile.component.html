@@ -1,196 +1,133 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
-  
-   <!-- Mask -->
-   <span class="mask bg-gradient-danger opacity-8"></span>
-   
- </div>
- <div class="container-fluid mt--7">
-   <div class="row">
-     <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-       <div class="card card-profile shadow">
-       </div>
-     </div>
-     <div class="col-xl-12 order-xl-1">
-       <div class="card bg-secondary shadow">
-         <div class="card-header bg-white border-0">
-           <div class="row align-items-center">
-             <div class="col-8">
-               <a href="#!" class="btn btn-info">Edit profile</a>
-               <br>
-               <br>
-               <h2 class="mb-0">MY ACCOUNT</h2>
-             </div>
-             <div class="col-4 text-right">
-               <a href="#!" class="btn btn-sm btn-primary">Logout</a>
-             </div>
-             
-             <div class="dropdown-divider"></div>
-         </div>
-         <div class="card-body">
-           <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-             <h6 class="heading-small text-muted mb-4">User information</h6>
-             <div class="pl-lg-4">
-               <div class="row">
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-first-name">First Name</label>
-                     <input 
-                     type="text" 
-                     id="input-name" 
-                     class="form-control form-control-alternative" 
-                     placeholder="First Name"
-                     ngModel
-                     required
-                     name="firstName">
-                   </div>
-                 </div>
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-last-name">Last name</label>
-                     <input 
-                     type="text" 
-                     id="input-last-name" 
-                     class="form-control form-control-alternative" 
-                     placeholder="Last name"
-                     ngModel
-                     required
-                     name="lastName">
-                   </div>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="col-lg-6">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-email">Email</label>
-                     <input 
-                     type="text" 
-                     id="input-email" 
-                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
-                     class="form-control form-control-alternative" 
-                     placeholder="Email"
-                     ngModel
-                     required
-                     #emailref="ngModel"
-                     name="Email">
-                   </div>
-                   <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" >
-                    <div [hidden]="!emailref.errors?.pattern">Invalid Email</div> 
-                    </div>
-                 </div>
-               
-                 <div class="col-lg-6 ">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-username">Username</label>
-                     <input 
-                     type="text" 
-                     id="input-username" 
-                     class="form-control form-control-alternative" 
-                     placeholder="username"
-                     ngModel
-                     required
-                     name="username">
-                   </div>
-                 </div>
-               </div>
-               
-             </div>
-             <hr class="my-4" />
-             <!-- Address -->
-             <h6 class="heading-small text-muted mb-4">Contact information</h6>
-             <div class="pl-lg-4">
-               <div class="row">
-                 <div class="col-md-12">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-address">Address</label>
-                     <input 
-                     id="input-address" 
-                     class="form-control form-control-alternative" 
-                     placeholder="Home Address" 
-                     type="text"
-                     ngModel
-                     required
-                     name="address">
-                   </div>
-                 </div>
-               </div>
-               <div class="row">
-                 <div class="col-lg-4">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-city">City</label>
-                     <input 
-                     type="text" 
-                     id="input-city" 
-                     class="form-control form-control-alternative" 
-                     placeholder="City"
-                     ngModel 
-                     required
-                     name="city">
-                   </div>
-                 </div>
-                 <div class="col-lg-4">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-country">State</label>
-                     <input 
-                     type="text" 
-                     id="input-country" 
-                     class="form-control form-control-alternative" 
-                     placeholder="state"
-                     ngModel
-                     required
-                     name="state">
-                   </div>
-                 </div>
-                 <div class="col-lg-4">
-                   <div class="form-group">
-                     <label class="form-control-label" for="input-country">Postal code</label>
-                     <input 
-                     type="number" 
-                     id="input-postal-code" 
-                     class="form-control form-control-alternative" 
-                     placeholder="Postal code"
-                     ngModel
-                     required
-                     name="postalCode">
-                   </div>
-                 </div>
-               </div>
-             </div>
-             
 
-               <a routerLink="/tables" target="_blank">
-                 <button 
-                 type="button" 
-                 class="btn btn-outline-primary">Aadhar Card</button>
-                </a>
-               
-               <a routerLink="https://www.researchgate.net/publication/233811290_Online_Auction_Software_Fundamentals" target="_blank">
-                 <button 
-                 type="button" 
-                 class="btn btn-outline-primary">Pan Card</button>
-                </a>
-               
-               <a routerLink="https://www.manage.gov.in/studymaterial/PM.pdf" target="_blank">
-                 <button 
-                 type="button" 
-                 class="btn btn-outline-primary">Electricity Bill</button>
-                </a>
-               
-               <hr>
-              
+    <!-- Mask -->
+    <span class="mask bg-gradient-danger opacity-8"></span>
 
-               <button class="btn btn-primary" type="submit" [disabled]="!f.valid"> SAVE </button>
-             
-           </form>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
- 
- <div>
-  <ul>
-    <li *ngFor="let items of">
-      {{item.name}}
-    </li>
-  </ul>
 </div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            <div class="card card-profile shadow">
+            </div>
+        </div>
+        <div class="col-xl-12 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <a href="#!" class="btn btn-info">Edit profile</a>
+                            <br>
+                            <br>
+                            <h2 class="mb-0">MY ACCOUNT</h2>
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="#!" class="btn btn-sm btn-primary">Logout</a>
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                            <h6 class="heading-small text-muted mb-4">User information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-first-name">First Name</label>
+                                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="First Name" [ngModel]="data.name" required name="firstName">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-last-name">Last name</label>
+                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" [ngModel]="data.name" required name="lastName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-email">Email</label>
+                                            <input type="text" id="input-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control form-control-alternative" placeholder="Email" [ngModel]="data.email" required #emailref="ngModel" name="Email">
+                                        </div>
+                                        <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)">
+                                            <div [hidden]="!emailref.errors?.pattern">Invalid Email</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 ">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-username">Contect Number</label>
+                                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="username" [ngModel]="data.mobile" required name="username">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <hr class="my-4" />
+                            <!-- Address -->
+                            <h6 class="heading-small text-muted mb-4">Personal information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-address">Address</label>
+                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" type="text" [ngModel]="data.address.address" required name="address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-city">City</label>
+                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" [ngModel]="data.address.city" required name="city">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-country">State</label>
+                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="state" [ngModel]="data.address.state" required name="state">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-country">Postal code</label>
+                                            <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" [ngModel]="data.address.pimcode" required name="postalCode">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ml-3">
+                                <a routerLink="/tables" target="_blank">
+                                    <button type="button" class="btn btn-outline-primary px-2  ">Aadhar Card</button>
+                                </a>
+
+                                <a routerLink="https://www.researchgate.net/publication/233811290_Online_Auction_Software_Fundamentals" target="_blank">
+                                    <button type="button" class="btn btn-outline-primary">Pan Card</button>
+                                </a>
+
+                                <a routerLink="https://www.manage.gov.in/studymaterial/PM.pdf" target="_blank">
+                                    <button type="button" class="btn btn-outline-primary">Electricity Bill</button>
+                                </a>
+                            </div>
+
+                            <hr>
+
+
+                            <button class="btn btn-primary" type="submit" [disabled]="!f.valid"> SAVE </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                                                                    <!-- <div>
+                                                                                                        <ul>
+                                                                                                            <li *ngFor="let items of">
+                                                                                                                {{item.name}}
+                                                                                                            </li>
+                                                                                                        </ul>
+                                                                                                    </div> -->

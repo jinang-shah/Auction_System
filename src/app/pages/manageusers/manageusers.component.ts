@@ -26,10 +26,12 @@ export class ManageusersComponent implements OnInit {
     this.adminservice.removeUsers(id).subscribe((data) => {
       console.log(data);
     })
+
     this.adminservice.getUsers().subscribe((data) => {
       console.log('data:',data);
       
       this.users = data;
+      // console.log(data);
     });
   }
 

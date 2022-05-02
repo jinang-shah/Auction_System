@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/adminService/admin.service';
+import { ComplainlistService } from 'src/app/services/complainlist.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-complain',
@@ -8,43 +9,37 @@ import { Router } from '@angular/router';
 })
 export class ComplainComponent implements OnInit {
 
-  constructor(private adminservice:AdminService,private router:Router ) { }
+  constructor(private adminservice: AdminService, private complainlist: ComplainlistService, private router: Router) { }
 
-  
 
-  complains:any= [
-    {
-      name:"xyz",
-      date:"22/13/21",
-      status:"pending",
-      id:"22"
+  complainListArr: any = []
+  item_namee: string = "";
+  list: {}[] = [];
 
-    },
-    {
-      name:"xyz",
-      date:"22/13/21",
-      status:"solved",
-      id:"224"
-    },
-    {
-      name:"xyz",
-      date:"22/13/21",
-      status:"pending",
-      id:"2266"
-    }
-  ]
- 
-viewcomplain(){
-  this.router.navigateByUrl('/complian-details')
-}
-  
+
+  viewcomplain() {
+    this.router.navigateByUrl('/complian-details')
+  }
+
 
   ngOnInit(): void {
-    this.adminservice.getComplain()
-    .subscribe((data)=>{
-      this.complains= data;
-    })
+
+    this.complainlist.getcomplainlist()
+      .subscribe((data) => {
+        console.log("data", data);
+        this.complainListArr = data
+        // this.complainListArr.push(data);
+        // console.log("COM", this.complainListArr)
+      })
   }
+
+  solveComplain(e, complainId) {
+    const data = {
+      status: e.target.value
+    }
+    this.complainlist.solveComplains(complainId, data).subscribe((data) => { console.log(data) })
+  }
+
 
 
 }
