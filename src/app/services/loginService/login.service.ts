@@ -11,8 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   loginService(obj) {
-    this.http.get("http://localhost:8000/user/login", obj);
-    console.log("done");
+    return this.http.post("http://localhost:8000/user/login", obj);
   }
 
   changePassService(obj) {

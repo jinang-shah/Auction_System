@@ -19,53 +19,33 @@ export class SearchProductComponent implements OnInit {
   currentPage = 0;
   isEndOfData = false;
   isFetching = false;
-  status: string;
-  catagory: string;
-  sortBy: string;
-  query: string;
+  status: string = "";
+  category: string = "";
+  sortBy: string = "";
+  query: string = "";
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((newParams) => {
+      console.log("changed", this.isFetching, this.isEndOfData);
       this.status = newParams.status || "";
-      this.catagory = newParams.catagory || "";
+      this.category = newParams.category || "";
       this.sortBy = newParams.sortBy || "";
-      this.query = newParams.query || "";
-      this.loader.show();
-      this.getProductService
-        .fetchProducts(this.query, this.status, this.catagory, 0, 10)
-        .subscribe(
-          (data: any[]) => {
-            this.loader.hide();
-            this.items = data;
-            this.sortItems();
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+
+      if (newParams.query) {
+        this.query = newParams.query;
+        this.fetchData(true);
+        return;
+      }
+
+      this.fetchData();
     });
   }
 
   @HostListener("window:scroll", ["$event"]) onWindowScroll() {
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+      if (this.isEndOfData) return;
       this.currentPage++;
-      if (this.isFetching) return;
-      this.isFetching = true;
-      this.getProductService
-        .fetchProducts(
-          this.query,
-          this.status,
-          this.catagory,
-          this.currentPage,
-          10
-        )
-        .subscribe((data: []) => {
-          this.isFetching = false;
-          if (data.length == 0) {
-            this.isEndOfData = true;
-          }
-          this.items.push(...data);
-        });
+      this.fetchData();
     }
   }
 
@@ -75,40 +55,54 @@ export class SearchProductComponent implements OnInit {
       case "status":
         this.status = value;
         break;
-      case "catagory":
-        this.catagory = value;
+      case "category":
+        this.category = value;
         break;
       case "sortBy":
         this.sortBy = value;
         break;
     }
-    if (type == "sortBy") {
-      this.sortItems();
-      return;
-    }
     this.router.navigate(["/search"], {
       queryParams: {
         status: this.status,
-        catagory: this.catagory,
+        category: this.category,
         sortBy: this.sortBy,
       },
       queryParamsHandling: "merge",
     });
+    this.fetchData(true);
   }
 
-  sortItems() {
-    switch (this.sortBy) {
-      case "newest":
-        this.items.sort((a, b) => a.startTimestamp - b.startTimestamp);
-        break;
-      case "lowest":
-        this.items.sort((a, b) => a.basePrize - b.basePrize);
-        break;
-      case "pname":
-        this.items.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      default:
-        break;
+  fetchData(removeOld: boolean = false) {
+    if (removeOld) {
+      this.items = [];
+      this.currentPage = 0;
     }
+    if (this.isFetching) return;
+    this.isFetching = true;
+    this.getProductService
+      .fetchProducts({
+        query: this.query,
+        status: this.status,
+        category: this.category,
+        sortBy: this.sortBy,
+        pageNo: this.currentPage,
+        itemsPerPage: 10,
+      })
+      .subscribe(
+        (data: any[]) => {
+          console.log("now", data);
+          this.isFetching = false;
+          if (!data || data.length == 0) {
+            this.isEndOfData = true;
+            return;
+          }
+          this.items.push(...data);
+        },
+        (err) => {
+          this.isFetching = false;
+          console.log(err);
+        }
+      );
   }
 }
