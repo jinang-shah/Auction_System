@@ -41,7 +41,7 @@ export const UserLayoutRoutes: Routes = [
     component: ChangePasswordComponent,
   },
   {
-    path: "product",
+    path: "product/:id",
     component: ProductComponent,
   },
   {

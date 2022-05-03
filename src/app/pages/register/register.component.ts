@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {}
+
   aadharcard!: File;
 
   onaadharcardselect(event) {
@@ -41,19 +42,18 @@ export class RegisterComponent implements OnInit {
     };
 
     obj.aadharcard = this.aadharcard;
-    // const obj1 = obj;
-
+    
     const formData = new FormData();
-
     const keys = Object.keys(obj);
     for (const key of keys) {
       formData.append(key, obj[key]);
     }
+    
     this.loginService.register(formData).subscribe(
       (data: { message: string; isRegistered: boolean; user?: any }) => {
-        console.log("Userenfkc", data);
+        console.log(data);
         if (data.isRegistered) {
-          this.router.navigateByUrl("/");
+          window.location.href = "/";
         }
       },
       (err) => {
