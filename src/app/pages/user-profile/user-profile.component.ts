@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { UserProfileService } from "src/app/services/user-profile.service";
@@ -15,12 +15,21 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute
   ) {}
-  data!: any;
+  data: any = {};
+  @ViewChild("aadharcard") aadharcard;
+  @ViewChild("pancard") pancard;
+  @ViewChild("elecard") elecard;
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       console.log("id", params); // { orderby: "price" }
-      this.userService.getUserById(params.id).subscribe((data) => {
-        console.log(data);
+      this.userService.getUserById(params.id).subscribe((data: any) => {
+        this.aadharcard.nativeElement.href =
+          "http://localhost:8000/" + data.documents.aadharcard.split("/")[1];
+        this.pancard.nativeElement.href =
+          "http://localhost:8000/" + data.documents.pancard.split("/")[1];
+        this.elecard.nativeElement.href =
+          "http://localhost:8000/" + data.documents.elecard.split("/")[1];
         this.data = data;
       });
     });
