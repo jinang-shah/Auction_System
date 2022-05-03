@@ -9,24 +9,25 @@ import { LoginService } from "src/app/services/loginService/login.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor(private loginService: LoginService, private router:Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
   ngOnInit() {}
   ngOnDestroy() {}
   onSubmit(form: NgForm) {
     console.log(form);
-    
-    const obj ={
-      email:form.value.email,
-      password:form.value.password
-    }
-    
-    this.loginService.loginService(obj).subscribe((data:{message:string,isValid:boolean,user?:any})=>{
-      console.log(data);
-      
-      if(data.isValid){
-        this.router.navigateByUrl('/')
-      }
-    });
+
+    const obj = {
+      email: form.value.email,
+      password: form.value.password,
+    };
+
+    this.loginService
+      .loginService(obj)
+      .subscribe((data: { message: string; isValid: boolean; user?: any }) => {
+        console.log(data);
+
+        if (data.isValid) {
+          window.location.href = "/";
+        }
+      });
   }
 }
-

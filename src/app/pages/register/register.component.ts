@@ -16,9 +16,9 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     const obj = {
@@ -30,20 +30,20 @@ export class RegisterComponent implements OnInit {
         address: form.value.address,
         city: form.value.city,
         state: form.value.state,
-        postalCode: form.value.postalCode
+        postalCode: form.value.postalCode,
       },
       documents: [
         {
-          aadharcard: form.value.doc
-        }
-      ]
+          aadharcard: form.value.doc,
+        },
+      ],
     };
 
     this.loginService.register(obj).subscribe(
-      (data: { message: string, isRegistered: boolean, user?: any }) => {
+      (data: { message: string; isRegistered: boolean; user?: any }) => {
         console.log(data);
         if (data.isRegistered) {
-          this.router.navigateByUrl('/')
+          window.location.href = "/";
         }
       },
       (err) => {
