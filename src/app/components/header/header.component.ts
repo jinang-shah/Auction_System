@@ -62,9 +62,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    console.log("loggin out");
     this.logoutService.logout().subscribe(
       () => {
-        this.router.navigate(["/"]);
+        window.location.reload();
       },
       (err) => {
         console.log("errror in logout", err);

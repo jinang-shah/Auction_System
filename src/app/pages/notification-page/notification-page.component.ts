@@ -14,17 +14,19 @@ export class NotificationPageComponent implements OnInit {
     this.notificationService.getNotifications().subscribe(
       (data: any) => {
         data = data.data;
-
+        console.log("here data is ", data);
         // loop through all products
         for (let i = 0; i < data.length; i++) {
           let now = Date.now();
-          let start = new Date(data[i].productId.start_date);
-          let end = new Date(data[i].productId.end_date);
-          let notify = data[i].times;
+          let start = new Date(data[i].productId.startDate);
+          let end = new Date(data[i].productId.endDate);
+          let notify = data[i].when;
 
           // filter notifications which time is passed and sort
           notify.filter((n) => new Date(n.at).getTime() < now);
-          if (!notify[0]) return;
+
+          console.log("here data is ", notify);
+          if (!notify || !notify[0]) return;
           notify.sort((n1, n2) => {
             return new Date(n2.at).getTime() - new Date(n1.at).getTime();
           });
