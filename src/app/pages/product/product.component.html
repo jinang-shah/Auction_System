@@ -153,7 +153,7 @@
             <div class="single_bid_div">
                 <div class="single_bid_details" *ngFor="let bid of product.bidDetails;let i=index">
                     <p> <span style="margin-left: 5px;" class="span_bidder_name">{{i+1}}) {{bid.bidderId.name}}:</span>
-                        ${{bid.amount}}</p>
+                        ${{bid.bidAmount}}</p>
                     <p>{{bid.timeStamp | date:'short'}}</p>
                 </div>
             </div>
@@ -168,15 +168,14 @@
         <hr>
         <div class="comment_container_div">
             <div class="single_comment_div" *ngFor="let comment of product.comments">
-                {{comment | json}}
-                <div class="comment_user_time_div">
+                <div class="comment_user_time_div" *ngIf="comment.senderId!=null">
                     <div class="comment_user_div">
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
                         <p class="comment_name">{{comment.senderId.name}}</p>
                     </div>
                     <p class="comment_time">{{comment.timeStamp | date:'short'}}</p>
                 </div>
-                <div class="comment_data_div">
+                <div class="comment_data_div" *ngIf="comment.senderId!=null">
                     <p class="comment_data">{{comment.data}}</p>
                 </div>
 
