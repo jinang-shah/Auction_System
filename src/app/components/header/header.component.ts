@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { ROUTES } from "../sidebar/sidebar.component";
 import { LoginService } from "src/app/services/homepage/login.service";
 import { LogoutService } from "src/app/services/homepage/logout.service";
+import { NotificationService } from "src/app/services/notification/notification.service";
 
 @Component({
   selector: "app-header",
@@ -18,13 +19,16 @@ export class HeaderComponent implements OnInit {
 
   user = {};
   loggedIn = false;
+  notifications = [];
+  totalNotifications = 0;
+  isNewNotification = false;
   search_query;
   constructor(
     location: Location,
-    private element: ElementRef,
     private router: Router,
     private logginService: LoginService,
-    private logoutService: LogoutService
+    private logoutService: LogoutService,
+    private notificationService: NotificationService
   ) {
     this.location = location;
   }
@@ -32,10 +36,21 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.listTitles = ROUTES.filter((listTitle) => listTitle);
     this.logginService.user.subscribe((user: {}) => {
-      console.log("nnn", user);
-      this.user = user;
-      this.loggedIn = user.hasOwnProperty("name") ? true : false;
-      console.log("final", this.loggedIn, this.user);
+      if (user && typeof user == "object" && user.hasOwnProperty("name")) {
+        this.loggedIn = true;
+        this.user = user;
+        this.notificationService.getNotifications().subscribe(
+          (data) => {
+            this.isNewNotification = data.some((i) => !i.isViewed);
+            this.totalNotifications = data.length || 0;
+            this.notifications = data.slice(0, 3);
+            console.log("only 3 is ", this.notifications);
+          },
+          (err) => {
+            console.log("lol", err);
+          }
+        );
+      }
     });
   }
   getTitle() {
