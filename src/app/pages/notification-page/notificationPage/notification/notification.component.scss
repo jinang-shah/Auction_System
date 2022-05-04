@@ -4,3 +4,21 @@ img {
   margin-right: 1rem;
   mix-blend-mode: multiply;
 }
+.productName {
+  color: #cbf5ff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.deleteAnim {
+  animation: del 0.6s cubic-bezier(0.5, 0, 1, 0.5);
+}
+@keyframes del {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0.3;
+    transform: translate(100%, 0);
+  }
+}

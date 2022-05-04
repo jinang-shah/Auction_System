@@ -32,6 +32,6 @@ export class ItemComponent implements OnInit {
       return;
     }
     this.isFavorite = !this.isFavorite;
-    this.favoriteService.toggleFavorite(this.isFavorite, this.item._id);
+    this.favoriteService.toggleFavorite(this.isFavorite, this.item);
   }
 }

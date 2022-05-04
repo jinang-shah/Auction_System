@@ -1,9 +1,17 @@
-<div class="alert alert-default alert-dismissible fade show" role="alert">
+<div
+  class="alert alert-default alert-dismissible fade show"
+  [class.deleteAnim]="removeClass"
+  role="alert"
+>
   <span class="alert-inner--icon">
     <img src="{{ item.img }}" alt="" />
   </span>
   <span class="alert-inner--text">
-    Bidding of <strong>{{ item.name }}</strong> {{ item.auctionTime }}
+    Bidding of
+    <a class="productName" [routerLink]="['/product', item.productId]">{{
+      item.name
+    }}</a>
+    {{ item.auctionTime }}
   </span>
   <button
     type="button"
