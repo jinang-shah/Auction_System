@@ -22,7 +22,7 @@
         <p class="product_description_title">Description : </p>
         <p class="product_description">{{product.description}}</p>
         <p class="product_seller"><span class="span_product_seller">Catagory :</span> {{product.category}}</p>
-        <p class="product_seller"><span class="span_product_seller">Seller : </span>Yash Maheshwari</p>
+        <p class="product_seller"><span class="span_product_seller">Seller : </span>{{product.sellerId}}</p>
         <p class="product_seller"><span class="span_product_seller">Date :</span> {{product.post_date}}</p>
     </div>
 
@@ -184,21 +184,3 @@
     </div>
 </div>
 
-
-
-
-
-
-<!-- <div class="bidding_details_div">
-    <h2 class="bidding_details_title  bg-gradient-danger">Bidding Details :</h2>
-
-    <div class="bidding_details_bids">
-        <div class="single_bid_div">
-            <div class="single_bid_details" *ngFor="let bid of product.bidds;let i=index">
-                <p> <span style="margin-left: 5px;" class="span_bidder_name">{{i+1}}) {{bid.name}}:</span>
-                    ${{bid.bid_amt}}</p>
-                <p>5:30pm 10/02/22</p>
-            </div>
-        </div>
-    </div>
-</div> -->
