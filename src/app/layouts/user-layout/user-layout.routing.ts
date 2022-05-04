@@ -15,7 +15,6 @@ import { FavouritelistComponent } from "src/app/pages/favouritelist/favouritelis
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
 import { AdditemComponent } from "src/app/pages/additem/additem.component";
 
-
 export const UserLayoutRoutes: Routes = [
   {
     path: "",
@@ -42,7 +41,7 @@ export const UserLayoutRoutes: Routes = [
     component: ChangePasswordComponent,
   },
   {
-    path: "product",
+    path: "product/:id",
     component: ProductComponent,
   },
   {

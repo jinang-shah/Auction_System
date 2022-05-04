@@ -8,7 +8,7 @@ export class LogoutService {
   constructor(private http: HttpClient) {}
 
   logout() {
-    return this.http.get("http://localhost:8000/logout", {
+    return this.http.get("http://localhost:8000/user/logout", {
       withCredentials: true,
     });
   }

@@ -32,21 +32,13 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.mobile }}</td>
                     <td>
-                      <button
-                        type="button"
-                        (click)="viewprofile(user._id)"
-                        class="btn btn-secondary btn-sm"
-                      >
+                      <button type="button" (click)="viewprofile(user._id)" class="btn btn-secondary btn-sm">
                         View Profile
                       </button>
                       <!-- </a> -->
                     </td>
                     <td>
-                      <select
-                        name="userverify"
-                        id="user._id"
-                        (change)="verifyUsers($event, user._id)"
-                      >
+                      <select name="userverify" id="user._id" (change)="verifyUsers($event, user._id)">
                         <option [selected]="user.isSeller" [[value]]="true">
                           Verified
                         </option>
@@ -56,12 +48,8 @@
                       </select>
                     </td>
                     <td>
-                      <button
-                        class="delete"
-                        (click)="deleteUser(user._id)"
-                        type="button"
-                        class="btn btn-outline-danger"
-                      >
+                      <button class="delete" (click)="deleteUser(user._id)" type="button"
+                        class="btn btn-outline-danger">
                         X
                       </button>
                     </td>

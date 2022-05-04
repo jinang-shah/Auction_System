@@ -111,14 +111,14 @@
         <hr>
         <div class="comment_container_div">
             <div class="single_comment_div" *ngFor="let comment of product.comments">
-                <div class="comment_user_time_div">
-                    <div class="comment_user_div">{{console.log(comment)&&3}}
+                <div class="comment_user_time_div" *ngIf="comment.senderId!=null">
+                    <div class="comment_user_div">
                         <i style="height: 20px;" class="ni ni-circle-08 user_icon"></i>
                         <p class="comment_name">{{comment.senderId.name}}</p>
                     </div>
                     <p class="comment_time">{{comment.timeStamp | date:'short'}}</p>
                 </div>
-                <div class="comment_data_div">
+                <div class="comment_data_div" *ngIf="comment.senderId!=null">
                     <p class="comment_data">{{comment.data}}</p>
                 </div>
 

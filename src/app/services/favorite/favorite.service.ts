@@ -7,17 +7,24 @@ import { Injectable } from "@angular/core";
 export class FavoriteService {
   constructor(private http: HttpClient) {}
   toggleFavorite(add: boolean, productId) {
-    this.http
-      .post(
-        "http://localhost:8000/user/favourite",
-        {
-          add: true,
-          productId,
-        },
-        { withCredentials: true }
-      )
-      .subscribe((data) => {
-        console.log(data);
-      });
+    if (add) {
+      this.http
+        .post(
+          "http://localhost:8000/user/favourite/" + productId,
+          {},
+          { withCredentials: true }
+        )
+        .subscribe((data) => {
+          console.log(data);
+        });
+    } else {
+      this.http
+        .delete("http://localhost:8000/user/favourite/" + productId, {
+          withCredentials: true,
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+    }
   }
 }

@@ -27,7 +27,7 @@
               (change)="onpancardselect($event)">
             <div
               *ngIf="sellerVerificationForm.get('pancard').invalid &&(sellerVerificationForm.get('pancard').dirty || sellerVerificationForm.get('pancard').touched)"
-              class="alert alert-danger">
+              class="text-danger">
               Choose a file!!
             </div>
           </div>
@@ -38,7 +38,7 @@
               (change)="onelecardselect($event)">
             <div
               *ngIf="sellerVerificationForm.get('elecard').invalid &&(sellerVerificationForm.get('elecard').dirty || sellerVerificationForm.get('elecard').touched)"
-              class="alert alert-danger">
+              class="text-danger">
               Choose a file!!
             </div>
           </div>
