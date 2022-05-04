@@ -24,22 +24,40 @@ export class UserProfileComponent implements OnInit {
     this.route.params.subscribe((params) => {
       console.log("id", params); // { orderby: "price" }
       this.userService.getUserById(params.id).subscribe((data: any) => {
+        console.log("datat", data);
+
         this.aadharcard.nativeElement.href =
           "http://localhost:8000/" + data.documents.aadharcard.split("/")[1];
-        this.pancard.nativeElement.href =
-          "http://localhost:8000/" + data.documents.pancard.split("/")[1];
-        this.elecard.nativeElement.href =
-          "http://localhost:8000/" + data.documents.elecard.split("/")[1];
+        if (
+          !data.documents.pancard == null &&
+          !data.documents.elecard == null
+        ) {
+          this.pancard.nativeElement.href =
+            "http://localhost:8000/" + data.documents.pancard.split("/")[1];
+          this.elecard.nativeElement.href =
+            "http://localhost:8000/" + data.documents.elecard.split("/")[1];
+        }
         this.data = data;
       });
     });
   }
 
   onSubmit(form: NgForm) {
-    const obj = form;
-    console.log(obj.value);
+    const obj = {
+      name: form.value.firstName + " " + form.value.lastName,
+      email: form.value.email,
+      mobile: form.value.phone,
+      password: form.value.password,
+      address: form.value.address,
+      city: form.value.city,
+      state: form.value.state,
+      postalCode: form.value.postalCode,
+      aadharcard: form.value.doc,
+    };
     this.userProfileService.user_profile(obj).subscribe(
-      (data) => {},
+      (data: any) => {
+        alert(data.message);
+      },
       (err) => {
         console.log("error in profile page", err);
       }
