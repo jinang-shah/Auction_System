@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { SellerVerificationService } from "src/app/services/sellerVerification/seller-verification.service";
 
 @Component({
@@ -8,7 +9,10 @@ import { SellerVerificationService } from "src/app/services/sellerVerification/s
   styleUrls: ["./seller-verification.component.scss"],
 })
 export class SellerVerificationComponent implements OnInit {
-  constructor(private sellerVerification: SellerVerificationService) {}
+  constructor(
+    private sellerVerification: SellerVerificationService,
+    private router: Router
+  ) {}
 
   sellerVerificationForm = new FormGroup({
     pancard: new FormControl("", [Validators.required]),
@@ -45,6 +49,6 @@ export class SellerVerificationComponent implements OnInit {
       console.log(data);
     });
 
-    this.sellerVerificationForm.reset();
+    this.router.navigateByUrl("/");
   }
 }
