@@ -17,9 +17,9 @@ export class ComplainComponent implements OnInit {
   list: {}[] = [];
 
 
-  viewcomplain() {
-    this.router.navigateByUrl('/complian-details')
-  }
+  // viewcomplain(id) {
+  //   this.router.navigateByUrl('/complian-details/' + id)
+  // }
 
 
   ngOnInit(): void {

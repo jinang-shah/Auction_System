@@ -15,13 +15,9 @@
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <a href="#!" class="btn btn-info">Edit profile</a>
                             <br>
                             <br>
                             <h2 class="mb-0">MY ACCOUNT</h2>
-                        </div>
-                        <div class="col-4 text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">Logout</a>
                         </div>
 
                         <div class="dropdown-divider"></div>
@@ -34,13 +30,17 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-first-name">First Name</label>
-                                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="First Name" [ngModel]="data.name" required name="firstName">
+                                            <input type="text" id="input-name"
+                                                class="form-control form-control-alternative" placeholder="First Name"
+                                                [ngModel]="data.name?.split(' ')[0]" required name="firstName">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Last name</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" [ngModel]="data.name" required name="lastName">
+                                            <input type="text" id="input-last-name"
+                                                class="form-control form-control-alternative" placeholder="Last name"
+                                                [ngModel]="data.name?.split(' ')[1]" required name="lastName">
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +48,10 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-email">Email</label>
-                                            <input type="text" id="input-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control form-control-alternative" placeholder="Email" [ngModel]="data.email" required #emailref="ngModel" name="Email">
+                                            <input type="text" id="input-email"
+                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                                class="form-control form-control-alternative" placeholder="Email"
+                                                [ngModel]="data.email" required #emailref="ngModel" name="Email">
                                         </div>
                                         <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)">
                                             <div [hidden]="!emailref.errors?.pattern">Invalid Email</div>
@@ -57,8 +60,11 @@
 
                                     <div class="col-lg-6 ">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-username">Contect Number</label>
-                                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="username" [ngModel]="data.mobile" required name="username">
+                                            <label class="form-control-label" for="input-username">Contact
+                                                Number</label>
+                                            <input type="text" id="input-username"
+                                                class="form-control form-control-alternative" placeholder="phone no"
+                                                [ngModel]="data.mobile" required name="phone">
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +78,9 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-address">Address</label>
-                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" type="text" [ngModel]="data.address.address" required name="address">
+                                            <input id="input-address" class="form-control form-control-alternative"
+                                                placeholder="Home Address" type="text" [ngModel]="data.address" required
+                                                name="address">
                                         </div>
                                     </div>
                                 </div>
@@ -80,34 +88,40 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-city">City</label>
-                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" [ngModel]="data.address.city" required name="city">
+                                            <input type="text" id="input-city"
+                                                class="form-control form-control-alternative" placeholder="City"
+                                                [ngModel]="data.city" required name="city">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">State</label>
-                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="state" [ngModel]="data.address.state" required name="state">
+                                            <input type="text" id="input-country"
+                                                class="form-control form-control-alternative" placeholder="state"
+                                                [ngModel]="data.state" required name="state">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">Postal code</label>
-                                            <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" [ngModel]="data.address.pimcode" required name="postalCode">
+                                            <input type="number" id="input-postal-code"
+                                                class="form-control form-control-alternative" placeholder="Postal code"
+                                                [ngModel]="data.postalCode" required name="postalCode">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="ml-3">
-                                <a routerLink="/tables" target="_blank">
+                                <a target="_blank" #aadharcard>
                                     <button type="button" class="btn btn-outline-primary px-2  ">Aadhar Card</button>
                                 </a>
 
-                                <a routerLink="https://www.researchgate.net/publication/233811290_Online_Auction_Software_Fundamentals" target="_blank">
+                                <a target="_blank" #pancard>
                                     <button type="button" class="btn btn-outline-primary">Pan Card</button>
                                 </a>
 
-                                <a routerLink="https://www.manage.gov.in/studymaterial/PM.pdf" target="_blank">
+                                <a target="_blank" #elecard>
                                     <button type="button" class="btn btn-outline-primary">Electricity Bill</button>
                                 </a>
                             </div>
@@ -115,7 +129,7 @@
                             <hr>
 
 
-                            <button class="btn btn-primary" type="submit" [disabled]="!f.valid"> SAVE </button>
+                            <button class="btn btn-primary" type="submit"> SAVE </button>
 
                         </form>
                     </div>
@@ -123,11 +137,3 @@
             </div>
         </div>
     </div>
-
-                                                                                                    <!-- <div>
-                                                                                                        <ul>
-                                                                                                            <li *ngFor="let items of">
-                                                                                                                {{item.name}}
-                                                                                                            </li>
-                                                                                                        </ul>
-                                                                                                    </div> -->

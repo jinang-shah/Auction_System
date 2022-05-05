@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplainDetailsService } from 'src/app/services/complain-details.service';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-complain-details',
@@ -9,16 +9,24 @@ import { Router } from '@angular/router'
 })
 export class ComplainDetailsComponent implements OnInit {
 
-  constructor(private complain: ComplainDetailsService, private router: Router) { }
+  constructor(private complain: ComplainDetailsService, private router: Router, private route: ActivatedRoute) { }
 
   complainn: {}[] = []
   item_namee: string = "";
+  id!: any
 
 
   ngOnInit(): void {
-    this.complain.getcomplaindetails("625ebe6ff8357d3ae55b41b1")
-      .subscribe((data) => {
+
+    this.route.params.subscribe((params) => {
+      this.id = params.id
+
+    })
+    this.complain.getcomplaindetails(this.id)
+      .subscribe((data: any) => {
         console.log("data", data);
+        console.log(data.images[0]);
+
         this.complainn.push(data);
         console.log("com", this.complainn);
 

@@ -11,7 +11,9 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   loginService(obj) {
-    return this.http.post("http://localhost:8000/user/login", obj);
+    return this.http.post("http://localhost:8000/user/login", obj, {
+      withCredentials: true,
+    });
   }
 
   changePassService(obj) {

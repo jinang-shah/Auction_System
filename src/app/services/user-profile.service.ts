@@ -8,7 +8,9 @@ export class UserProfileService {
   constructor(private http: HttpClient) {}
 
   public user_profile(data) {
-    return this.http.post("", data);
+    return this.http.patch("http://localhost:8000/user/edit", data, {
+      withCredentials: true,
+    });
   }
 
   public getuserprofile() {

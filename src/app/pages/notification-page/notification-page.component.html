@@ -1,6 +1,7 @@
 <div class="container">
-  <app-notification></app-notification>
-  <app-notification></app-notification>
-  <app-notification></app-notification>
-  <app-notification></app-notification>
+  <app-notification
+    *ngFor="let item of notifications"
+    [item]="item"
+    (onRemove)="removeNotif($event)"
+  ></app-notification>
 </div>
