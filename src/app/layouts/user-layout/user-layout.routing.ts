@@ -53,7 +53,7 @@ export const UserLayoutRoutes: Routes = [
     component: ItemreportComponent,
   },
   {
-    path: "complain-details",
+    path: "complain-details/:id",
     component: ComplainDetailsComponent,
   },
   {

@@ -5,6 +5,7 @@ import { AdditemService } from 'src/app/services/additem.service';
 import { Router } from '@angular/router'
 import { AddItem } from 'src/app/models/item';
 import { DatePipe } from '@angular/common';
+import { LoginService } from 'src/app/services/homepage/login.service';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class AdditemComponent implements OnInit {
   billerror = false;
   photoerror = false;
 
-  constructor(private itemdata: AdditemService, private router: Router, public datepipe: DatePipe) {
+  constructor(private itemdata: AdditemService, private router: Router, public datepipe: DatePipe, private loginservice: LoginService) {
     this.createForm();
     const dateFormat = 'yyyy-MM-dd';
     this.startDate = datepipe.transform(
@@ -68,9 +69,13 @@ export class AdditemComponent implements OnInit {
 
   }
 
-  onphotoselect(event) {
+  onphotoselect(event: any) {
 
+    // for (let i = 0; i < event.target.files; i++) {
     this.images = <File>event.target.files[0];
+    // }
+
+
     console.log("photo", this.images, event);
 
   }
@@ -140,7 +145,13 @@ export class AdditemComponent implements OnInit {
     window.location.reload()
   }
   ngOnInit(): void {
-
+    this.loginservice.user.subscribe((data: any) => {
+      if (!data || !data.name) {
+        this.router.navigateByUrl("/login")
+      } else if (!data.isSeller) {
+        this.router.navigateByUrl("/seller-verification")
+      }
+    })
   }
 
 }

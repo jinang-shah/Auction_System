@@ -110,7 +110,7 @@ export class ProductComponent implements OnInit {
     let id;
     this.route.params.subscribe((params) => {
       console.log("id", params);
-      id = params.id // { orderby: "price" }
+      id = params.id
     });
 
 
