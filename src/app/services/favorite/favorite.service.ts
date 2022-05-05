@@ -34,4 +34,14 @@ export class FavoriteService {
         });
     }
   }
+
+  getList(pageNo, itemsPerPage) {
+    return this.http.get("http://localhost:8000/user/favourite/", {
+      withCredentials: true,
+      params: {
+        itemsPerPage,
+        pageNo,
+      },
+    });
+  }
 }
