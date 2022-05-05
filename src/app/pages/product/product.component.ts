@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { GetProductByIdService } from "src/app/services/get-product-by-id.service";
 import { io } from "socket.io-client";
 import { ActivatedRoute } from "@angular/router";
+import { LoginService } from "src/app/services/homepage/login.service";
+import { LoaderService } from "src/app/services/loader.service";
 
 @Component({
   selector: "app-product",
@@ -12,26 +14,25 @@ export class ProductComponent implements OnInit {
   main_image!: string;
   isFavourite!: boolean;
   comment = "";
+  myLastBid = 0;
   customBid = null;
   socket = io("ws://localhost:8000");
 
-  user = {
-    user_id: "626df57c822702e304d1246a",   // satyam 625a60030ad994a0889689e2  //625fe991ce662df8411b84c6
-    isAdmin: true,
-    fav_products: ["SDYTFYGKJHGSDH"],
-  };
-
+  user: any = {};
   product: any = {};
 
-  constructor(private getProductById: GetProductByIdService, private route: ActivatedRoute) {
+  constructor(
+    private getProductById: GetProductByIdService,
+    private route: ActivatedRoute,
+    private getUser: LoginService,
+    private loder: LoaderService
+  ) {
     console.log("socket : ", this.socket)
 
     this.socket.on("connect", async () => {
       console.log("new user connected")
-      this.socket.emit('userdata', { productId: this.product._id, userId: this.user.user_id })
+      this.socket.emit('userdata', { productId: this.product._id, userId: this.user._id })
     })
-
-
   }
 
   // To add or remove item in user's favourite list
@@ -79,33 +80,47 @@ export class ProductComponent implements OnInit {
     this.comment = ''
   }
 
-  makeBid(newBid) {
-    if (this.product.maxBid == 0) {
-      alert("Make bid > Base Price")
+  makeBid(newBid, addOn) {
+
+    let bidAmount;
+
+    if (addOn) {
+      bidAmount = this.product.maxBid + newBid;
+    }
+    else {
+      bidAmount = newBid;
+    }
+
+    if (bidAmount < this.product.basePrice) {
+      alert("Make bid >= Base Price")
       this.customBid = null;
       return;
     }
-    if (newBid < this.product.basePrice) {
-      alert("make bid > basePrice")
+    if (bidAmount < this.product.maxBid) {
+      alert("Make bid >= Current Bid Amount")
       this.customBid = null;
       return;
     }
-    if (newBid < 10) {
-      alert("make bid >= 10$")
-      this.customBid = null;
-      return;
-    }
+
+
     const bidDetails = {
       timeStamp: new Date(),
-      amount: this.product.maxBid + newBid,
+      amount: bidAmount,
       productId: this.product._id
     };
 
     this.socket.emit('makeBid', bidDetails)
+    this.myLastBid = bidAmount
+    this.product.maxBid = bidAmount;
     this.customBid = null;
   }
 
   ngOnInit(): void {
+
+    this.getUser.user.subscribe((user) => {
+      this.user = user;
+      console.log("user", user);
+    })
 
     let id;
     this.route.params.subscribe((params) => {
@@ -113,11 +128,24 @@ export class ProductComponent implements OnInit {
       id = params.id
     });
 
-
     this.getProductById
       .getProductById(id)
       .subscribe((data) => {
         this.product = data;
+
+        let myBids = this.product.bidDetails.filter((bid) => {
+          return (bid.bidderId._id == this.user._id)
+        })
+
+        if (myBids) {
+          myBids.sort((bid1, bid2) => {
+            return (bid1.bidAmount - bid2.bidAmount)
+          })
+          this.myLastBid = myBids[myBids.length - 1].bidAmount;
+        }
+        else {
+          this.myLastBid = 0;
+        }
 
         console.log(data)
 
@@ -125,7 +153,7 @@ export class ProductComponent implements OnInit {
 
         this.socket.on("connect", async () => {
           console.log("new user connected")
-          this.socket.emit('userdata', { productId: this.product._id, userId: this.user.user_id })
+          this.socket.emit('userdata', { productId: this.product._id, userId: this.user._id })
         })
 
         this.socket.on('receiveComment', (data) => {

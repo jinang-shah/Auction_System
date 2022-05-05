@@ -70,26 +70,26 @@
     <div class=" live_sub_div">
         <h3 class="live_status"><span class="span_live"> Live</span></h3>
         <p class="current_bid_amount">Current Bid Amount : <span class="span_price">${{product.maxBid}}</span></p>
-        <p *ngIf="!user.isAdmin && user.user_id!=product.sellerId" class="current_bid_amount">Your Last Bid Amount :
-            <span class="span_price">$800</span>
+        <p *ngIf="!user.isAdmin && user._id!=product.sellerId" class="current_bid_amount">Your Last Bid Amount :
+            <span class="span_price">${{myLastBid}}</span>
         </p>
         <p class="base_price">Base Price : ${{product.basePrice}}</p>
         <p>Started on : {{product.startDate | date:'short'}}</p>
         <p>Ends on : {{product.endDate | date:'short' }}</p>
-        <div *ngIf="!user.isAdmin && !(user.user_id==product.sellerId)">
+        <div *ngIf="!user.isAdmin && !(user._id == product.sellerId)">
             <hr>
-            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(50)">+ $50</button>
-            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(100)">+ $100</button>
-            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(200)">+ $200</button>
+            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(50,true)">+ $50</button>
+            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(100,true)">+ $100</button>
+            <button class="btn btn-outline-danger btn btn-secondary btn-sm" (click)="makeBid(200,true)">+ $200</button>
             <br>
             <br>
             <input class="live_bidding_input" [(ngModel)]="customBid" type="number" placeholder="enter amount">
             <br>
-            <button class="live_bidding_btn" (click)="makeBid(customBid)">Make Bid</button>
+            <button class="live_bidding_btn" (click)="makeBid(customBid,false)">Make Bid</button>
         </div>
     </div>
 
-    <div *ngIf="user.isAdmin || user.user_id==product.sellerId" class="bidding_details_div">
+    <div *ngIf="user.isAdmin || user._id == product.sellerId" class="bidding_details_div">
         <h2 class="bidding_details_title  bg-gradient-danger">Bidding Details :</h2>
         <div class="bidding_details_bids">
             <div class="single_bid_div">
@@ -139,7 +139,7 @@
         <p>Completed On : {{product.endDate | date:'short' }}</p>
     </div>
 
-    <div class="bid_win_div" *ngIf="user.user_id==product.buyerId">
+    <div class="bid_win_div" *ngIf="user._id==product.buyerId">
         <img class="bid_win_gif" src="../../../assets/images/win.gif" alt="">
         <p class="bid_win_title">Congratulations You Won!!</p>
         <small>complete your payment in 10 days</small>
@@ -147,7 +147,7 @@
     </div>
 
 
-    <div *ngIf="user.isAdmin || user.user_id==product.seller_id" class="bidding_details_div">
+    <div *ngIf="user.isAdmin || user._id==product.seller_id" class="bidding_details_div">
         <h2 class="bidding_details_title  bg-gradient-danger">Bidding Details :</h2>
         <div class="bidding_details_bids">
             <div class="single_bid_div">
