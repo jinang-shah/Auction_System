@@ -47,7 +47,9 @@
                 </span>
               </td>
               <td>{{details.date}} </td>
-              <td><button class="btn btn-danger">Report</button></td>
+              <td><a [routerLink]="['/item-complain/',details.id,details.sellerId]">
+                  <button class="btn btn-danger">Report</button></a>
+              </td>
 
             </tr>
           </tbody>
