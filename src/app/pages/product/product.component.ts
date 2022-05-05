@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { GetProductByIdService } from "src/app/services/get-product-by-id.service";
 import { io } from "socket.io-client";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-product",
@@ -15,132 +16,14 @@ export class ProductComponent implements OnInit {
   socket = io("ws://localhost:8000");
 
   user = {
-    user_id: "625a60030ad994a0889689e2",   // satyam 625a60030ad994a0889689e2  //625fe991ce662df8411b84c6
+    user_id: "626df57c822702e304d1246a",   // satyam 625a60030ad994a0889689e2  //625fe991ce662df8411b84c6
     isAdmin: true,
     fav_products: ["SDYTFYGKJHGSDH"],
   };
 
-  product: any = {
-    // _id: "SDYTFYGKJHGSDH",
-    // name: "Vintage Car",
-    // description: "Lorem ipsum dolor sit amet deserunt molestiae odio ad!",
-    // catagory: "Automobiles",
-    // seller_id: "QGFBSFHMBD6446ADFBADWRWE",
-    // buyer_id: "QGFBSFHMBD6446ADFBADWRW",
-    // base_price: 100,
-    // max_bid_amt: 1000,
-    // post_date: "03/12/22",_id: "SDYTFYGKJHGSDH",
-    // name: "Vintage Car",
-    // description: "Lorem ipsum dolor sit amet deserunt molestiae odio ad!",
-    // catagory: "Automobiles",
-    // seller_id: "QGFBSFHMBD6446ADFBADWRWE",
-    // buyer_id: "QGFBSFHMBD6446ADFBADWRW",
-    // base_price: 100,
-    // max_bid_amt: 1000,
-    // post_date: "03/12/22",
-    // start_date: "03/12/22",
-    // end_date: "03/12/22",
-    // status: "live",
-    // images: [
-    //   "../../assets/images/audi1.jpeg",
-    //   "../../assets/images/audi2.jpeg",
-    //   "../../assets/images/audi3.jpeg",
-    //   // "../../assets/images/audi1.jpeg"
-    // ],
-    // bidds: [
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    //   { name: "Yash Maheshwari", bid_amt: 100, time: "02/08" },
-    //   { name: "Deep Patel", bid_amt: 100, time: "02/08" },
-    //   { name: "Vinesh Dodiya", bid_amt: 100, time: "02/08" },
-    //   { name: "Krunal Thakkar", bid_amt: 100, time: "02/08" },
-    //   { name: "Ridham Pansuriya", bid_amt: 100, time: "02/08" },
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    // ],
-    // comments: [
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatem qui at optio rerum fuga ut dolor sint ", time: "3:15pm 02/08" },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Hello", time: "3:15pm 02/08" },
-    // ]
-    // start_date: "03/12/22",
-    // end_date: "03/12/22",
-    // status: "live",
-    // images: [
-    //   "../../assets/images/audi1.jpeg",
-    //   "../../assets/images/audi2.jpeg",
-    //   "../../assets/images/audi3.jpeg",
-    //   // "../../assets/images/audi1.jpeg"
-    // ],
-    // bidds: [
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    //   { name: "Yash Maheshwari", bid_amt: 100, time: "02/08" },
-    //   { name: "Deep Patel", bid_amt: 100, time: "02/08" },
-    //   { name: "Vinesh Dodiya", bid_amt: 100, time: "02/08" },
-    //   { name: "Krunal Thakkar", bid_amt: 100, time: "02/08" },
-    //   { name: "Ridham Pansuriya", bid_amt: 100, time: "02/08" },
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    //   { name: "Jinang Shah", bid_amt: 100, time: "02/08" },
-    // ],
-    // comments: [
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatem qui at optio rerum fuga ut dolor sint ", time: "3:15pm 02/08" },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   {
-    //     sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur", time: "3: 15pm 02/08"
-    //   },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Jinang Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Yash Shah", data: "Hello", time: "3:15pm 02/08" },
-    //   { sender_id: "NJVJNWJNADKVNKJVB", name: "Deep  Shah", data: "Hello", time: "3:15pm 02/08" },
-    // ]
-  };
+  product: any = {};
 
-  constructor(private getProductById: GetProductByIdService) {
+  constructor(private getProductById: GetProductByIdService, private route: ActivatedRoute) {
     console.log("socket : ", this.socket)
 
     this.socket.on("connect", async () => {
@@ -193,9 +76,20 @@ export class ProductComponent implements OnInit {
     };
 
     this.socket.emit('sendComment', commentData)
+    this.comment = ''
   }
 
   makeBid(newBid) {
+    if (this.product.maxBid == 0) {
+      alert("Make bid > Base Price")
+      this.customBid = null;
+      return;
+    }
+    if (newBid < this.product.basePrice) {
+      alert("make bid > basePrice")
+      this.customBid = null;
+      return;
+    }
     if (newBid < 10) {
       alert("make bid >= 10$")
       this.customBid = null;
@@ -212,8 +106,16 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    let id;
+    this.route.params.subscribe((params) => {
+      console.log("id", params);
+      id = params.id
+    });
+
+
     this.getProductById
-      .getProductById("626295062364602a553dd1da")  //2 -> 626666412b20c65c70c4c5d5  // 1 626295062364602a553dd1da
+      .getProductById(id)  //2 -> 626666412b20c65c70c4c5d5  // 1 626295062364602a553dd1da
       .subscribe((data) => {
         this.product = data;
 

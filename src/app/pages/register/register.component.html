@@ -233,9 +233,16 @@
 
             <hr />
             <!-- FILE TO UPLOAD -->
-            <input type="file" name="doc" ngModel />
+            <input
+              type="file"
+              accept="application/pdf"
+              name="doc"
+              ngModel
+              required
+              (change)="onaadharcardselect($event)"
+            />
             <br /><br />
-            (UPLOAD AADHAR CARD)
+            (UPLOAD AADHAR CARD (PDF))*
 
             <!-- PRIVACY POLICY -->
             <div class="row my-4">
