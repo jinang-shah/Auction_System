@@ -115,7 +115,7 @@ export class ProductComponent implements OnInit {
 
 
     this.getProductById
-      .getProductById(id)  //2 -> 626666412b20c65c70c4c5d5  // 1 626295062364602a553dd1da
+      .getProductById(id)
       .subscribe((data) => {
         this.product = data;
 
