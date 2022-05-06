@@ -45,6 +45,7 @@ export class ResetPasswordComponent implements OnInit {
 
     this.loginService.resetPassService(obj).subscribe((data)=>{
       console.log("done")
+      
     });
     
   }
