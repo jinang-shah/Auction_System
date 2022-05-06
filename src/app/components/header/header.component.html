@@ -36,26 +36,21 @@
           <a class="nav-link pr-0" role="button" ngbDropdownToggle>
             <div class="media align-items-center">
               <i class="notiicon ni ni-bell-55"> </i>
-              <span class="badge badge-dot">
+              <span *ngIf="isNewNotification" class="badge badge-dot">
                 <i class="bg-info"></i>
               </span>
             </div>
           </a>
           <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
             <div class="dropdown-header noti-title">
-              <h6 class="text-overflow m-0">4 new notifications</h6>
+              <h6 class="text-overflow m-0">
+                {{ totalNotifications || "No" }} notifications
+              </h6>
             </div>
-            <p class="lead">
-              Auction of ItemName Started
-              <span class="badge badge-primary">5m ago</span>
-            </p>
-            <p class="lead">
-              Auction ended for ItemName
-              <span class="badge badge-primary">1h ago</span>
-            </p>
-            <p class="lead">
-              Auction of Item2Name Started
-              <span class="badge badge-primary">3d ago</span>
+            <p class="lead" *ngFor="let item of notifications">
+              Bidding of
+              <span class="badge badge-primary">{{ item.name }} </span>
+              {{ item.auctionTime }}
             </p>
             <p class="lead last">
               <a routerLink="/notifications">View More</a>
@@ -92,7 +87,7 @@
             </div>
             <a
               routerLinkActive="active"
-              [routerLink]="['/user-profile']"
+              [routerLink]="['/user-profile', user._id]"
               class="dropdown-item"
             >
               <i class="ni ni-single-02"></i>

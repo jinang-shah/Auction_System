@@ -14,7 +14,8 @@ import { UserHistoryComponent } from "src/app/pages/user-history/user-history.co
 import { FavouritelistComponent } from "src/app/pages/favouritelist/favouritelist.component";
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
 import { AdditemComponent } from "src/app/pages/additem/additem.component";
-
+import { AuthGuard } from "src/app/guards/auth.guard";
+import { SellerGuard } from "src/app/guards/seller.guard";
 
 export const UserLayoutRoutes: Routes = [
   {
@@ -30,51 +31,52 @@ export const UserLayoutRoutes: Routes = [
     component: ResetPasswordComponent,
   },
   {
-    path: "seller-details",
-    component: SellerDetailsComponent,
-  },
-  {
     path: "forgot-password",
     component: ForgotPasswordComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "change-password",
     component: ChangePasswordComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: "product",
+    path: "product/:id",
     component: ProductComponent,
   },
   {
     path: "additem",
     component: AdditemComponent,
+    canActivate: [AuthGuard, SellerGuard],
   },
   {
-    path: "item-complain",
+    path: "item-complain/:id/:sid",
     component: ItemreportComponent,
-  },
-  {
-    path: "complain-details",
-    component: ComplainDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "user-profile/:id",
     component: UserProfileComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "seller-verification",
     component: SellerVerificationComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "user-history",
     component: UserHistoryComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "favouritelist",
     component: FavouritelistComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "notifications",
     component: NotificationPageComponent,
+    canActivate: [AuthGuard],
   },
 ];

@@ -5,6 +5,7 @@ import { AdditemService } from 'src/app/services/additem.service';
 import { Router } from '@angular/router'
 import { AddItem } from 'src/app/models/item';
 import { DatePipe } from '@angular/common';
+import { LoginService } from 'src/app/services/homepage/login.service';
 
 
 @Component({
@@ -26,12 +27,12 @@ export class AdditemComponent implements OnInit {
   min_date: Date = new Date();
   catagories: any = ['Furniture', 'Electric', 'Footware']
   submitvalid: Boolean = false;
-
+  data!: any
   // image
   billerror = false;
   photoerror = false;
 
-  constructor(private itemdata: AdditemService, private router: Router, public datepipe: DatePipe) {
+  constructor(private itemdata: AdditemService, private router: Router, public datepipe: DatePipe, private loginservice: LoginService) {
     this.createForm();
     const dateFormat = 'yyyy-MM-dd';
     this.startDate = datepipe.transform(
@@ -68,9 +69,13 @@ export class AdditemComponent implements OnInit {
 
   }
 
-  onphotoselect(event) {
+  onphotoselect(event: any) {
 
+    // for (let i = 0; i < event.target.files; i++) {
     this.images = <File>event.target.files[0];
+    // }
+
+
     console.log("photo", this.images, event);
 
   }
@@ -97,6 +102,7 @@ export class AdditemComponent implements OnInit {
     const itemData: AddItem = this.additemform.value as AddItem;
     itemData.bill = this.bill;
     itemData.images = this.images;
+    itemData.sellerId = this.data._id
     const fd = new FormData();
     const keys = Object.keys(itemData);
     for (const key of keys) {
@@ -132,15 +138,23 @@ export class AdditemComponent implements OnInit {
   display() {
     this.submitvalid = true;
   }
-  refreshpage() {
-    this.router.navigateByUrl('/additem');
+  closepage() {
+    this.router.navigateByUrl('/');
     this.submitvalid = false;
   }
   addnewitem() {
     window.location.reload()
   }
   ngOnInit(): void {
-
+    this.loginservice.user.subscribe((data: any) => {
+      console.log(data);
+      this.data = data
+      if (!data || !data.name) {
+        this.router.navigateByUrl("/login")
+      } else if (!data.isSeller) {
+        this.router.navigateByUrl("/seller-verification")
+      }
+    })
   }
 
 }
