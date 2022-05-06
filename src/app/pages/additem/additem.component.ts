@@ -27,7 +27,7 @@ export class AdditemComponent implements OnInit {
   min_date: Date = new Date();
   catagories: any = ['Furniture', 'Electric', 'Footware']
   submitvalid: Boolean = false;
-
+  data!: any
   // image
   billerror = false;
   photoerror = false;
@@ -102,6 +102,7 @@ export class AdditemComponent implements OnInit {
     const itemData: AddItem = this.additemform.value as AddItem;
     itemData.bill = this.bill;
     itemData.images = this.images;
+    itemData.sellerId = this.data._id
     const fd = new FormData();
     const keys = Object.keys(itemData);
     for (const key of keys) {
@@ -137,8 +138,8 @@ export class AdditemComponent implements OnInit {
   display() {
     this.submitvalid = true;
   }
-  refreshpage() {
-    this.router.navigateByUrl('/additem');
+  closepage() {
+    this.router.navigateByUrl('/');
     this.submitvalid = false;
   }
   addnewitem() {
@@ -146,6 +147,8 @@ export class AdditemComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loginservice.user.subscribe((data: any) => {
+      console.log(data);
+      this.data = data
       if (!data || !data.name) {
         this.router.navigateByUrl("/login")
       } else if (!data.isSeller) {
