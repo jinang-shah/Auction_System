@@ -2,32 +2,17 @@
   <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
       <!-- Brand -->
-      <a
-        class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-        routerLinkActive="active"
-        [routerLink]="['/']"
-        >{{ getTitle() }}</a
-      >
+      <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active"
+        [routerLink]="['/']">{{ getTitle() }}</a>
       <!-- Form -->
-      <form
-        class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto"
-        (ngSubmit)="searchItem()"
-      >
+      <form class="navbar-search navbar-search-dark form-inline mr-3 d-md-flex ml-lg-auto" (ngSubmit)="searchItem()">
         <div class="form-group mb-0" [ngClass]="{ focused: focus === true }">
           <div class="input-group input-group-alternative">
             <div class="input-group-prepend">
-              <span class="input-group-text"
-                ><i class="fas fa-search"></i
-              ></span>
+              <span class="input-group-text"><i class="fas fa-search"></i></span>
             </div>
-            <input
-              [(ngModel)]="search_query"
-              class="form-control"
-              placeholder="Search Product"
-              type="text"
-              (focus)="focus = true"
-              (blur)="focus = false"
-            />
+            <input [(ngModel)]="search_query" class="form-control" placeholder="Search Product" type="text"
+              (focus)="focus = true" (blur)="focus = false" />
           </div>
         </div>
       </form>
@@ -60,24 +45,17 @@
       </ul>
       <!-- User -->
       <ul class="navbar-nav align-items-center d-none d-md-flex">
-        <li
-          *ngIf="loggedIn"
-          class="nav-item"
-          ngbDropdown
-          placement="bottom-right"
-        >
+        <li *ngIf="loggedIn" class="nav-item" ngbDropdown placement="bottom-right">
           <a class="nav-link pr-0" role="button" ngbDropdownToggle>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img
-                  alt="Image placeholder"
-                  src="assets/img/theme/team-4-800x800.jpg"
-                />
+                <img alt="Image placeholder"
+                  src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png" />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm font-weight-bold">{{
                   user.name
-                }}</span>
+                  }}</span>
               </div>
             </div>
           </a>
@@ -85,35 +63,19 @@
             <div class="dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/user-profile', user._id]"
-              class="dropdown-item"
-            >
+            <a routerLinkActive="active" [routerLink]="['/user-profile', user._id]" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/user-history']"
-              class="dropdown-item"
-            >
+            <a routerLinkActive="active" [routerLink]="['/user-history']" class="dropdown-item">
               <i class="fas fa-history"></i>
               <span>My History</span>
             </a>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/favouritelist']"
-              class="dropdown-item"
-            >
+            <a routerLinkActive="active" [routerLink]="['/favouritelist']" class="dropdown-item">
               <i class="fas fa-solid fa-bookmark"></i>
               <span>Saved Items</span>
             </a>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/']"
-              class="dropdown-item"
-            >
+            <a routerLinkActive="active" [routerLink]="['/']" class="dropdown-item">
               <i class="ni ni-support-16"></i>
               <span>Other</span>
             </a>

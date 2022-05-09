@@ -22,11 +22,12 @@ import { UserHistoryComponent } from "src/app/pages/user-history/user-history.co
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
 import { NotificationComponent } from "src/app/pages/notification-page/notificationPage/notification/notification.component";
 import { ComponentsModule } from "src/app/components/components.module";
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from "ngx-pagination";
+import { ImgSrcPipe } from "src/app/pages/product/img-src.pipe";
 // import { Injectable } from "@angular/core";
 // import { ToastrModule } from 'ngx-toastr';
-// @Injectable({ 
-//   providedIn: 'root' 
+// @Injectable({
+//   providedIn: 'root'
 // })
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgbModule,
     ClipboardModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     HomepageComponent,
@@ -56,7 +57,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserHistoryComponent,
     NotificationPageComponent,
     NotificationComponent,
+    ImgSrcPipe,
   ],
-  providers: []
+  providers: [],
 })
-export class UserLayoutModule { }
+export class UserLayoutModule {}
