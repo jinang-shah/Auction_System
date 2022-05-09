@@ -1,4 +1,5 @@
 export class AddItem {
+    sellerId: string
     name: string;
     category: string;
     description: string;
@@ -7,4 +8,4 @@ export class AddItem {
     endDate: string;
     bill: any;
     images: any;
-}
+};

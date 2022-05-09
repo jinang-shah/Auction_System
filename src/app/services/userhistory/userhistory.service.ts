@@ -8,10 +8,14 @@ export class UserhistoryService {
   constructor(private http: HttpClient) {}
 
   getbuyinghistory() {
-    return this.http.get("http://localhost:8000/user/buyinghistory");
+    return this.http.get("http://localhost:8000/user/buyinghistory", {
+      withCredentials: true,
+    });
   }
 
   getsellinghistory() {
-    return this.http.get("http://localhost:8000/user/sellinghistory");
+    return this.http.get("http://localhost:8000/user/sellinghistory", {
+      withCredentials: true,
+    });
   }
 }
