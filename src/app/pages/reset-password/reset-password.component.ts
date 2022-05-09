@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginService } from "src/app/services/loginService/login.service";
 import { ConfirmedValidator } from "../change-password/confirmPass.validators";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+
 @Component({
   selector: "app-reset-password",
   templateUrl: "./reset-password.component.html",
@@ -14,7 +15,8 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private changePass: FormBuilder,
     private loginService: LoginService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.form = changePass.group(
       {
@@ -34,6 +36,8 @@ export class ResetPasswordComponent implements OnInit {
       }
     );
   }
+  message = "";
+
   ngOnInit(): void {
     console.log(this.route.params); // { orderby: "price" }
 
@@ -54,8 +58,18 @@ export class ResetPasswordComponent implements OnInit {
     // console.log(obj);
     this.form.reset();
 
-    this.loginService.resetPassService(obj).subscribe((data) => {
-      console.log("done");
-    });
+    this.loginService
+      .resetPassService(obj)
+      .subscribe((data: { message: string; isValid: boolean }) => {
+        if (data.isValid) {
+          window.alert("Password Change Sucessfully");
+          this.router.navigateByUrl("/");
+        } else {
+          this.message = data.message;
+          setTimeout(() => {
+            this.message = null;
+          }, 5000);
+        }
+      });
   }
 }
