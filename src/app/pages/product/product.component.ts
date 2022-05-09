@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
 
   user = {
     user_id: "626df57c822702e304d1246a",   // satyam 625a60030ad994a0889689e2  //625fe991ce662df8411b84c6
-    isAdmin: false,
+    isAdmin: true,
     fav_products: ["SDYTFYGKJHGSDH"],
   };
 
