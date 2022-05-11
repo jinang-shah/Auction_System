@@ -30,13 +30,17 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-first-name">First Name</label>
-                                            <input type="text" id="input-name" class="form-control form-control-alternative" placeholder="First Name" [ngModel]="data.name?.split(' ')[0]" required name="firstName">
+                                            <input type="text" id="input-name"
+                                                class="form-control form-control-alternative" placeholder="First Name"
+                                                [ngModel]="data.name?.split(' ')[0]" required name="firstName">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Last name</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" [ngModel]="data.name?.split(' ')[1]" required name="lastName">
+                                            <input type="text" id="input-last-name"
+                                                class="form-control form-control-alternative" placeholder="Last name"
+                                                [ngModel]="data.name?.split(' ')[1]" required name="lastName">
                                         </div>
                                     </div>
                                 </div>
@@ -44,7 +48,10 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-email">Email</label>
-                                            <input type="text" id="input-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control form-control-alternative" placeholder="Email" [ngModel]="data.email" required #emailref="ngModel" name="Email">
+                                            <input type="text" id="input-email"
+                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                                class="form-control form-control-alternative" placeholder="Email"
+                                                [ngModel]="data.email" required #emailref="ngModel" name="Email">
                                         </div>
                                         <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)">
                                             <div [hidden]="!emailref.errors?.pattern">Invalid Email</div>
@@ -55,7 +62,9 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-username">Contact
                                                 Number</label>
-                                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="phone no" [ngModel]="data.mobile" required name="phone">
+                                            <input type="text" id="input-username"
+                                                class="form-control form-control-alternative" placeholder="phone no"
+                                                [ngModel]="data.mobile" required name="phone">
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +78,9 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-address">Address</label>
-                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" type="text" [ngModel]="data.address" required name="address">
+                                            <input id="input-address" class="form-control form-control-alternative"
+                                                placeholder="Home Address" type="text" [ngModel]="data.address" required
+                                                name="address">
                                         </div>
                                     </div>
                                 </div>
@@ -77,19 +88,25 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-city">City</label>
-                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" [ngModel]="data.city" required name="city">
+                                            <input type="text" id="input-city"
+                                                class="form-control form-control-alternative" placeholder="City"
+                                                [ngModel]="data.city" required name="city">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">State</label>
-                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="state" [ngModel]="data.state" required name="state">
+                                            <input type="text" id="input-country"
+                                                class="form-control form-control-alternative" placeholder="state"
+                                                [ngModel]="data.state" required name="state">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">Postal code</label>
-                                            <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" [ngModel]="data.postalCode" required name="postalCode">
+                                            <input type="number" id="input-postal-code"
+                                                class="form-control form-control-alternative" placeholder="Postal code"
+                                                [ngModel]="data.postalCode" required name="postalCode">
                                         </div>
                                     </div>
                                 </div>

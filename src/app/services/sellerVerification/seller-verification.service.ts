@@ -10,7 +10,8 @@ export class SellerVerificationService {
   sellerVerification(obj) {
     return this.http.post(
       "http://localhost:8000/user/sellerverification/",
-      obj
+      obj,
+      { withCredentials: true }
     );
   }
 }
