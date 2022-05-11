@@ -33,7 +33,6 @@ export const UserLayoutRoutes: Routes = [
   {
     path: "forgot-password",
     component: ForgotPasswordComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: "change-password",

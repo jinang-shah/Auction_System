@@ -35,16 +35,12 @@ export class UserProfileComponent implements OnInit {
         console.log("datat", data);
 
         this.aadharcard.nativeElement.href =
-          "http://localhost:8000/" + data.documents.aadharcard.split("/")[1];
-        if (
-          !data.documents.pancard == null &&
-          !data.documents.elecard == null
-        ) {
-          this.pancard.nativeElement.href =
-            "http://localhost:8000/" + data.documents.pancard.split("/")[1];
-          this.elecard.nativeElement.href =
-            "http://localhost:8000/" + data.documents.elecard.split("/")[1];
-        }
+          "http://localhost:8000/" + data.documents.aadharcard?.split("/")[1];
+        this.pancard.nativeElement.href =
+          "http://localhost:8000/" + data.documents.pancard?.split("/")[1];
+        this.elecard.nativeElement.href =
+          "http://localhost:8000/" + data.documents.elecard?.split("/")[1];
+
         this.data = data;
       });
     });
