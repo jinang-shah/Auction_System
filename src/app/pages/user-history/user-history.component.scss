@@ -1,9 +1,12 @@
-.nohistory{
-
-    color: whitesmoke;
-    font-size: 50px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
+.nohistory {
+  color: whitesmoke;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.media img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
 }
