@@ -1,176 +1,131 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body">
-        <!-- Card stats -->
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7" style="margin-bottom: 150px;">
+  <!-- Buying History Table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">Buying History</h3>
+        </div>
+        <table class="table align-items-center table-dark table-flush">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Product Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status</th>
+              <th scope="col">Purchased Date</th>
+              <th scope="col">Report a Product</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let details of buyinghistory | paginate:{
+                  id:'pagination1',
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count}; let i = index">
+              <th scope="row">
+                <div class="media align-items-center">
+                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img alt="I" src="{{details.image}}" />
+                  </a>
+                  <div class="media-body">
+                    <span class="mb-0 text-sm">{{details.name}} </span>
+                  </div>
+                </div>
+              </th>
+              <td>{{details.amount}}</td>
+              <td>
+                <span class="badge badge-dot mr-4">
+                  <i class="bg-warning"></i> {{details.status}}
+                </span>
+              </td>
+              <td>{{details.date}} </td>
+              <td><a [routerLink]="['/item-complain/',details.id,details.sellerId]">
+                  <button class="btn btn-danger">Report</button></a>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+        <div class="nohistory" *ngIf="buyinghistory.length == 0;">No buying History.</div>
+
+      </div>
+      <div class="card-footer py-4">
+        <nav aria-label="...">
+          <div>
+            <pagination-controls id=pagination1 previousLabel="Prev" nextLabel="Next"
+              (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+          </div>
+        </nav>
       </div>
     </div>
   </div>
-  <!-- Page content -->
-  <div class="container-fluid mt--7" style="margin-bottom: 150px;">
-    <!-- Buying History Table -->
-    <div class="row mt-5">
-      <div class="col">
-        <div class="card bg-default shadow">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="text-white mb-0">Buying History</h3>
-          </div>
-          <!-- <div *ngIf="buyinghistory.length == 0;" >No Buying History...</div>
-          <div class="table-responsive"  *ngIf="buyinghistory.length > 0;"> -->
-            <table class="table align-items-center table-dark table-flush">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Product Details</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Purchased Date</th>
-                  <th scope="col">Report a Product</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let details of buyinghistory"> 
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="{{details.productDetails.img}}"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{details.productDetails.productName}} </span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>{{details.amount}}</td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i> {{details.status}}
-                    </span>
-                  </td>
-                  <td>{{details.purchasedDate}} </td>
-                  <td><button class="btn btn-danger">Report</button></td>
+</div>
 
-                </tr>
-              </tbody>
-            </table>
-          <div class="nohistory" *ngIf="buyinghistory.length == 0;" >No buying History.</div>
-
-          </div>
-          <div class="card-footer py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:void(0)">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)"
-                    >2 <span class="sr-only">(current)</span></a
-                  >
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+<div class="container-fluid mt--7">
+  <!-- Selling History Table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">Selling History</h3>
         </div>
+        <table class="table align-items-center table-dark table-flush">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Min Price..</th>
+              <th scope="col">Status</th>
+              <th scope="col">Selling Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let details of sellinghistory | paginate:{
+                  id:'pagination2',
+                  itemsPerPage: tableSizes,
+                  currentPage: pages,
+                  totalItems: counts}; let j = index">
+              <th scope="row">
+                <div class="media align-items-center">
+                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img alt="I" src="{{details.image}}" />
+                  </a>
+                  <div class="media-body">
+                    <span class="mb-0 text-sm">{{details.name}}</span>
+                  </div>
+                </div>
+              </th>
+              <td>{{details.amount}}</td>
+              <td>
+                <span class="badge badge-dot mr-4">
+                  <i class="bg-warning"></i> {{details.status}}
+                </span>
+              </td>
+              <td>{{details.date}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="nohistory" *ngIf="sellinghistory.length == 0">No selling History.</div>
+      </div>
+      <div class="card-footer py-4">
+        <nav aria-label="...">
+          <div>
+            <pagination-controls id="pagination2" previousLabel="Prev" nextLabel="Next"
+              (pageChange)="onTableDataChanges($event)">
+            </pagination-controls>
+          </div>
+        </nav>
       </div>
     </div>
-  
-  <div class="container-fluid mt--7">
-    <!-- Selling History Table -->
-    <div class="row mt-5">
-      <div class="col">
-        <div class="card bg-default shadow">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="text-white mb-0">Selling History</h3>
-          </div>
-            <table class="table align-items-center table-dark table-flush">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Product</th>
-                  <th scope="col">Min Price..</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Selling Date</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                
-                <tr *ngFor="let details of sellinghistory">
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <a
-                        href="javascript:void(0)"
-                        class="avatar rounded-circle mr-3"
-                      >
-                        <img
-                          alt="Image placeholder"
-                          src="{{details.productDetails.img}}"
-                        />
-                      </a>
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{details.productDetails.productName}}</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td>{{details.amount}}</td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i> {{details.status}}
-                    </span>
-                  </td>
-                  <td>{{details.purchasedDate}}</td>
-                </tr>
-              </tbody>
-            </table>
-          <div class="nohistory" *ngIf="sellinghistory.length == 0" >No selling History.</div>
-          </div>
-           <div class="card-footer py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:void(0)">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)"
-                    >2 <span class="sr-only">(current)</span></a
-                  >
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  
+  </div>
+</div>

@@ -3,7 +3,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ClipboardModule } from "ngx-clipboard";
-
+import { HttpClientModule } from "@angular/common/http";
 import { UserLayoutRoutes } from "./user-layout.routing";
 import { AdditemComponent } from "src/app/pages/additem/additem.component";
 import { ChangePasswordComponent } from "src/app/pages/change-password/change-password.component";
@@ -22,8 +22,13 @@ import { UserHistoryComponent } from "src/app/pages/user-history/user-history.co
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
 import { NotificationComponent } from "src/app/pages/notification-page/notificationPage/notification/notification.component";
 import { ComponentsModule } from "src/app/components/components.module";
+import { NgxPaginationModule } from "ngx-pagination";
+import { ImgSrcPipe } from "src/app/pages/product/img-src.pipe";
+// import { Injectable } from "@angular/core";
 // import { ToastrModule } from 'ngx-toastr';
-
+// @Injectable({
+//   providedIn: 'root'
+// })
 @NgModule({
   imports: [
     FormsModule,
@@ -33,6 +38,8 @@ import { ComponentsModule } from "src/app/components/components.module";
     ComponentsModule,
     NgbModule,
     ClipboardModule,
+    NgxPaginationModule,
+    HttpClientModule,
   ],
   declarations: [
     HomepageComponent,
@@ -50,6 +57,8 @@ import { ComponentsModule } from "src/app/components/components.module";
     UserHistoryComponent,
     NotificationPageComponent,
     NotificationComponent,
+    ImgSrcPipe,
   ],
+  providers: [],
 })
 export class UserLayoutModule {}

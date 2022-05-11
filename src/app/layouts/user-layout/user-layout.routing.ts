@@ -1,7 +1,5 @@
 import { Routes } from "@angular/router";
-
 import { SearchProductComponent } from "src/app/pages/searchProduct/searchProduct.component";
-import { AdditemComponent } from "src/app/pages/additem/additem.component";
 import { ChangePasswordComponent } from "src/app/pages/change-password/change-password.component";
 import { ComplainDetailsComponent } from "src/app/pages/complain-details/complain-details.component";
 import { ForgotPasswordComponent } from "src/app/pages/forgot-password/forgot-password.component";
@@ -15,6 +13,9 @@ import { SellerVerificationComponent } from "src/app/pages/seller-verification/s
 import { UserHistoryComponent } from "src/app/pages/user-history/user-history.component";
 import { FavouritelistComponent } from "src/app/pages/favouritelist/favouritelist.component";
 import { NotificationPageComponent } from "src/app/pages/notification-page/notification-page.component";
+import { AdditemComponent } from "src/app/pages/additem/additem.component";
+import { AuthGuard } from "src/app/guards/auth.guard";
+import { SellerGuard } from "src/app/guards/seller.guard";
 
 export const UserLayoutRoutes: Routes = [
   {
@@ -26,12 +27,8 @@ export const UserLayoutRoutes: Routes = [
     component: SearchProductComponent,
   },
   {
-    path: "reset-password",
+    path: "reset-password/:id",
     component: ResetPasswordComponent,
-  },
-  {
-    path: "seller-details",
-    component: SellerDetailsComponent,
   },
   {
     path: "forgot-password",
@@ -40,41 +37,45 @@ export const UserLayoutRoutes: Routes = [
   {
     path: "change-password",
     component: ChangePasswordComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: "product",
+    path: "product/:id",
     component: ProductComponent,
   },
   {
     path: "additem",
     component: AdditemComponent,
+    canActivate: [AuthGuard, SellerGuard],
   },
   {
-    path: "item_complain",
+    path: "item-complain/:id/:sid",
     component: ItemreportComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: "complian-details",
-    component: ComplainDetailsComponent,
-  },
-  {
-    path: "user-profile",
+    path: "user-profile/:id",
     component: UserProfileComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "seller-verification",
     component: SellerVerificationComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "user-history",
     component: UserHistoryComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "favouritelist",
     component: FavouritelistComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: "notifications",
     component: NotificationPageComponent,
+    canActivate: [AuthGuard],
   },
 ];

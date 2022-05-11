@@ -2,10 +2,13 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+import { AdminGuard } from "./guards/admin.guard";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -34,7 +37,7 @@ const routes: Routes = [
       },
     ],
   },
-
+  {
     path: "",
     component: AuthLayoutComponent,
     children: [
@@ -63,4 +66,4 @@ const routes: Routes = [
   ],
   exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
