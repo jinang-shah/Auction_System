@@ -28,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
         console.log(resdata.message);
         this.message = resdata.message;
 
-        //alert(this.message);
+        alert(this.message);
       }
     });
   }

@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
     private getUser: LoginService,
     private loder: LoaderService,
     private favService: FavoriteService
-  ) {}
+  ) { }
 
   // To add or remove item in user's favourite list
   addToFavourite() {
@@ -49,6 +49,12 @@ export class ProductComponent implements OnInit {
   }
 
   makeBid(newBid, addOn) {
+
+    if (this.myLastBid == this.product.maxBid) {
+      alert("Current Maximum Bid Amount is Yours !!");
+      this.customBid = null;
+      return;
+    }
     let bidAmount;
 
     if (addOn) {

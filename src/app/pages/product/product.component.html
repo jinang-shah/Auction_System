@@ -37,7 +37,7 @@
     </p>
     <p class="product_seller">
       <span class="span_product_seller">Seller : </span
-      >{{ product.sellerId.name }}
+      >{{product.sellerId.name}}
     </p>
     <p class="product_seller">
       <span class="span_product_seller">Date :</span>
@@ -52,10 +52,10 @@
     <h3 class="upcoming_status">
       <span class="span_upcoming"> Up-Coming</span>
     </h3>
-    <p>Start Date : {{ product.start_date }}</p>
-    <p>End Date : {{ product.end_date }}</p>
+    <p>Start Date : {{ product.startDate | date: "short"}}</p>
+    <p>End Date : {{ product.endDate | date: "short" }}</p>
     <p class="base_price">
-      Base Price : <span class="span_price">${{ product.base_price }}</span>
+      Base Price : <span class="span_price">${{ product.basePrice }}</span>
     </p>
   </div>
 
