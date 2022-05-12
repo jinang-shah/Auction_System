@@ -103,14 +103,18 @@
             </div>
             <div class="col">
               <ul class="nav nav-pills justify-content-end">
-                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[0];updateOptions()">
-                  <a href="javascript:void(0)" class="nav-link py-2 px-3" data-toggle="tab" (click)="clicked=true;clicked1=false">
+                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales"
+                  (click)="data=datasets[0];updateOptions()">
+                  <a href="javascript:void(0)" class="nav-link py-2 px-3" data-toggle="tab"
+                    (click)="clicked=true;clicked1=false">
                     <span class="d-none d-md-block">Month</span>
                     <span class="d-md-none">M</span>
                   </a>
                 </li>
-                <li class="nav-item" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[1];updateOptions()">
-                  <a href="javascript:void(0)" class="nav-link py-2 px-3" data-toggle="tab" (click)="clicked=false;clicked1=true">
+                <li class="nav-item" data-toggle="chart" data-target="#chart-sales"
+                  (click)="data=datasets[1];updateOptions()">
+                  <a href="javascript:void(0)" class="nav-link py-2 px-3" data-toggle="tab"
+                    (click)="clicked=false;clicked1=true">
                     <span class="d-none d-md-block">Week</span>
                     <span class="d-md-none">W</span>
                   </a>
@@ -161,7 +165,7 @@
           </div>
         </div>
         <div class="table-responsive">
-  <!--............ user profile table ................................. -->
+          <!--............ user profile table ................................. -->
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
@@ -174,21 +178,22 @@
             <tbody>
               <tr *ngFor="let newuser of newUser">
                 <th scope="row">
-                  {{newuser.userName}}
+                  {{newuser.name}}
                 </th>
                 <td>
-                  {{newuser.userEmail}}
+                  {{newuser.email}}
                 </td>
                 <td>
-                  {{newuser.userContact}}
+                  {{newuser.mobile}}
                 </td>
                 <td>
-                   View Profile
+                  <a [routerLink]="['/user-profile',newuser._id]">View Profile</a>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div *ngIf="newUser.length < 1" style="text-align: center; font-size: 35px; margin-top: 10px; margin-bottom: 10px;" > No New Users...</div>
+          <div *ngIf="newUser.length < 1"
+            style="text-align: center; font-size: 35px; margin-top: 10px; margin-bottom: 10px;"> No New Users...</div>
         </div>
       </div>
     </div>
@@ -217,23 +222,25 @@
             <tbody>
               <tr *ngFor="let newcomplain of newComplain">
                 <th scope="row">
-                  {{newcomplain.userName}}
+                  {{newcomplain.name}}
                 </th>
                 <td>
-                  view complain
+                  <a [routerLink]="['/complain-details',newcomplain.id]"> view complain</a>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="mr-2"> {{newcomplain.date}} </span>
+                    <span class="mr-2"> {{newcomplain.date | date:"short"}} </span>
                     <div>
-                      
+
                     </div>
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div *ngIf="newUser.length < 1" style="text-align: center; font-size: 35px; margin-top: 10px; margin-bottom: 10px;" > No New Complains...</div>
+          <div *ngIf="newUser.length < 1"
+            style="text-align: center; font-size: 35px; margin-top: 10px; margin-bottom: 10px;"> No New Complains...
+          </div>
         </div>
       </div>
     </div>
