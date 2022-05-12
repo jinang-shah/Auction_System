@@ -27,16 +27,45 @@
               </tr>
             </thead>
             <tbody>
-
-
-              <tr *ngFor="let product of products">
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">{{product.name}}</span>
+                
+                <tr *ngFor="let product of products">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" src="{{product.images[0]}}">
+                      </a>
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{product.name}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    S1
+                  </td>
+                  <td>
+                    <!-- admin-product.component.html -->
+                    <span class="badge badge-dot mr-4">
+                      <select name="greet" id="product._id" (change)="verifyProduct($event,product._id)">
+                        <option [selected]="product.isVerified" [[value]]="true">verified</option>
+                        <option [selected]="!product.isVerified" [[value]]="false">Unverified</option>
+                      </select>
+                    </span>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                    
+                      <button type="button" class="btn btn-default"> VIEW </button>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <button type="button" class="btn btn-default"> VIEW BILL </button>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                   
+                      <button type="button" class="btn btn-danger" (click)="deleteProduct(product._id)"> Remove </button>
                     </div>
                   </div>
                 </th>
