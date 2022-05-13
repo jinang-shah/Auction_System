@@ -11,33 +11,46 @@
   </div>
 </div>
 <div style="width: 25rem;margin: auto;">
-    <div class="text-center text-muted mb-4">
-            
-    </div>
-    <div class="card card-stats mb-4 mb-lg-0" style="margin-top: 150px">
-        
-      <div class="card-body">
-        <div class="row">
-          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <div class="form-group" ngModelGroup="sellerData" #sellerData="ngModelGroup">
-              <h2 style="color:black;">Seller Verification</h2>  
-              <p>To Become a seller Please upload a Valid Document </p>
-              <div>
-              <label for="exampleFormControlFile1">Upload PAN Card (pdf)*</label>
-              <input type="file" accept="application/pdf" class="form-control-file" name="pancard" ngModel required>
-              </div>
-              <div style="margin-top: 30px;">
-                <label for="exampleFormControlFile1">Upload Election Card/Electricity Bill (pdf)*</label>
-                <input type="file" accept="application/pdf" class="form-control-file" name="elecard" ngModel required>
-                </div>
-              <div>
+  <div class="text-center text-muted mb-4">
+
+  </div>
+  <div class="card card-stats mb-4 mb-lg-0" style="margin-top: 150px">
+
+    <div class="card-body">
+      <div class="row">
+        <form [formGroup]="sellerVerificationForm" (ngSubmit)="onSubmit()">
+          <h2 style="color:black;">Seller Verification</h2>
+          <p>To Become a seller Please upload a Valid Document </p>
+          <div>
+            <label for="pancard">Upload PAN Card (pdf)*</label>
+            <input type="file" accept="application/pdf" class="form-control-file" formControlName="pancard"
+              (change)="onpancardselect($event)">
+            <div
+              *ngIf="sellerVerificationForm.get('pancard').invalid &&(sellerVerificationForm.get('pancard').dirty || sellerVerificationForm.get('pancard').touched)"
+              class="text-danger">
+              Choose a file!!
             </div>
-            
-              <button type="button" [disabled]="!f.valid" class="btn btn-primary btn-sm" style="margin-top: 50px ; width: 170px">Upload</button>
-            
           </div>
-          </form>
-        </div>
+
+          <div style="margin-top: 30px;">
+            <label for="elecard">Upload Election Card/Electricity Bill (pdf)*</label>
+            <input type="file" accept="application/pdf" class="form-control-file" formControlName="elecard"
+              (change)="onelecardselect($event)">
+            <div
+              *ngIf="sellerVerificationForm.get('elecard').invalid &&(sellerVerificationForm.get('elecard').dirty || sellerVerificationForm.get('elecard').touched)"
+              class="text-danger">
+              Choose a file!!
+            </div>
+          </div>
+          <div>
+          </div>
+
+          <button type="submit" [disabled]="!sellerVerificationForm.valid" class="btn btn-primary btn-sm"
+            style="margin-top: 50px ; width: 170px">Upload</button>
+
+          <!-- </div> -->
+        </form>
       </div>
     </div>
   </div>
+</div>

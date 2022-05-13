@@ -24,18 +24,28 @@
                     <div class="card-header bg-transparent pb-5">
                         <div class="card-body px-lg-5 py-lg-5">
                             <div class="item-info">Fill Item Complain</div>
-                            <form [formGroup]="item_report" (ngSubmit)="itemreport(item_report)">
+                            <form [formGroup]="item_report" #item_reportDirective="ngForm"
+                                (ngSubmit)="item_report.valid && itemreport() && display()">
 
                                 <div class="form-group mb-3">
                                     Complain Description:
                                     <div class="input-group input-group-alternative h-5">
-                                        <textarea rows="5" class="form-control" formControlName='c_description'
+                                        <textarea rows="5" class="form-control" formControlName='complainDetails'
                                             placeholder="Enter item description"></textarea>
+                                    </div>
+                                    <div class="input-group input-group-alternative"
+                                        *ngIf="item_reportDirective.submitted"
+                                        style="color: red; background-color: rgb(219, 214, 214);">
+                                        <div *ngIf="hasError('complainDetails','required')">Please enter the complain
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
                                     Item Photos:
-                                    <input class="form-control" formControlName='i_photo' type="file" multiple>
+                                    <input class="form-control" accept="image/*" formControlName='images' type="file"
+                                        (change)="onphotoselect($event)" multiple>
+                                    <div *ngIf="photoerror" style="color: red; background-color: silver;"> please select
+                                        valid item image</div>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary my-1">Submit Complain</button>
@@ -45,5 +55,16 @@
                     </div>
                 </div>
             </div>
-        </div></div>
+            <div *ngIf="submitvalid">
+                <div class="card card1" style="width: 18rem;">
+                    <div class="card-body">
+                        <h2 class="card-title">Confirmation</h2>
+                        <p class="card-text">Complain added successfuly</p>
+                        <a class="card-link" (click)="closecard()">Close</a>
+                        <a class="card-link" (click)="addnewcomplain()">Submit new complain</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>

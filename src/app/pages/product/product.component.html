@@ -1,130 +1,269 @@
-<div class="product_div header bg-gradient-danger pb-8 pt-5 pt-md-8 ">
-
-    <div class="product_image_div">
-        <div class="main_image_div">
-            <img class="product_img" [src]="main_image" alt="product.name">
-        </div>
-
-        <div class="product_images_div">
-            <img [ngClass]="{'active_image': main_image === product.images[i]}" (click)="changeImage(i)"
-                class="product_img_mini" *ngFor="let url of product.images;let i=index" [src]="url" alt="">
-        </div>
+<!-- product -details  -->
+<div class="product_div header pb-8 pt-5 pt-md-8">
+  <div class="product_image_div">
+    <div class="main_image_div">
+      <img class="product_img" [src]="main_image | imgSrc" alt="product.name" />
     </div>
 
-    <div class="product_info_div">
-        <div style="display: flex;justify-content: space-between;align-items: center;">
-            <h2 class="product_name display-3">{{product.name}}</h2>
-            <i class="ni ni-favourite-28" style="margin-right: 70px;height: 20px;"></i>
-        </div>
-        <p class="product_description_title">Description : </p>
-        <p class="product_description">{{product.description}}</p>
-        <p class="product_catagory"><span class="span_product_seller">Catagory :</span> {{product.catagory}}</p>
-        <p class="product_seller"><span class="span_product_seller">Seller : </span>Yash Maheshwari</p>
-        <p class="product_date"><span class="span_product_seller">Date :</span> {{product.post_date}}</p>
+    <div class="product_images_div">
+      <img
+        [ngClass]="{ active_image: main_image === product.images[i] }"
+        (click)="changeImage(i)"
+        class="product_img_mini"
+        *ngFor="let url of product.images; let i = index"
+        [src]="url | imgSrc"
+        alt=""
+      />
     </div>
+  </div>
 
+  <div class="product_info_div">
+    <div
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
+      <h2 class="product_name display-3">{{ product.name }}</h2>
+      <i
+        class="ni ni-favourite-28"
+        [ngClass]="{ fav_active: isFavourite }"
+        (click)="addToFavourite()"
+        style="margin-right: 70px; height: 20px"
+      >
+      </i>
+    </div>
+    <p class="product_description_title">Description :</p>
+    <p class="product_description">{{ product.description }}</p>
+    <p class="product_seller">
+      <span class="span_product_seller">Catagory :</span> {{ product.category }}
+    </p>
+    <p class="product_seller">
+      <span class="span_product_seller">Seller : </span
+      >{{product.sellerId.name}}
+    </p>
+    <p class="product_seller">
+      <span class="span_product_seller">Date :</span>
+      {{ product.createdAt | date: "short" }}
+    </p>
+  </div>
 </div>
 
+<!-- upcoming div -->
+<div class="upcoming_div" *ngIf="product.status == 'upcoming'">
+  <div class="upcoming_sub_div">
+    <h3 class="upcoming_status">
+      <span class="span_upcoming"> Up-Coming</span>
+    </h3>
+    <p>Start Date : {{ product.startDate | date: "short"}}</p>
+    <p>End Date : {{ product.endDate | date: "short" }}</p>
+    <p class="base_price">
+      Base Price : <span class="span_price">${{ product.basePrice }}</span>
+    </p>
+  </div>
 
+  <!-- <div class="upcoming_admin">
+        <p>Seller id : {{product.seller_id}}</p>
+    </div> -->
 
-<div class="upcoming_div" *ngIf="(product.status =='upcoming')">
-    <div class="upcoming_sub_div">
-        <h3 class="upcoming_status"><span class="span_upcoming"> Up-Coming</span></h3>
-        <p>Start Date : {{product.start_date}}</p>
-        <p>End Date : {{product.end_date}}</p>
-        <p class="base_price">Base Price : <span class="span_price">${{product.base_price}}</span></p>
+  <div class="comment_div">
+    <div class="comment_header">
+      <h2 class="comment_title">Comment Section :</h2>
+      <input
+        [(ngModel)]="comment"
+        class="comment_input"
+        type="text"
+        placeholder="write comment"
+      />
+      <button class="post_comment_btn" (click)="postComment()">Post</button>
     </div>
-
-    <div class="upcoming_admin">
-    </div>
-</div>
-
-
-<div class="live_div">
-    <div class="live_sub_div">
-        <h3 class="live_status"><span class="span_live"> Live</span></h3>
-        <p class="current_bid_amount">Current Bid Amount : <span class="span_price">${{product.max_bid_amt}}</span></p>
-        <p class="current_bid_amount">Your Last Bid Amount : <span class="span_price">$800</span></p>
-        <p class="base_price">Base Price : ${{product.base_price}}</p>
-        <p>End on : {{product.end_date}}</p>
-        <hr>
-
-        <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $50</button>
-        <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $100</button>
-        <button class="btn btn-outline-danger btn btn-secondary btn-sm">+ $200</button>
-        <br>
-        <br>
-
-        <input class="live_bidding_input" type="text" placeholder="enter $100">
-        <br>
-        <br>
-        <button class="live_bidding_btn">Make Bid</button>
-    </div>
-
-
-    <div class="live_bidding_div">
-        <h3 class="live_bidding_title">Bidding Details :</h3>
-        <div class="live_bidding_history">
-            <div class="single_bid_details" *ngFor="let bid of product.bidds">
-                <p> <span class="span_bidder_name">{{bid.name}}:</span> ${{bid.bid_amt}}</p>
-                <p>5:30pm 10/02/22</p>
-            </div>
+    <hr />
+    <div class="comment_container_div">
+      <div class="single_comment_div" *ngFor="let comment of product.comments">
+        <div class="comment_user_time_div">
+          <div class="comment_user_div">
+            <i style="height: 20px" class="ni ni-circle-08 user_icon"></i>
+            <p class="comment_name">{{ comment.senderId.name }}</p>
+          </div>
+          <p class="comment_time">{{ comment.timeStamp | date: "short" }}</p>
         </div>
-    </div>
-
-</div>
-
-<div class="live_div">
-    <div class="live_sub_div">
-        <h3 class="completed_status"> <span class="span_completed"> Completed</span></h3>
-        <p class="current_bid_amount">Sold For : <span class="span_price">$1000</span></p>
-        <p class="base_price">Base Price : <span class="span_price">$500</span></p>
-        <p>Completed On : {{product.end_date}}</p>
-    </div>
-
-    <div class="live_bidding_div">
-        <h3 class="live_bidding_title">Bidding Details :</h3>
-        <div class="live_bidding_history">
-            <div class="single_bid_div">
-                <div class="single_bid_details" *ngFor="let bid of product.bidds">
-                    <p> <span class="span_bidder_name">{{bid.name}}:</span> ${{bid.bid_amt}}</p>
-                    <p>5:30pm 10/02/22</p>
-                </div>
-            </div>
+        <div class="comment_data_div">
+          <p class="comment_data">{{ comment.data }}</p>
         </div>
-
+      </div>
     </div>
-
+  </div>
 </div>
-
-<div class="product_comments_div">
-    <div class="product_comments_sub_div">
-
-        <h2 class="comment_title">Comment Section :</h2>
-        <input class="comment_input" type="text" placeholder="write comment">
-        <button class="post_comment_btn">Post</button>
-
-        <div class="user_comments">
-            <p *ngFor="let comment of product.comments">
-                <span class="span_comment_username">{{comment.name}} :</span>
-                {{comment.data}}
-                <small style="margin-left:50px;">{{comment.time}}</small>
-            </p>
-        </div>
+<!-- live div -->
+<div class="live_div" *ngIf="product.status == 'live'">
+  <div class="live_sub_div">
+    <h3 class="live_status"><span class="span_live"> Live</span></h3>
+    <p class="current_bid_amount">
+      Current Bid Amount : <span class="span_price">${{ product.maxBid }}</span>
+    </p>
+    <p
+      *ngIf="!user.isAdmin && user._id != product.sellerId"
+      class="current_bid_amount"
+    >
+      Your Last Bid Amount :
+      <span class="span_price">${{ myLastBid }}</span>
+    </p>
+    <p class="base_price">Base Price : ${{ product.basePrice }}</p>
+    <p>Started on : {{ product.startDate | date: "short" }}</p>
+    <p>Ends on : {{ product.endDate | date: "short" }}</p>
+    <div *ngIf="!user.isAdmin && !(user._id == product.sellerId)">
+      <hr />
+      <button
+        class="btn btn-outline-danger btn btn-secondary btn-sm"
+        (click)="makeBid(50, true)"
+      >
+        + $50
+      </button>
+      <button
+        class="btn btn-outline-danger btn btn-secondary btn-sm"
+        (click)="makeBid(100, true)"
+      >
+        + $100
+      </button>
+      <button
+        class="btn btn-outline-danger btn btn-secondary btn-sm"
+        (click)="makeBid(200, true)"
+      >
+        + $200
+      </button>
+      <br />
+      <br />
+      <input
+        class="live_bidding_input"
+        [(ngModel)]="customBid"
+        type="number"
+        placeholder="enter amount"
+      />
+      <br />
+      <button class="live_bidding_btn" (click)="makeBid(customBid, false)">
+        Make Bid
+      </button>
     </div>
-</div>
+  </div>
 
-<div class="bidding_details_div">
-    <h2 class="bidding_details_title  bg-gradient-danger">Bidding Details :</h2>
-
+  <div
+    *ngIf="user.isAdmin || user._id == product.sellerId"
+    class="bidding_details_div"
+  >
+    <h2 class="bidding_details_title bg-gradient-danger">Bidding Details :</h2>
     <div class="bidding_details_bids">
-        <div class="single_bid_div">
-            <div class="single_bid_details" *ngFor="let bid of product.bidds;let i=index">
-                <p> <span style="margin-left: 5px;" class="span_bidder_name">({{i+1}}) {{bid.name}}:</span>
-                    ${{bid.bid_amt}}</p>
-                <p>5:30pm 10/02/22</p>
-            </div>
+      <div class="single_bid_div">
+        <div
+          class="single_bid_details"
+          *ngFor="let bid of product.bidDetails; let i = index"
+        >
+          <p>
+            <span style="margin-left: 5px" class="span_bidder_name"
+              >{{ i + 1 }}) {{ bid.bidderId.name }}:</span
+            >
+            ${{ bid.bidAmount }}
+          </p>
+          <p>{{ bid.timeStamp | date: "short" }}</p>
         </div>
+      </div>
     </div>
+  </div>
 
+  <div class="comment_div">
+    <div class="comment_header">
+      <h2 class="comment_title">Comment Section :</h2>
+      <input
+        [(ngModel)]="comment"
+        class="comment_input"
+        type="text"
+        placeholder="write comment"
+      />
+      <button class="post_comment_btn" (click)="postComment()">Post</button>
+    </div>
+    <hr />
+    <div class="comment_container_div">
+      <div class="single_comment_div" *ngFor="let comment of product.comments">
+        <div class="comment_user_time_div" *ngIf="comment.senderId != null">
+          <div class="comment_user_div">
+            <i style="height: 20px" class="ni ni-circle-08 user_icon"></i>
+            <p class="comment_name">{{ comment.senderId.name }}</p>
+          </div>
+          <p class="comment_time">{{ comment.timeStamp | date: "short" }}</p>
+        </div>
+        <div class="comment_data_div" *ngIf="comment.senderId != null">
+          <p class="comment_data">{{ comment.data }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- complete -->
+<div class="completed_div" *ngIf="product.status == 'completed'">
+  <div class="live_sub_div">
+    <h3 class="completed_status">
+      <span class="span_completed"> Completed</span>
+    </h3>
+    <p class="current_bid_amount">
+      Sold For : <span class="span_price">${{ product.maxBid }}</span>
+    </p>
+    <p class="base_price">
+      Base Price : <span class="span_price">${{ product.basePrice }}</span>
+    </p>
+    <p>Completed On : {{ product.endDate | date: "short" }}</p>
+  </div>
+
+  <div class="bid_win_div" *ngIf="user._id == product.buyerId">
+    <img class="bid_win_gif" src="../../../assets/images/win.gif" alt="" />
+    <p class="bid_win_title">Congratulations You Won!!</p>
+    <small>complete your payment in 10 days</small>
+    <button class="payment_btn">Payment</button>
+  </div>
+
+  <div
+    *ngIf="user.isAdmin || user._id == product.seller_id"
+    class="bidding_details_div"
+  >
+    <h2 class="bidding_details_title bg-gradient-danger">Bidding Details :</h2>
+    <div class="bidding_details_bids">
+      <div class="single_bid_div">
+        <div
+          class="single_bid_details"
+          *ngFor="let bid of product.bidDetails; let i = index"
+        >
+          <p>
+            <span style="margin-left: 5px" class="span_bidder_name"
+              >{{ i + 1 }}) {{ bid.bidderId.name }}:</span
+            >
+            ${{ bid.bidAmount }}
+          </p>
+          <p>{{ bid.timeStamp | date: "short" }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comment_div">
+    <div class="comment_header">
+      <h2 class="comment_title">Comment Section :</h2>
+      <input
+        [(ngModel)]="comment"
+        class="comment_input"
+        type="text"
+        placeholder="write comment"
+      />
+      <button class="post_comment_btn" (click)="postComment()">Post</button>
+    </div>
+    <hr />
+    <div class="comment_container_div">
+      <div class="single_comment_div" *ngFor="let comment of product.comments">
+        <div class="comment_user_time_div" *ngIf="comment.senderId != null">
+          <div class="comment_user_div">
+            <i style="height: 20px" class="ni ni-circle-08 user_icon"></i>
+            <p class="comment_name">{{ comment.senderId.name }}</p>
+          </div>
+          <p class="comment_time">{{ comment.timeStamp | date: "short" }}</p>
+        </div>
+        <div class="comment_data_div" *ngIf="comment.senderId != null">
+          <p class="comment_data">{{ comment.data }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

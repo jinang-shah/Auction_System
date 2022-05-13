@@ -103,14 +103,18 @@
             </div>
             <div class="col">
               <ul class="nav nav-pills justify-content-end">
-                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[0];updateOptions()">
-                  <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked===true}" data-toggle="tab" (click)="clicked=true;clicked1=false">
+                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales"
+                  (click)="data=datasets[0];updateOptions()">
+                  <a href="javascript:void(0)" class="nav-link py-2 px-3" data-toggle="tab"
+                    (click)="clicked=true;clicked1=false">
                     <span class="d-none d-md-block">Month</span>
                     <span class="d-md-none">M</span>
                   </a>
                 </li>
-                <li class="nav-item" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[1];updateOptions()">
-                  <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked1===true}" data-toggle="tab" (click)="clicked=false;clicked1=true">
+                <li class="nav-item" data-toggle="chart" data-target="#chart-sales"
+                  (click)="data=datasets[1];updateOptions()">
+                  <a href="javascript:void(0)" class="nav-link py-2 px-3" data-toggle="tab"
+                    (click)="clicked=false;clicked1=true">
                     <span class="d-none d-md-block">Week</span>
                     <span class="d-md-none">W</span>
                   </a>
@@ -161,7 +165,7 @@
           </div>
         </div>
         <div class="table-responsive">
-          <!-- Projects table -->
+          <!--............ user profile table ................................. -->
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
@@ -174,90 +178,22 @@
             <tbody>
               <tr *ngFor="let newuser of newUser">
                 <th scope="row">
-                  {{newuser.userName}}
+                  {{newuser.name}}
                 </th>
                 <td>
-                  {{newuser.userEmail}}
+                  {{newuser.email}}
                 </td>
                 <td>
-                  {{newuser.userContact}}
+                  {{newuser.mobile}}
                 </td>
                 <td>
-                   View Profile
+                  <a [routerLink]="['/user-profile',newuser._id]">View Profile</a>
                 </td>
               </tr>
-              <!-- <tr>
-                <th scope="row">
-                  ABC
-                </th>
-                <td>
-                  XYZ@gmail.com
-                </td>
-                <td>
-                  340
-                </td>
-                <td>
-                   View Profile
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  PQR
-                </th>
-                <td>
-                  XYZ@gmail.com
-                </td>
-                <td>
-                  319
-                </td>
-                <td>
-                   view profile
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  MNO
-                </th>
-                <td>
-                  XYZ@gmail.com
-                </td>
-                <td>
-                  294
-                </td>
-                <td>
-                   view profile
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  ASD
-                </th>
-                <td>
-                  XYZ@gmail.com
-                </td>
-                <td>
-                  147
-                </td>
-                <td>
-                   view profile
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/profile.html
-                </th>
-                <td>
-                  1,795
-                </td>
-                <td>
-                  190
-                </td>
-                <td>
-                  46,53%
-                </td>
-              </tr> -->
             </tbody>
           </table>
+          <div *ngIf="newUser.length < 1"
+            style="text-align: center; font-size: 35px; margin-top: 10px; margin-bottom: 10px;"> No New Users...</div>
         </div>
       </div>
     </div>
@@ -274,7 +210,7 @@
           </div>
         </div>
         <div class="table-responsive">
-          <!-- Projects table -->
+          <!--................... New Complain table .................................. -->
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
@@ -286,101 +222,25 @@
             <tbody>
               <tr *ngFor="let newcomplain of newComplain">
                 <th scope="row">
-                  {{newcomplain.userName}}
+                  {{newcomplain.name}}
                 </th>
                 <td>
-                  view complain
+                  <a [routerLink]="['/complain-details',newcomplain.id]"> view complain</a>
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="mr-2"> {{newcomplain.date}} </span>
+                    <span class="mr-2"> {{newcomplain.date | date:"short"}} </span>
                     <div>
-                      
+
                     </div>
                   </div>
                 </td>
               </tr>
-              <!-- <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  view complain
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">20/12/22</span>
-                    <div>
-                      
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  view complain
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">7/7/21</span>
-                    <div>
-                      
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Google
-                </th>
-                <td>
-                  view complain
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">8/12/21</span>
-                    <div>
-                      
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Instagram
-                </th>
-                <td>
-                  view complain
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">17/03/21</span>
-                    <div>
-                      
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  twitter
-                </th>
-                <td>
-                  view complain
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">30/09/21</span>
-                    <div>
-                    </div>
-                  </div>
-                </td>
-              </tr> -->
             </tbody>
           </table>
+          <div *ngIf="newUser.length < 1"
+            style="text-align: center; font-size: 35px; margin-top: 10px; margin-bottom: 10px;"> No New Complains...
+          </div>
         </div>
       </div>
     </div>

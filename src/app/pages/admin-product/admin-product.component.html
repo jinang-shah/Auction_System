@@ -1,39 +1,38 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
-      <div class="header-body">
+  <div class="container-fluid">
+    <div class="header-body">
 
-      </div>
     </div>
   </div>
-  <!-- Page content -->
-  <div class="container-fluid mt--7">
-    <!-- Table -->
-    <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <h3 class="mb-0">Product Table</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="table align-items-center table-flush">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Product Id</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">view Product </th>
-                  <th scope="col">View Bill</th>
-                  <th scope="col">Remove Users</th>
-                </tr>
-              </thead>
-              <tbody>
-
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Product Table</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Id</th>
+                <th scope="col">Status</th>
+                <th scope="col">View Product </th>
+                <!-- <th scope="col">View Bill</th> -->
+                <th scope="col">Remove Product</th>
+              </tr>
+            </thead>
+            <tbody>
                 
                 <tr *ngFor="let product of products">
                   <th scope="row">
                     <div class="media align-items-center">
                       <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                        <img alt="Image placeholder" src="{{product.images[0]}}">
                       </a>
                       <div class="media-body">
                         <span class="mb-0 text-sm">{{product.name}}</span>
@@ -44,11 +43,11 @@
                     S1
                   </td>
                   <td>
+                    <!-- admin-product.component.html -->
                     <span class="badge badge-dot mr-4">
-                      <!-- <i class="bg-warning"></i> pending -->
-                      <select name="" id="">
-                        <option value="" >verified</option>
-                        <option value="">not verified</option>
+                      <select name="greet" id="product._id" (change)="verifyProduct($event,product._id)">
+                        <option [selected]="product.isVerified" [[value]]="true">verified</option>
+                        <option [selected]="!product.isVerified" [[value]]="false">Unverified</option>
                       </select>
                     </span>
                   </td>
@@ -66,57 +65,92 @@
                   <td>
                     <div class="d-flex align-items-center">
                    
-                      <button type="button" class="btn btn-danger"> Remove </button>
+                      <button type="button" class="btn btn-danger" (click)="deleteProduct(product._id)"> Remove </button>
                     </div>
-                  </td>
-                  
-                  <td class="text-right">
-                    <div ngbDropdown placement="bottom-right">
-                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                        <i class="fas fa-ellipsis-v"></i>
-                      </a>
-                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                        <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                        <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                      </div>
+                  </div>
+                </th>
+                <td>
+                  {{product._id}}
+                </td>
+                <td>
+                  <!-- admin-product.component.html -->
+                  <span class="badge badge-dot mr-4">
+                    <select name="greet" id="product._id" (change)="verifyProduct($event,product._id)">
+                      <option [selected]="product.isVerified" [[value]]="true">verified</option>
+                      <option [selected]="!product.isVerified" [[value]]="false">Unverified</option>
+                    </select>
+                  </span>
+                </td>
+                <td>
+                  <div class="avatar-group">
+                    <a [routerLink]="['/product',product._id]">
+                      <button type="button" class="btn btn-default"> VIEW </button></a>
+                  </div>
+                </td>
+                <!-- <td>
+                  <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-default"> VIEW BILL </button>
+                  </div>
+                </td> -->
+                <td>
+                  <div class="d-flex align-items-center">
+
+                    <button type="button" class="btn btn-danger" (click)="deleteProduct(product._id)"> Remove </button>
+                  </div>
+
+
+                </td>
+
+                <!-- <td class="text-right">
+                  <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
                     </div>
-                  </td>
-                </tr>
+                  </div>
+                </td> -->
+              </tr>
 
-
-
-
-                
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                    <i class="fas fa-angle-left"></i>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="javascript:void(0)">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="javascript:void(0)">
-                    <i class="fas fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
-    
+  </div>
+
+  <!-- <div>
+      <ul>
+        <li *ngFor="let items of data">
+          {{item.name}}
+        </li>
+      </ul>
+    </div> -->

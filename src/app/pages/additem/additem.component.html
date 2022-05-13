@@ -1,10 +1,9 @@
 <body class="bg-default">
-    <div class="header bg-gradient-danger py-7 py-lg-8">
-        <div class="container">
-            <div class="header-body text-center mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-
+<div class="header bg-gradient-danger py-7 py-lg-8">
+    <div class="container">
+        <div class="header-body text-center mb-7">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6">
                     </div>
                 </div>
             </div>
@@ -22,85 +21,112 @@
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-header bg-transparent pb-5">
-
-                        <div class="card-body px-lg-5 py-lg-5">
-                            <form [formGroup]="additemform" (ngSubmit)="additem(additemform)">
-                                <div class="form-group mb-2">
-                                    Item Name:
-                                    <div class="input-group input-group-alternative">
-                                        <input class="form-control" formControlName='i_name'
-                                            placeholder="Enter item name" type="text">
-                                    </div>
+                    <div class="card-body px-lg-5 py-lg-5">
+                        <form [formGroup]="additemform" #additemformDirective= "ngForm" (ngSubmit)="additemform.valid && additem()&&display()">
+                            <div class="form-group mb-2">
+                                Item Name:
+                                <div class="input-group input-group-alternative">
+                                    <input class="form-control" formControlName='name' placeholder="Enter item name" type="text">
                                 </div>
-
-                                <div class="form-group">
-                                    Item Category:<br>
-                                    <button type="button" class="btn btn-primary dropdown-toggle"
-                                        data-bs-toggle="dropdown">
-                                        Choose Item Category
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Electric</a></li>
-                                        <li><a class="dropdown-item" href="#">Footware</a></li>
-                                        <li><a class="dropdown-item" href="#">Furniture</a></li>
-                                    </ul>
+                                <div class="input-group input-group-alternative" 
+                                *ngIf="additemformDirective.submitted" style="color: red; background-color: rgb(219, 214, 214);">
+                                    <div *ngIf="hasError('name','required')">Please enter the item name</div>
+                                    <div *ngIf="hasError('name','minLength')">Please enter name with minimum 3 char.</div>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                Item Category:<br>
+                                <select formControlName="category"  class="form-control">
+                                    <option disabled>Select Item Category</option>
+                                    <option  *ngFor="let cat of catagories" [ngValue]="cat">{{cat}}</option>
+                                </select>
+                                <div class="input-group input-group-alternative" *ngIf="additemformDirective.submitted"
+                                    style="color: red; background-color: rgb(219, 214, 214);">
+                                    <div *ngIf="hasError('category','required')">Please select the item category</div>
+                                </div>
+                            </div>
 
                                 <div class="form-group mb-3">
                                     Item Description:
                                     <div class="input-group input-group-alternative">
-                                        <input class="form-control" formControlName='i_description'
+                                        <input class="form-control" formControlName='description'
                                             placeholder="Enter item description" type="text">
                                     </div>
-                                </div>
-
-
-                                <div class="form-group mb-3">
-                                    Item Base Price:
-                                    <div class="input-group input-group-alternative">
-                                        <input class="form-control" formControlName='i_baseprice'
-                                            placeholder="Enter price" type="number">
+                                    <div class="input-group input-group-alternative" *ngIf="additemformDirective.submitted"
+                                        style="color: red; background-color: rgb(219, 214, 214);">
+                                        <div *ngIf="hasError('description','required')">Please enter the item description</div>
                                     </div>
                                 </div>
+
+
+                            <div class="form-group mb-3">
+                                    Item Base Price:
+                                    <div class="input-group input-group-alternative">
+                                        <input class="form-control" formControlName='basePrice'
+                                            placeholder="Enter price" type="number">
+                                    </div>
+                                <div class="input-group input-group-alternative" *ngIf="additemformDirective.submitted"
+                                    style="color: red; background-color: rgb(219, 214, 214);">
+                                    <div *ngIf="hasError('basePrice','required')">Please enter the base price</div>
+                                </div>
+                            </div>
 
                                 <div class="form-group mb-3">
                                     Start Date:
                                     <div class="input-group input-group-alternative">
-                                        <input class="form-control" formControlName='i_startdate'
-                                            placeholder="start-date" type="date">
+                                        <input type="date" class="form-control" formControlName='startDate'
+                                            placeholder="start-date" [min]="startDate" >
                                     </div>
-                                </div>
+                                    <div class="input-group input-group-alternative" *ngIf="additemformDirective.submitted"
+                                        style="color: red; background-color: rgb(219, 214, 214);">
+                                        <div *ngIf="hasError('startDate','required')">Please select the date</div>
+                                    </div>
+                                </div>   
 
                                 <div class="form-group mb-3">
                                     End Date:
                                     <div class="input-group input-group-alternative">
-                                        <input class="form-control" formControlName='i_enddate' placeholder="end-date"
-                                            type="date">
+                                        <input type="date" class="form-control" formControlName='endDate' placeholder="end-date"
+                                            [min]="endDate">
+                                    </div>
+                                    <div class="input-group input-group-alternative" *ngIf="additemformDirective.submitted"
+                                        style="color: red; background-color: rgb(219, 214, 214);">
+                                        <div *ngIf="hasError('endDate','required')">Please select the date</div>
                                     </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    Item Orignal Bill:
-                                    <input type="file" class="form-control" formControlName='i_orignalbill'
-                                        (change)="onfileselect($event)" multiple>
-                                </div>
+                               
+                               
+                            <div class="form-group mb-3">
+                                Item Orignal Bill:
+                                <input type="file" accept="image/*" class="form-control"  formControlName='bill' (change)="onbillselect($event)" multiple>
+                                <div *ngIf="billerror" style="color: red; background-color: silver;"> Please submit orignal bill image</div>
+                            </div>
 
-                                <div class="form-group mb-3">
-                                    Item Photos:
-                                    <input class="form-control" type="file" formControlName='i_photo' multiple>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary my-1" (click)="display()">Add
-                                        Item</button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="form-group mb-3">
+                                Item Photos:
+                                <input accept="image/*" class="form-control" formControlName='images' (change)="onphotoselect($event)" type="file" multiple>
+                                <div *ngIf="photoerror" style="color: red; background-color: silver;"> Please submit the item images</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary my-1">Add Item</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
 
-            <div *ngIf="valid">
-                {{item_orignalbill}}
+        <div *ngIf="submitvalid">
+            <div class="card card1" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">Confirmation</h2>
+                    <p class="card-text">Item added successfuly</p>
+                    <a class="card-link" (click)="closepage()">Close</a>
+                    <a class="card-link" (click)="addnewitem()">Add new item</a>
+                </div>
             </div>
         </div>
     </div>
-</body> 
+</div>
+

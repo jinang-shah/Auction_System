@@ -1,0 +1,27 @@
+<div
+  class="alert alert-default alert-dismissible fade show"
+  [class.deleteAnim]="removeClass"
+  role="alert"
+>
+  <span class="alert-inner--icon">
+    <img src="{{ item.img }}" alt="" />
+  </span>
+  <span class="alert-inner--text">
+    Bidding of
+    <a class="productName" [routerLink]="['/product', item.productId]">{{
+      item.name
+    }}</a>
+    {{ item.auctionTime }}
+  </span>
+  <button
+    type="button"
+    class="close"
+    (click)="removeNotification(item.id)"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">
+      <i class="fas fa-trash"></i>
+    </span>
+  </button>
+</div>

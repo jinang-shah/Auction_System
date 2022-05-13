@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -20,9 +21,22 @@ import { ProductComponent } from './pages/product/product.component';
 import { HomepageComponent } from "./components/homepage/homepage.component";
 import { SearchProductComponent } from "./components/searchProduct/searchProduct.component";
 // import { NotificationsComponent } from "./components/notifications/notifications.component";
+=======
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+>>>>>>> development
 
+import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+import { AdminGuard } from "./guards/admin.guard";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
+<<<<<<< HEAD
   {
 
     path: '',
@@ -84,18 +98,36 @@ const routes: Routes = [
   {
     path: "search",
     component: SearchProductComponent,
+=======
+  {
+    path: "",
+    component: UserLayoutComponent,
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("src/app/layouts/user-layout/user-layout.module").then(
+            (m) => m.UserLayoutModule
+          ),
+      },
+    ],
+>>>>>>> development
   },
   {
     path: "",
     component: AdminLayoutComponent,
     children: [
       {
-        path: '',
-        loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-      }
-    ]
-  }, {
-    path: '',
+        path: "",
+        loadChildren: () =>
+          import("src/app/layouts/admin-layout/admin-layout.module").then(
+            (m) => m.AdminLayoutModule
+          ),
+      },
+    ],
+  },
+  {
+    path: "",
     component: AuthLayoutComponent,
     children: [
       {
@@ -109,7 +141,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "dashboard",
+    redirectTo: "",
   },
 ];
 
@@ -117,11 +149,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
-      useHash: true
-    })
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    }),
   ],
-  exports: [
-  ],
+  exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
