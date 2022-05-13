@@ -1,0 +1,29 @@
+<div class="card" style="width: 18rem">
+  <div *ngIf="item.status == 'live'" class="ribbon">
+    <span>{{ item.status }}</span>
+  </div>
+  <div class="favIcon" [class.added]="isFavorite" (click)="toggleFavorite()">
+    <i class="ni ni-favourite-28"></i>
+  </div>
+  <a [routerLink]="['/product', item._id]">
+    <img
+      class="card-img-top"
+      src="{{ item.images[0] }}"
+      alt="Auction Item Image"
+    />
+  </a>
+  <div class="card-body">
+    <h4 class="card-title">{{ item.name }}</h4>
+    <p class="card-text">
+      {{ item.description }}
+    </p>
+    <div class="card-text details">
+      <span
+        >Bid Amount : <b>{{ item.basePrice }}</b></span
+      >
+    </div>
+    <a [routerLink]="['/product', item._id]" class="btn btn-primary"
+      >Read More</a
+    >
+  </div>
+</div>
