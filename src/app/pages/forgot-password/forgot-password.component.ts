@@ -19,16 +19,18 @@ export class ForgotPasswordComponent implements OnInit {
     this.loginService.forgotPassService(obj).subscribe((resdata: any) => {
       if (resdata.isValid) {
         console.log(resdata.message);
-        this.loginService.resetToken = resdata.data.resetToken;
-        console.log(this.loginService.resetToken);
-        this.message = resdata.message;
-        //alert(this.message);
+        // this.loginService.resetToken = resdata.data.resetToken;
+        //console.log(this.loginService.resetToken);
+        //this.message = resdata.message;
+        alert(resdata.message);
         // this.message = resdata.message;
       } else {
         console.log(resdata.message);
         this.message = resdata.message;
 
-        alert(this.message);
+        setTimeout(() => {
+          this.message = null;
+        }, 8000);
       }
     });
   }
