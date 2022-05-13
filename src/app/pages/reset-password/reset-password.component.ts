@@ -62,13 +62,15 @@ export class ResetPasswordComponent implements OnInit {
       .resetPassService(obj)
       .subscribe((data: { message: string; isValid: boolean }) => {
         if (data.isValid) {
-          window.alert("Password Change Sucessfully");
+          window.alert(data.message);
+          // window.alert("Password Change Sucessfully");
           this.router.navigateByUrl("/");
         } else {
-          this.message = data.message;
-          setTimeout(() => {
-            this.message = null;
-          }, 5000);
+          window.alert(data.message);
+          // this.message = data.message;
+          // setTimeout(() => {
+          //   this.message = null;
+          // }, 5000);
         }
       });
   }

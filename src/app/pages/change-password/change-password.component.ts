@@ -66,13 +66,18 @@ export class ChangePasswordComponent implements OnInit {
       .changePassService(obj)
       .subscribe((data: { message: string; isValid: boolean }) => {
         if (data.isValid) {
-          window.alert("Password Change Sucessfully");
+          //window.alert("Password Change Sucessfully");
+          alert(data.message);
           this.router.navigateByUrl("/");
         } else {
-          this.message = data.message;
-          setTimeout(() => {
-            this.message = null;
-          }, 5000);
+          // window.alert(
+          //   "Your old password is wrong .. Please enter valid old Password"
+          // );
+          alert(data.message);
+          // this.message = data.message;
+          // setTimeout(() => {
+          //   this.message = null;
+          // }, 5000);
         }
       });
   }
