@@ -40,7 +40,7 @@
                                     </div>
                                 </th>
                                 <td>
-                                    S1
+                                    {{product._id}}
                                 </td>
                                 <td>
                                     <!-- admin-product.component.html -->
@@ -59,51 +59,15 @@
                                         <button type="button" class="btn btn-default"> VIEW </button>
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <button type="button" class="btn btn-default"> VIEW BILL </button>
-                                    </div>
-                                </td>
+
                                 <td>
                                     <div class="d-flex align-items-center">
 
                                         <button type="button" class="btn btn-danger" (click)="deleteProduct(product._id)"> Remove </button>
                                     </div>
                                     <td>
-                                        {{product._id}}
-                                    </td>
-                                    <td>
-                                        <!-- admin-product.component.html -->
-                                        <span class="badge badge-dot mr-4">
-                                        <select name="greet" id="product._id"
-                                            (change)="verifyProduct($event,product._id)">
-                                            <option [selected]="product.isVerified" [[value]]="true">verified</option>
-                                            <option [selected]="!product.isVerified" [[value]]="false">Unverified
-                                            </option>
-                                        </select>
-                                    </span>
-                                    </td>
-                                    <td>
-                                        <div class="avatar-group">
-                                            <a [routerLink]="['/product',product._id]">
-                                                <button type="button" class="btn btn-default"> VIEW </button></a>
-                                        </div>
-                                    </td>
-                                    <!-- <td>
-                  <div class="d-flex align-items-center">
-                    <button type="button" class="btn btn-default"> VIEW BILL </button>
-                  </div>
-                </td> -->
-                                    <td>
-                                        <div class="d-flex align-items-center">
 
-                                            <button type="button" class="btn btn-danger" (click)="deleteProduct(product._id)"> Remove </button>
-                                        </div>
-
-
-                                    </td>
-
-                                    <!-- <td class="text-right">
+                                        <!-- <td class="text-right">
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
